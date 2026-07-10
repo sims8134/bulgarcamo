@@ -1,0 +1,216 @@
+{
+  "nav": {
+    "motifs": "Motifs",
+    "pieces": "Pièces",
+    "atelier": "Atelier",
+    "pro": "Pro",
+    "contact": "Contact",
+    "catalogue": "Catalogue",
+    "menu": "Menu",
+    "close": "Fermer"
+  },
+  "cursor": {
+    "view": "Voir"
+  },
+  "hero": {
+    "tagline": "Pièces textiles en camouflages bulgares.",
+    "location": "Sofia.",
+    "eyebrow": "Édition · 2026",
+    "title": {
+      "line1": "Du surplus,",
+      "line2": "à la main"
+    },
+    "subtitle": "Sofia. Surplus militaires bulgares et allemands, taillés en pièces civiles rares.",
+    "imageCaption": "Pochette multi-usages Flecktarn",
+    "meta": {
+      "edition": "Édition 2026",
+      "location": "Sofia · България",
+      "pieces": "6 pièces"
+    },
+    "cta": "Voir le catalogue"
+  },
+  "manifest": {
+    "eyebrow": "Manifeste",
+    "body": "Bulgarcamo travaille à partir de surplus militaires de la Guerre froide — bâches, sacs en toile, parfois uniformes — prélevés en Bulgarie. Chaque pièce est coupée dans le tissu d'origine et cousue à Sofia. Quand la matière s'épuise, la pièce sort du catalogue.",
+    "signature": "Sofia, sur rendez-vous"
+  },
+  "motifs_section": {
+    "eyebrow": "Première parution — Automne-Hiver",
+    "title": "Deux camouflages, une matière première",
+    "intro": "Deux imprimés issus du textile militaire bulgare et allemand, retravaillés en pièces du quotidien et accessoires EDC."
+  },
+  "motifs": {
+    "frogskin": {
+      "name": "Frogskin",
+      "subtitle": "Жабешка кожа",
+      "ref": "REF. 01",
+      "year": "1968",
+      "era": "Bulgarie · 1968",
+      "provenance": "Combinaisons des troupes aéroportées et chimiques.",
+      "description": "Taches vert vif et stries de pluie brunes sur fond gris. Conçu en pleine guerre froide, possiblement pour confondre les forces de l'OTAN. Réédité plus tard pour les troupes frontalières."
+    },
+    "splinter_1991": {
+      "name": "Splinter 1991",
+      "ref": "REF. 02",
+      "era": "Bulgarie · 1979–2002",
+      "provenance": "Uniforme universel des forces armées bulgares.",
+      "description": "Formes anguleuses vert et brun foncé sur fond olive, traversées de fines pluies. Distribution généralisée jusqu'au début des années deux mille."
+    },
+    "dpm": {
+      "name": "Bulgarian DPM",
+      "ref": "REF. 03",
+      "era": "Bulgarie · 2003",
+      "provenance": "Modèle adopté après la chute du Pacte de Varsovie.",
+      "description": "Formes irrégulières noires, brunes et vertes sur kaki. Inspiré du DPM britannique. Marque le tournant atlantique de l'armée bulgare."
+    },
+    "flecktarn": {
+      "name": "German Flecktarn",
+      "ref": "REF. 04",
+      "era": "Allemagne · 1991",
+      "provenance": "Uniforme standard de la Bundeswehr.",
+      "description": "Mouchetures à cinq couleurs — vert sombre, vert clair, noir, brun-rouge, kaki — sur base claire. Référence européenne du camouflage en zone tempérée."
+    }
+  },
+  "pieces_section": {
+    "eyebrow": "Les pièces",
+    "title": "Du vêtement à l'accessoire",
+    "categories": {
+      "uniformes": {
+        "title": "Uniformes",
+        "items": ["Combinaison Frogskin 1968"]
+      },
+      "edc": {
+        "title": "Pochettes EDC",
+        "items": [
+          "Porte-cartes (DPM, Flecktarn, Splinter)",
+          "Pochette écouteurs (DPM, Flecktarn, Splinter)",
+          "Pochette multi-usages (DPM, Flecktarn, Splinter)"
+        ]
+      },
+      "maison": {
+        "title": "Maison",
+        "items": ["Dessous de bureau Frogskin", "Prototype pochette Frogskin"]
+      }
+    }
+  },
+  "catalogue": {
+    "eyebrow": "Catalogue",
+    "title": "Toutes les pièces",
+    "intro": "Inventaire complet de la collection en cours — accessoires EDC en deux camouflages. Filtrer par motif pour explorer chaque série.",
+    "filters": {
+      "all": "Tout"
+    },
+    "items_count": "pièces",
+    "coming_soon": "Photo à venir",
+    "footer_note": "Tarifs et disponibilités sur demande. Petites séries, pièces uniques.",
+    "footer_cta": "Demander un devis"
+  },
+  "sur_mesure": {
+    "eyebrow": "Sur mesure",
+    "title": "Toutes les pièces, à vos mesures",
+    "body": "Chaque pièce du catalogue peut être réalisée sur mesure. Tailles et longueurs adaptées à votre morphologie, choix du motif parmi les camouflages disponibles, finitions et doublures à la demande. Bulgarcamo accepte les commandes individuelles — vêtements, accessoires EDC ou pièces de maison. Délais et tarifs sur demande, selon la complexité de la pièce et la disponibilité de la matière.",
+    "cta": "Faire une demande"
+  },
+  "products": {
+    "names": {
+      "coverall": "Combinaison",
+      "deskmat": "Sous-main",
+      "pouch_prototype": "Pochette, prototype",
+      "card_holder": "Porte-cartes",
+      "earphone_pouch": "Pochette à écouteurs",
+      "multi_pouch": "Pochette multi-usages"
+    },
+    "categories": {
+      "uniforme": "Uniforme",
+      "edc": "EDC",
+      "maison": "Maison"
+    }
+  },
+  "product": {
+    "breadcrumb_home": "Index",
+    "breadcrumb_catalogue": "Catalogue",
+    "provenance": "Provenance",
+    "atelier": "Fabrication",
+    "atelier_note": "Pièce coupée et cousue à Sofia par une couturière de quartier. Doublure en coton naturel selon disponibilité.",
+    "availability": "Disponibilité",
+    "edition_label": "Édition",
+    "edition_default": "Petite série",
+    "price_label": "Prix",
+    "price_value": "Sur demande",
+    "lead_time_label": "Délai",
+    "lead_time_value": "4 à 6 semaines",
+    "cta": "Acquérir cette pièce",
+    "back_to_catalogue": "Retour au catalogue"
+  },
+  "about": {
+    "eyebrow": "À propos",
+    "paragraphs": [
+      "Bulgarcamo travaille à partir de surplus militaires de la Guerre froide — bâches, sacs en toile, parfois uniformes — prélevés en Bulgarie. Les motifs ne sont pas choisis pour leur esthétique mais pour leur trace : ce sont des matières existantes, datées, identifiables, irreproductibles.",
+      "La première parution en retient deux — le Flecktarn allemand et le Splinter bulgare. Chaque pièce est coupée dans le tissu d'origine et cousue à Sofia, par une couturière de quartier.",
+      "La quantité dépend de ce que le surplus permet — quelques pièces par saison, parfois un seul exemplaire. Quand la matière s'épuise, la pièce sort du catalogue et y reste, marquée comme retirée.",
+      "Ce qui était un objet de guerre devient une pièce civile, sans que le geste se présente comme un manifeste. Il n'y a rien à imiter, rien à imprimer, rien à reproduire. Il y a une matière déjà existante, vieille de cinquante ou soixante ans, et une main qui la prélève pour en faire autre chose."
+    ],
+    "signature": "Sofia, sur rendez-vous"
+  },
+  "pro": {
+    "eyebrow": "Pour les professionnels",
+    "title": "Sourcing & collaborations",
+    "body": "Bulgarcamo travaille avec des créateurs mode, ateliers et marques en quête de matières à motifs distinctifs. Petites séries, échantillons, sourcing sur mesure — sur demande.",
+    "cta": "Nous écrire"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Écrivez-nous",
+    "intro": "Pour acquérir une pièce, demander une réalisation sur mesure, ou collaborer. Réponse sous 48h ouvrées.",
+    "direct_label": "Direct",
+    "fields": {
+      "name": "Nom",
+      "email": "Adresse e-mail",
+      "subject": "Objet",
+      "message": "Message"
+    },
+    "sending": "Envoi…",
+    "error_message": "Une erreur s'est produite. Réessayez ou écrivez-nous directement.",
+    "subjects": {
+      "piece": "Demande — pièce {ref}",
+      "made_to_measure": "Demande sur mesure",
+      "trade": "Sourcing & collaboration"
+    },
+    "preset_message_piece": "Bonjour,\n\nJe souhaite en savoir plus sur la pièce {ref}.\n\nCordialement,",
+    "preset_message_mtm": "Bonjour,\n\nJe souhaite réaliser une pièce sur mesure. Voici quelques précisions :\n\n— Type de pièce :\n— Motif souhaité :\n— Mesures / morphologie :\n\nCordialement,",
+    "preset_message_trade": "Bonjour,\n\nJe représente :\n\nNous sommes intéressés par :\n\nCordialement,",
+    "default_subject": "Bulgarcamo — demande",
+    "submit": "Envoyer",
+    "sent_eyebrow": "Envoyé",
+    "sent_title": "Votre message est en route.",
+    "sent_body": "Merci — nous avons bien reçu votre message et vous répondrons sous 48h ouvrées. Pour toute urgence, écrivez directement à contact@bulgarcamo.com."
+  },
+  "not_found": {
+    "eyebrow": "Page introuvable",
+    "title": "Cette page a été retirée.",
+    "body": "La pièce ou la page que vous cherchiez n'existe plus à cette adresse. Le catalogue change au fil des prélèvements — il est possible que la matière soit épuisée.",
+    "back": "Retour à l'index"
+  },
+  "footer": {
+    "atelier": {
+      "label": "Atelier",
+      "address": "Sofia, България",
+      "note": "Sur rendez-vous",
+      "email": "contact@bulgarcamo.com"
+    },
+    "journal": {
+      "label": "Le Journal",
+      "body": "Un envoi par saison. Nouvelles pièces, notes, prélèvements.",
+      "placeholder": "Adresse e-mail",
+      "cta": "S'inscrire"
+    },
+    "legal": {
+      "label": "Informations",
+      "pro": "Professionnels",
+      "cgv": "Conditions de vente",
+      "mentions": "Mentions légales",
+      "contact": "Contact"
+    },
+    "copyright": "Tous droits réservés"
+  }
+}

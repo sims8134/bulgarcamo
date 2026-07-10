@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-ivoire: #F2EFE8;
+    --color-encre: #1A1A18;
+    --color-sauge: #7A8470;
+    --color-pierre: #C9C2B6;
+  }
+
+  html {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-ivoire text-encre font-sans;
+    font-size: 15px;
+    line-height: 1.65;
+    font-weight: 400;
+    font-feature-settings: 'ss01', 'cv11', 'calt';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: var(--color-encre);
+    color: var(--color-ivoire);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--color-encre);
+    outline-offset: 4px;
+    border-radius: 1px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto px-6 md:px-10 lg:px-16;
+    max-width: 1600px;
+  }
+
+  .container-narrow {
+    @apply mx-auto px-6 md:px-10;
+    max-width: 1100px;
+  }
+
+  .eyebrow {
+    @apply font-mono text-mono-sm uppercase;
+    color: rgba(26, 26, 24, 0.55);
+  }
+
+  .ref-tag {
+    @apply font-mono text-mono-xs uppercase;
+    color: rgba(26, 26, 24, 0.5);
+  }
+
+  .heading-display {
+    @apply font-display text-h-display tracking-tighter;
+    font-weight: 300;
+  }
+
+  .heading-xl {
+    @apply font-display text-h-xl tracking-tight;
+    font-weight: 300;
+  }
+
+  .heading-lg {
+    @apply font-display text-h-lg tracking-tight;
+    font-weight: 300;
+  }
+
+  .heading-md {
+    @apply font-display text-h-md tracking-tight;
+    font-weight: 400;
+  }
+
+  .heading-sm {
+    @apply font-display text-h-sm;
+    font-weight: 400;
+  }
+
+  .piece-name {
+    @apply font-display italic;
+    font-weight: 400;
+  }
+
+  .prose-editorial {
+    @apply text-body max-w-prose-editorial;
+    color: rgba(26, 26, 24, 0.85);
+  }
+
+  .prose-narrow {
+    @apply text-body max-w-prose-narrow;
+    color: rgba(26, 26, 24, 0.85);
+  }
+
+  .lede {
+    @apply font-display text-lede text-encre;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .link-editorial {
+    @apply relative inline-block transition-colors duration-400 ease-expo-out;
+    text-decoration: underline;
+    text-decoration-color: rgba(26, 26, 24, 0.3);
+    text-decoration-thickness: 0.5px;
+    text-underline-offset: 4px;
+  }
+  .link-editorial:hover {
+    text-decoration-color: rgb(26, 26, 24);
+  }
+
+  .cta-quiet {
+    @apply inline-flex items-center gap-3 font-mono text-mono-sm uppercase
+           transition-all duration-400 ease-expo-out
+           pb-1;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.3);
+  }
+  .cta-quiet:hover {
+    border-bottom-color: rgb(26, 26, 24);
+  }
+
+  .rule {
+    @apply h-px w-full;
+    background-color: rgba(26, 26, 24, 0.15);
+  }
+}
+
+@layer utilities {
+  .watermark-cyrl {
+    @apply font-display tracking-tighter pointer-events-none select-none;
+    font-weight: 300;
+    color: rgba(26, 26, 24, 0.06);
+  }
+
+  .section-y {
+    padding-block: clamp(4rem, 10vw, 10rem);
+  }
+
+  .section-y-lg {
+    padding-block: clamp(6rem, 14vw, 14rem);
+  }
+}
+
+/* ============================================================
+   CURSEUR CUSTOM GLOBAL
+   3 états : default (8px) — link (56px) — image (80px + label)
+   Désactivé sur tactile et reduced-motion
+   ============================================================ */
+
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button,
+  html.has-custom-cursor [role="button"],
+  html.has-custom-cursor label {
+    cursor: none;
+  }
+
+  html.has-custom-cursor input,
+  html.has-custom-cursor textarea {
+    cursor: text;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-custom {
+    display: none !important;
+  }
+}
+
+.cursor-custom[data-state="default"] {
+  width: 8px;
+  height: 8px;
+  background-color: rgb(26, 26, 24);
+  mix-blend-mode: difference;
+  transition:
+    width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cursor-custom[data-state="link"] {
+  width: 56px;
+  height: 56px;
+  background-color: rgb(26, 26, 24);
+  mix-blend-mode: difference;
+  transition:
+    width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cursor-custom[data-state="image"] {
+  width: 80px;
+  height: 80px;
+  background-color: rgb(242, 239, 232);
+  color: rgb(26, 26, 24);
+  mix-blend-mode: normal;
+  transition:
+    width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cursor-label {
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cursor-custom[data-state="image"] .cursor-label {
+  opacity: 1;
+}
+
+/* ============================================================
+   VIEW TRANSITIONS — catalogue → fiche produit
+   ============================================================ */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::view-transition-group(*) {
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* SplitText — wrapper line pour reveals propres */
+.split-line {
+  overflow: hidden;
+  display: block;
+}
