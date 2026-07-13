@@ -40,6 +40,12 @@ export async function generateMetadata({
     bg: 'bg_BG',
   };
 
+  const ogAlts: Record<string, string> = {
+    en: 'Bulgarcamo — textile pieces cut from military camouflage archives, Sofia',
+    fr: 'Bulgarcamo — pièces textiles taillées dans les archives de camouflage militaire, Sofia',
+    bg: 'Bulgarcamo — текстилни парчета от архивни военни камуфлажи, София',
+  };
+
   return {
     title: {
       default: titles[locale] ?? titles.en,
@@ -53,6 +59,20 @@ export async function generateMetadata({
       locale: ogLocales[locale] ?? 'en_US',
       title: titles[locale] ?? titles.en,
       description: descriptions[locale] ?? descriptions.en,
+      images: [
+        {
+          url: '/images/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: ogAlts[locale] ?? ogAlts.en,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: titles[locale] ?? titles.en,
+      description: descriptions[locale] ?? descriptions.en,
+      images: ['/images/og-image.jpg'],
     },
     alternates: {
       languages: {
