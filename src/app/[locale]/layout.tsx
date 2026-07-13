@@ -54,7 +54,7 @@ export async function generateMetadata({
     description: descriptions[locale] ?? descriptions.en,
     metadataBase: new URL('https://bulgarcamo.com'),
     verification: {
-      google: '<meta name="google-site-verification" content="BaYT13lGPokUJQ7dEMNZKT8d_J6r0o7usxwAeO0GuO8" />',
+      google: 'BaYT13lGPokUJQ7dEMNZKT8d_J6r0o7usxwAeO0GuO8',
     },
     openGraph: {
       type: 'website',
