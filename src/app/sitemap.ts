@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { locales } from '@/i18n/config';
 import { activeProducts } from '@/data/products';
 
-const BASE_URL = 'https://bulgarcamo.com';
+const BASE_URL = 'https://www.bulgarcamo.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ['', '/contact'];

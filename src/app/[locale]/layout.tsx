@@ -52,7 +52,7 @@ export async function generateMetadata({
       template: '%s — Bulgarcamo',
     },
     description: descriptions[locale] ?? descriptions.en,
-    metadataBase: new URL('https://bulgarcamo.com'),
+      metadataBase: new URL('https://www.bulgarcamo.com'),
     verification: {
       google: 'BaYT13lGPokUJQ7dEMNZKT8d_J6r0o7usxwAeO0GuO8',
     },
