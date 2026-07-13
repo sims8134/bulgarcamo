@@ -5,7 +5,7 @@ import { activeProducts } from '@/data/products';
 const BASE_URL = 'https://bulgarcamo.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/catalogue', '/contact'];
+  const routes = ['', '/contact'];
 
   // Pages statiques, déclinées par langue
   const staticPages: MetadataRoute.Sitemap = locales.flatMap((locale) =>
