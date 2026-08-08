@@ -34,7 +34,7 @@ export const motifs: Record<MotifKey, Motif> = {
     key: 'dpm',
     name: 'Bulgarian DPM',
     nameCyrillic: 'Български DPM',
-    year: 2003,
+    year: 2004,
     eraKey: 'motifs.dpm.era',
     provenanceKey: 'motifs.dpm.provenance',
     descriptionKey: 'motifs.dpm.description',

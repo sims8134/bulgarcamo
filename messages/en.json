@@ -25,19 +25,19 @@
     "meta": {
       "edition": "Edition 2026",
       "location": "Sofia · България",
-      "pieces": "6 pieces"
+      "pieces": "9 pieces"
     },
     "cta": "View the catalogue"
   },
   "manifest": {
     "eyebrow": "Manifesto",
-    "body": "Bulgarcamo works from Cold War military surplus — tarpaulins, canvas bags, sometimes uniforms — sourced in Bulgaria. Each piece is cut from the original textile and sewn in Sofia. When the material runs out, the piece leaves the catalogue.",
+    "body": "Bulgarcamo works from Bulgarian and German military surplus, from the Cold War to the years that followed — tarpaulins, canvas bags, sometimes uniforms — sourced in Bulgaria. Each piece is cut from the original textile and sewn in Sofia. When the material runs out, the piece leaves the catalogue.",
     "signature": "Sofia, by appointment"
   },
   "motifs_section": {
-    "eyebrow": "First release — Autumn–Winter",
-    "title": "Two camouflages, one raw material",
-    "intro": "Two prints sourced from Bulgarian and German military textile, reworked into everyday pieces and EDC accessories."
+    "eyebrow": "Current release — 2026",
+    "title": "Three camouflages, one raw material",
+    "intro": "Three prints sourced from Bulgarian and German military textile, reworked into everyday pieces and EDC accessories."
   },
   "motifs": {
     "frogskin": {
@@ -47,28 +47,28 @@
       "year": "1968",
       "era": "Bulgaria · 1968",
       "provenance": "Coveralls for airborne and chemical troops.",
-      "description": "Bright green spots and brown rain straits on a grey background. Designed at the height of the Cold War, possibly to confuse NATO forces. Later reissued for border patrols."
+      "description": "Bright green spots and brown rain straits on a grey background. Introduced circa 1968 alongside the splinter pattern, on the same coverall cut, possibly to confuse NATO forces. The coveralls were later reissued to border troops."
     },
     "splinter_1991": {
       "name": "Splinter 1991",
       "ref": "REF. 02",
-      "era": "Bulgaria · 1979–2002",
-      "provenance": "Universal uniform of the Bulgarian Armed Forces.",
-      "description": "Angular dark green and dark brown shapes over olive, crossed by thin rain straits. Issued widely until the early two-thousands."
+      "era": "Bulgaria · 1991–2002",
+      "provenance": "Fifth and last version of the Bulgarian splinter.",
+      "description": "Angular dark green and dark brown shapes over olive, crossed by thin rain straits. The end of a lineage opened in the 1940s from the German Splittertarnmuster and run through five successive versions. Universal issue within the armed forces until 2002."
     },
     "dpm": {
       "name": "Bulgarian DPM",
       "ref": "REF. 03",
-      "era": "Bulgaria · 2003",
-      "provenance": "Adopted after the fall of the Warsaw Pact.",
-      "description": "Irregular black, brown and green shapes over khaki. Modelled on British DPM. Marks the Atlantic turn of the Bulgarian Army."
+      "era": "Bulgaria · 2004–2018",
+      "provenance": "Adopted after Bulgaria joined NATO.",
+      "description": "Five-colour design — black, russet, medium olive and light olive green over a pale green or khaki ground. Modelled on British DPM, first fielded by units serving in the Balkans, then extended to the entire armed forces until 2018."
     },
     "flecktarn": {
       "name": "German Flecktarn",
       "ref": "REF. 04",
       "era": "Germany · 1991",
       "provenance": "Standard uniform of the Bundeswehr.",
-      "description": "Five-colour speckle — dark green, light green, black, red-brown, khaki — on a light base. The European reference for temperate-zone camouflage."
+      "description": "Five-colour speckle — dark green, light green, black, red-brown, khaki — on a light base. The European reference for temperate-zone camouflage. In 2018 Bulgaria adopted M-18, a semi-digital pattern built on the same palette."
     }
   },
   "pieces_section": {
@@ -77,7 +77,9 @@
     "categories": {
       "uniformes": {
         "title": "Uniforms",
-        "items": ["Frogskin coverall 1968"]
+        "items": [
+          "Frogskin coverall 1968"
+        ]
       },
       "edc": {
         "title": "EDC pouches",
@@ -89,14 +91,17 @@
       },
       "maison": {
         "title": "Home",
-        "items": ["Frogskin desk mat", "Frogskin pouch prototype"]
+        "items": [
+          "Frogskin desk mat",
+          "Frogskin pouch prototype"
+        ]
       }
     }
   },
   "catalogue": {
     "eyebrow": "Catalogue",
     "title": "All pieces",
-    "intro": "Complete inventory of the current collection — EDC accessories in two camouflages. Filter by pattern to explore each series.",
+    "intro": "Complete inventory of the current collection — EDC accessories in three camouflages. Filter by pattern to explore each series.",
     "filters": {
       "all": "All"
     },
@@ -145,10 +150,10 @@
   "about": {
     "eyebrow": "About",
     "paragraphs": [
-      "Bulgarcamo works from Cold War military surplus — tarpaulins, canvas bags, sometimes uniforms — sourced in Bulgaria. The patterns are not chosen for their aesthetic but for their trace: existing materials, dated, identifiable, irreproducible.",
-      "The first release works with two of them — German Flecktarn and Bulgarian Splinter. Each piece is cut from the original textile and sewn in Sofia, by a neighbourhood seamstress.",
+      "Bulgarcamo works from Bulgarian and German military surplus, from the Cold War to the years that followed — tarpaulins, canvas bags, sometimes uniforms — sourced in Bulgaria. The patterns are not chosen for their aesthetic but for their trace: existing materials, dated, identifiable, irreproducible.",
+      "The current release works with three of them — Bulgarian DPM and Splinter, German Flecktarn. Each piece is cut from the original textile and sewn in Sofia, by a neighbourhood seamstress.",
       "Quantity depends on what the surplus allows — a few pieces each season, sometimes a single example. When the material runs out, the piece leaves the catalogue and stays there, marked as withdrawn.",
-      "What was an object of war becomes a civilian piece, without making a manifesto of the gesture. There is nothing to imitate, nothing to print, nothing to reproduce. There is a material that already exists, fifty or sixty years old, and a hand that takes from it to make something else."
+      "What was an object of war becomes a civilian piece, without making a manifesto of the gesture. There is nothing to imitate, nothing to print, nothing to reproduce. There is a material that already exists, dated and identifiable, and a hand that takes from it to make something else."
     ],
     "signature": "Sofia, by appointment"
   },

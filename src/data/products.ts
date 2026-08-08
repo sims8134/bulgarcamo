@@ -125,7 +125,7 @@ export const products: Product[] = [
       '/images/products/dpm-cardholder3.jpg',
     ],
     aspect: 'portrait',
-    textileYear: 2003,
+    textileYear: 2004,
   },
   {
     id: 'dpm-earphone',
@@ -139,7 +139,7 @@ export const products: Product[] = [
       '/images/products/dpm-earbuds2.jpg',
     ],
     aspect: 'square',
-    textileYear: 2003,
+    textileYear: 2004,
   },
   {
     id: 'dpm-multipouch',
@@ -157,7 +157,7 @@ export const products: Product[] = [
       '/images/products/dpm-multipouch (5).jpg',
     ],
     aspect: 'portrait',
-    textileYear: 2003,
+    textileYear: 2004,
   },
 
   // GERMAN FLECKTARN
@@ -212,7 +212,7 @@ export const products: Product[] = [
 // Pour changer la collection affichée, il suffit de modifier
 // cette liste. L'ordre ici = l'ordre d'affichage des sections.
 // ─────────────────────────────────────────────────────────────
-export const ACTIVE_MOTIFS: MotifKey[] = ['flecktarn', 'splinter_1991'];
+export const ACTIVE_MOTIFS: MotifKey[] = ['dpm', 'flecktarn', 'splinter_1991'];
 
 // Produits de la collection en cours (dérivé, ne rien éditer ici)
 export const activeProducts = products.filter((p) =>

@@ -25,19 +25,19 @@
     "meta": {
       "edition": "Édition 2026",
       "location": "Sofia · България",
-      "pieces": "6 pièces"
+      "pieces": "9 pièces"
     },
     "cta": "Voir le catalogue"
   },
   "manifest": {
     "eyebrow": "Manifeste",
-    "body": "Bulgarcamo travaille à partir de surplus militaires de la Guerre froide — bâches, sacs en toile, parfois uniformes — prélevés en Bulgarie. Chaque pièce est coupée dans le tissu d'origine et cousue à Sofia. Quand la matière s'épuise, la pièce sort du catalogue.",
+    "body": "Bulgarcamo travaille à partir de surplus militaires bulgares et allemands, de la Guerre froide à ses lendemains — bâches, sacs en toile, parfois uniformes — prélevés en Bulgarie. Chaque pièce est coupée dans le tissu d'origine et cousue à Sofia. Quand la matière s'épuise, la pièce sort du catalogue.",
     "signature": "Sofia, sur rendez-vous"
   },
   "motifs_section": {
-    "eyebrow": "Première parution — Automne-Hiver",
-    "title": "Deux camouflages, une matière première",
-    "intro": "Deux imprimés issus du textile militaire bulgare et allemand, retravaillés en pièces du quotidien et accessoires EDC."
+    "eyebrow": "Parution en cours — 2026",
+    "title": "Trois camouflages, une matière première",
+    "intro": "Trois imprimés issus du textile militaire bulgare et allemand, retravaillés en pièces du quotidien et accessoires EDC."
   },
   "motifs": {
     "frogskin": {
@@ -47,28 +47,28 @@
       "year": "1968",
       "era": "Bulgarie · 1968",
       "provenance": "Combinaisons des troupes aéroportées et chimiques.",
-      "description": "Taches vert vif et stries de pluie brunes sur fond gris. Conçu en pleine guerre froide, possiblement pour confondre les forces de l'OTAN. Réédité plus tard pour les troupes frontalières."
+      "description": "Taches vert vif et stries de pluie brunes sur fond gris. Introduit vers 1968 aux côtés du splinter, sur la même coupe de combinaison, possiblement pour tromper les forces de l'OTAN. Les combinaisons ont ensuite été redistribuées aux troupes frontalières."
     },
     "splinter_1991": {
       "name": "Splinter 1991",
       "ref": "REF. 02",
-      "era": "Bulgarie · 1979–2002",
-      "provenance": "Uniforme universel des forces armées bulgares.",
-      "description": "Formes anguleuses vert et brun foncé sur fond olive, traversées de fines pluies. Distribution généralisée jusqu'au début des années deux mille."
+      "era": "Bulgarie · 1991–2002",
+      "provenance": "Cinquième et dernière version du splinter bulgare.",
+      "description": "Formes anguleuses vert foncé et brun foncé sur fond olive, traversées de fines stries de pluie. Aboutissement d'une lignée ouverte dans les années 1940 à partir du Splittertarnmuster allemand et déclinée en cinq versions successives. Distribution universelle dans les forces armées jusqu'en 2002."
     },
     "dpm": {
       "name": "Bulgarian DPM",
       "ref": "REF. 03",
-      "era": "Bulgarie · 2003",
-      "provenance": "Modèle adopté après la chute du Pacte de Varsovie.",
-      "description": "Formes irrégulières noires, brunes et vertes sur kaki. Inspiré du DPM britannique. Marque le tournant atlantique de l'armée bulgare."
+      "era": "Bulgarie · 2004–2018",
+      "provenance": "Adopté après l'entrée de la Bulgarie dans l'OTAN.",
+      "description": "Motif à cinq couleurs — noir, roux, olive moyen et vert olive clair sur fond vert pâle ou kaki. Inspiré du DPM britannique, d'abord porté par les unités déployées dans les Balkans, puis étendu à l'ensemble des forces armées jusqu'en 2018."
     },
     "flecktarn": {
       "name": "German Flecktarn",
       "ref": "REF. 04",
       "era": "Allemagne · 1991",
       "provenance": "Uniforme standard de la Bundeswehr.",
-      "description": "Mouchetures à cinq couleurs — vert sombre, vert clair, noir, brun-rouge, kaki — sur base claire. Référence européenne du camouflage en zone tempérée."
+      "description": "Mouchetures à cinq couleurs — vert sombre, vert clair, noir, brun-rouge, kaki — sur base claire. Référence européenne du camouflage en zone tempérée. La Bulgarie adoptera en 2018 le M-18, motif semi-numérique bâti sur la même palette."
     }
   },
   "pieces_section": {
@@ -77,7 +77,9 @@
     "categories": {
       "uniformes": {
         "title": "Uniformes",
-        "items": ["Combinaison Frogskin 1968"]
+        "items": [
+          "Combinaison Frogskin 1968"
+        ]
       },
       "edc": {
         "title": "Pochettes EDC",
@@ -89,14 +91,17 @@
       },
       "maison": {
         "title": "Maison",
-        "items": ["Dessous de bureau Frogskin", "Prototype pochette Frogskin"]
+        "items": [
+          "Dessous de bureau Frogskin",
+          "Prototype pochette Frogskin"
+        ]
       }
     }
   },
   "catalogue": {
     "eyebrow": "Catalogue",
     "title": "Toutes les pièces",
-    "intro": "Inventaire complet de la collection en cours — accessoires EDC en deux camouflages. Filtrer par motif pour explorer chaque série.",
+    "intro": "Inventaire complet de la collection en cours — accessoires EDC en trois camouflages. Filtrer par motif pour explorer chaque série.",
     "filters": {
       "all": "Tout"
     },
@@ -145,10 +150,10 @@
   "about": {
     "eyebrow": "À propos",
     "paragraphs": [
-      "Bulgarcamo travaille à partir de surplus militaires de la Guerre froide — bâches, sacs en toile, parfois uniformes — prélevés en Bulgarie. Les motifs ne sont pas choisis pour leur esthétique mais pour leur trace : ce sont des matières existantes, datées, identifiables, irreproductibles.",
-      "La première parution en retient deux — le Flecktarn allemand et le Splinter bulgare. Chaque pièce est coupée dans le tissu d'origine et cousue à Sofia, par une couturière de quartier.",
+      "Bulgarcamo travaille à partir de surplus militaires bulgares et allemands, de la Guerre froide à ses lendemains — bâches, sacs en toile, parfois uniformes — prélevés en Bulgarie. Les motifs ne sont pas choisis pour leur esthétique mais pour leur trace : ce sont des matières existantes, datées, identifiables, irreproductibles.",
+      "La parution en cours en retient trois — le DPM et le Splinter bulgares, le Flecktarn allemand. Chaque pièce est coupée dans le tissu d'origine et cousue à Sofia, par une couturière de quartier.",
       "La quantité dépend de ce que le surplus permet — quelques pièces par saison, parfois un seul exemplaire. Quand la matière s'épuise, la pièce sort du catalogue et y reste, marquée comme retirée.",
-      "Ce qui était un objet de guerre devient une pièce civile, sans que le geste se présente comme un manifeste. Il n'y a rien à imiter, rien à imprimer, rien à reproduire. Il y a une matière déjà existante, vieille de cinquante ou soixante ans, et une main qui la prélève pour en faire autre chose."
+      "Ce qui était un objet de guerre devient une pièce civile, sans que le geste se présente comme un manifeste. Il n'y a rien à imiter, rien à imprimer, rien à reproduire. Il y a une matière qui existe déjà, datée et identifiable, et une main qui la prélève pour en faire autre chose."
     ],
     "signature": "Sofia, sur rendez-vous"
   },
