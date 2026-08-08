@@ -7,10 +7,18 @@
     --color-ivoire: #F2EFE8;
     --color-encre: #1A1A18;
     --color-sauge: #7A8470;
+    --color-sauge-fonce: #5F6857;
     --color-pierre: #C9C2B6;
+
+    /* filets et voiles dérivés de l'encre — une seule source de vérité */
+    --rule-faible: rgba(26, 26, 24, 0.15);
+    --rule-moyen: rgba(26, 26, 24, 0.30);
+    --texte-doux: rgba(26, 26, 24, 0.85);
+    --texte-tertiaire: rgba(26, 26, 24, 0.55);
   }
 
   html {
+    color-scheme: light;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -30,13 +38,19 @@
     letter-spacing: -0.02em;
   }
 
+  /* text-wrap: balance équilibre les titres sur plusieurs lignes.
+     Ignoré par les navigateurs qui ne le connaissent pas. */
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
   ::selection {
     background: var(--color-encre);
     color: var(--color-ivoire);
   }
 
   :focus-visible {
-    outline: 1px solid var(--color-encre);
+    outline: 1px solid var(--color-sauge-fonce);
     outline-offset: 4px;
     border-radius: 1px;
   }
@@ -53,9 +67,20 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
       transition-duration: 0.01ms !important;
+    }
+
+    /* neutralise aussi les transitions de vue */
+    ::view-transition-group(*),
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none !important;
     }
   }
 }
@@ -73,7 +98,7 @@
 
   .eyebrow {
     @apply font-mono text-mono-sm uppercase;
-    color: rgba(26, 26, 24, 0.55);
+    color: var(--texte-tertiaire);
   }
 
   .ref-tag {
@@ -113,12 +138,12 @@
 
   .prose-editorial {
     @apply text-body max-w-prose-editorial;
-    color: rgba(26, 26, 24, 0.85);
+    color: var(--texte-doux);
   }
 
   .prose-narrow {
     @apply text-body max-w-prose-narrow;
-    color: rgba(26, 26, 24, 0.85);
+    color: var(--texte-doux);
   }
 
   .lede {
@@ -127,30 +152,31 @@
     font-style: italic;
   }
 
+  /* Le texte du lien reste en encre — seul le filet passe en sauge au survol. */
   .link-editorial {
     @apply relative inline-block transition-colors duration-400 ease-expo-out;
     text-decoration: underline;
-    text-decoration-color: rgba(26, 26, 24, 0.3);
-    text-decoration-thickness: 0.5px;
+    text-decoration-color: var(--rule-moyen);
+    text-decoration-thickness: 1px;
     text-underline-offset: 4px;
   }
   .link-editorial:hover {
-    text-decoration-color: rgb(26, 26, 24);
+    text-decoration-color: var(--color-sauge-fonce);
   }
 
   .cta-quiet {
     @apply inline-flex items-center gap-3 font-mono text-mono-sm uppercase
            transition-all duration-400 ease-expo-out
            pb-1;
-    border-bottom: 1px solid rgba(26, 26, 24, 0.3);
+    border-bottom: 1px solid var(--rule-moyen);
   }
   .cta-quiet:hover {
-    border-bottom-color: rgb(26, 26, 24);
+    border-bottom-color: var(--color-sauge-fonce);
   }
 
   .rule {
     @apply h-px w-full;
-    background-color: rgba(26, 26, 24, 0.15);
+    background-color: var(--rule-faible);
   }
 }
 
@@ -187,49 +213,55 @@
   }
 
   html.has-custom-cursor input,
-  html.has-custom-cursor textarea {
+  html.has-custom-cursor textarea,
+  html.has-custom-cursor select {
     cursor: text;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* Sur tactile ou en mouvement réduit, le curseur natif doit revenir. */
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button,
+  html.has-custom-cursor [role="button"],
+  html.has-custom-cursor label {
+    cursor: auto;
+  }
+
   .cursor-custom {
     display: none !important;
   }
 }
 
-.cursor-custom[data-state="default"] {
-  width: 8px;
-  height: 8px;
-  background-color: rgb(26, 26, 24);
-  mix-blend-mode: difference;
+.cursor-custom {
   transition:
     width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cursor-custom[data-state="default"] {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-encre);
+  mix-blend-mode: difference;
 }
 
 .cursor-custom[data-state="link"] {
   width: 56px;
   height: 56px;
-  background-color: rgb(26, 26, 24);
+  background-color: var(--color-encre);
   mix-blend-mode: difference;
-  transition:
-    width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cursor-custom[data-state="image"] {
   width: 80px;
   height: 80px;
-  background-color: rgb(242, 239, 232);
-  color: rgb(26, 26, 24);
+  background-color: var(--color-ivoire);
+  color: var(--color-encre);
   mix-blend-mode: normal;
-  transition:
-    width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cursor-label {
@@ -243,6 +275,7 @@
 
 /* ============================================================
    VIEW TRANSITIONS — catalogue → fiche produit
+   Ne s'appliquent qu'aux navigations inter-documents.
    ============================================================ */
 
 @view-transition {
@@ -264,4 +297,43 @@
 .split-line {
   overflow: hidden;
   display: block;
+}
+
+/* ============================================================
+   BARRE DE DÉFILEMENT
+   Sauge sur ivoire, aucun arrondi. La bordure de 4 px reprend
+   la couleur du fond : le curseur se lit comme un filet vertical.
+   ============================================================ */
+
+/* Firefox */
+@supports (scrollbar-color: auto) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-sauge) var(--color-ivoire);
+  }
+}
+
+/* WebKit — Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ivoire);
+  border-left: 1px solid var(--rule-faible);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-sauge);
+  border: 4px solid var(--color-ivoire);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-sauge-fonce);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-ivoire);
 }

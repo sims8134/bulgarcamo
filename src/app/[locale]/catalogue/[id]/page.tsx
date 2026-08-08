@@ -22,45 +22,53 @@ export async function generateMetadata({
   params: Promise<{ locale: string; id: string }>;
 }): Promise<Metadata> {
   const { locale, id } = await params;
-  const product = activeProducts.find((p) => p.id === id);
 
-  if (!product) return {};
+  // Même garde que la route : une pièce sans image n'est pas publiée
+  const product = activeProducts.find((p) => p.id === id);
+  if (!product || product.image === null) return {};
+  if (!locales.includes(locale as Locale)) return {};
 
   const t = await getTranslations({ locale, namespace: 'products' });
   const tMotifs = await getTranslations({ locale, namespace: 'motifs' });
+  const tProduct = await getTranslations({ locale, namespace: 'product' });
 
   const productName = t(`names.${product.nameKey}`);
   const motifName = tMotifs(`${product.motif}.name`);
   const provenance = tMotifs(`${product.motif}.provenance`);
+  const era = tMotifs(`${product.motif}.era`);
+  const edition = tProduct('edition_default');
 
   const title = `${productName} — ${motifName}`;
-  const description = `${productName} ${motifName}. ${provenance} Textile ${product.textileYear}, Sofia. ${product.ref}, petite série.`;
+  const description = `${productName} — ${motifName}, ${era}. ${provenance} ${product.ref} · ${edition} · Sofia.`;
+
+  const path = `/${locale}/catalogue/${product.id}`;
+  const imageAlt = `${productName} ${motifName} — Bulgarcamo`;
 
   return {
     title,
     description,
+    alternates: {
+      canonical: path,
+      languages: {
+        ...Object.fromEntries(
+          locales.map((l) => [l, `/${l}/catalogue/${product.id}`])
+        ),
+        'x-default': `/en/catalogue/${product.id}`,
+      },
+    },
     openGraph: {
       type: 'website',
       siteName: 'Bulgarcamo',
+      url: path,
       title: `${title} — Bulgarcamo`,
       description,
-      images: product.image
-        ? [
-            {
-              url: product.image,
-              alt: `${productName} ${motifName} — Bulgarcamo`,
-            },
-          ]
-        : undefined,
+      images: [{ url: product.image, alt: imageAlt }],
     },
-    alternates: {
-      canonical: `/${locale}/catalogue/${product.id}`,
-      languages: {
-        en: `/en/catalogue/${product.id}`,
-        fr: `/fr/catalogue/${product.id}`,
-        bg: `/bg/catalogue/${product.id}`,
-        'x-default': `/en/catalogue/${product.id}`,
-      },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} — Bulgarcamo`,
+      description,
+      images: [product.image],
     },
   };
 }

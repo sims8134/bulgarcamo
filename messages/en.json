@@ -196,6 +196,82 @@
     "body": "The piece or page you were looking for is no longer at this address. The catalogue changes with each new sourcing — the material may have run out.",
     "back": "Back to the index"
   },
+  "legal": {
+    "eyebrow": "Legal information",
+    "title": "Legal notice and privacy",
+    "updated": "Last updated — 2026",
+    "intro": "Site publisher, hosting, personal data and user rights.",
+    "sections": [
+      {
+        "eyebrow": "Publisher",
+        "title": "Who publishes this site",
+        "body": [
+          "This site is published by SOC TRADE BULGARIA EOOD, a company registered in Bulgaria under number ЕИК 208209146, with its registered office at 64A ul. Maragidik, 1505 Sofia, Bulgaria.",
+          "Bulgarcamo is a trading name of that company. Publication director: the company manager.",
+          "Contact: contact@bulgarcamo.com"
+        ]
+      },
+      {
+        "eyebrow": "Hosting",
+        "title": "Where the site is hosted",
+        "body": [
+          "The site is hosted by Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, United States — vercel.com.",
+          "Some technical data may be transferred outside the European Union. Such transfers are covered by the European Commission's standard contractual clauses."
+        ]
+      },
+      {
+        "eyebrow": "Data collected",
+        "title": "What data is collected",
+        "body": [
+          "We only collect what you send us voluntarily: through the contact form, your name, email address and the content of your message; through the journal sign-up, your email address alone.",
+          "This site uses no analytics and no advertising tracking scripts. The Cloudflare Turnstile anti-bot service may set a technical cookie strictly necessary to protect the form, which is exempt from consent.",
+          "Processors: Vercel Inc. (hosting), Cloudflare, Inc. (bot protection), [TO FILL — form delivery service], [TO FILL — newsletter service]."
+        ]
+      },
+      {
+        "eyebrow": "Purpose",
+        "title": "Why this data is collected",
+        "body": [
+          "Your data is used solely to answer your enquiry, or to send you the seasonal journal if you subscribed. It is never sold or passed to third parties for commercial purposes.",
+          "The legal basis is your consent, given when you submit the form or subscribe to the journal (GDPR article 6.1.a).",
+          "Data is kept for twelve months from your enquiry, then deleted. For the journal, until you unsubscribe."
+        ]
+      },
+      {
+        "eyebrow": "Your rights",
+        "title": "What your rights are",
+        "body": [
+          "Under the GDPR and Bulgarian data protection law, you have the following rights:",
+          "To exercise them, write to contact@bulgarcamo.com. You will receive a reply within thirty days."
+        ]
+      },
+      {
+        "eyebrow": "Complaints",
+        "title": "Supervisory authority",
+        "body": [
+          "If you believe your rights have not been respected, you may lodge a complaint with the Commission for Personal Data Protection (CPDP), the competent authority in Bulgaria — cpdp.bg.",
+          "If you live in another member state, you may also contact your national supervisory authority."
+        ]
+      },
+      {
+        "eyebrow": "Intellectual property",
+        "title": "Site content",
+        "body": [
+          "Texts, photographs and graphic elements on this site are the property of SOC TRADE BULGARIA EOOD unless otherwise stated. Reproduction without prior permission is prohibited.",
+          "The camouflage patterns shown are historical textiles documented for informational purposes. Bulgarcamo sells no insignia, emblems or military equipment."
+        ]
+      }
+    ],
+    "rights": [
+      "Right of access to your data",
+      "Right to rectification",
+      "Right to erasure",
+      "Right to object to processing",
+      "Right to data portability",
+      "Right to withdraw consent"
+    ],
+    "footer_note": "SOC TRADE BULGARIA EOOD · ЕИК 208209146 · 64A ul. Maragidik, 1505 Sofia, Bulgaria"
+  },
   "footer": {
     "atelier": {
       "label": "Studio",
@@ -212,8 +288,8 @@
     "legal": {
       "label": "Information",
       "pro": "Trade & wholesale",
-      "cgv": "Terms of sale",
       "mentions": "Legal notice",
+      "privacy": "Privacy",
       "contact": "Contact"
     },
     "copyright": "All rights reserved"

@@ -105,26 +105,26 @@ export default function Footer() {
           <div className="space-y-4">
             <p className="eyebrow">{t('legal.label')}</p>
             <ul className="space-y-2 prose-narrow">
-              <li>
-                <Link href="/contact?subject=trade" className="hover:text-sauge-deep transition-colors duration-400">
-                  {t('legal.pro')}
-                </Link>
-              </li>
-              <li>
-                <Link href="/cgv" className="hover:text-sauge-deep transition-colors duration-400">
-                  {t('legal.cgv')}
-                </Link>
-              </li>
-              <li>
-                <Link href="/mentions" className="hover:text-sauge-deep transition-colors duration-400">
-                  {t('legal.mentions')}
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-sauge-deep transition-colors duration-400">
-                  {t('legal.contact')}
-                </Link>
-              </li>
+          <li>
+  <Link href="/contact?subject=trade" className="hover:text-sauge-deep transition-colors duration-400">
+    {t('legal.pro')}
+  </Link>
+</li>
+<li>
+  <Link href="/legal" className="hover:text-sauge-deep transition-colors duration-400">
+    {t('legal.mentions')}
+  </Link>
+</li>
+<li>
+  <Link href="/legal" className="hover:text-sauge-deep transition-colors duration-400">
+    {t('legal.privacy')}
+  </Link>
+</li>
+<li>
+  <Link href="/contact" className="hover:text-sauge-deep transition-colors duration-400">
+    {t('legal.contact')}
+  </Link>
+</li>
             </ul>
           </div>
         </div>

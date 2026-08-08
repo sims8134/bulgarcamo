@@ -196,6 +196,82 @@
     "body": "La pièce ou la page que vous cherchiez n'existe plus à cette adresse. Le catalogue change au fil des prélèvements — il est possible que la matière soit épuisée.",
     "back": "Retour à l'index"
   },
+  "legal": {
+    "eyebrow": "Informations légales",
+    "title": "Mentions légales et confidentialité",
+    "updated": "Dernière mise à jour — 2026",
+    "intro": "Éditeur du site, hébergement, données personnelles et droits des utilisateurs.",
+    "sections": [
+      {
+        "eyebrow": "Éditeur",
+        "title": "Qui édite ce site",
+        "body": [
+          "Le présent site est édité par SOC TRADE BULGARIA EOOD, société enregistrée en Bulgarie sous le numéro ЕИК 208209146, dont le siège social est situé au 64A ul. Maragidik, 1505 Sofia, Bulgarie.",
+          "Bulgarcamo est une marque commerciale de cette société. Directeur de la publication : le gérant de la société.",
+          "Contact : contact@bulgarcamo.com"
+        ]
+      },
+      {
+        "eyebrow": "Hébergement",
+        "title": "Où le site est hébergé",
+        "body": [
+          "Le site est hébergé par Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis — vercel.com.",
+          "Certaines données techniques peuvent transiter hors de l'Union européenne. Ces transferts sont encadrés par les clauses contractuelles types de la Commission européenne."
+        ]
+      },
+      {
+        "eyebrow": "Données collectées",
+        "title": "Quelles données sont collectées",
+        "body": [
+          "Nous collectons uniquement les données que vous nous transmettez volontairement : via le formulaire de contact, votre nom, votre adresse e-mail et le contenu de votre message ; via l'inscription au journal, votre adresse e-mail seule.",
+          "Ce site n'utilise aucun outil de mesure d'audience et aucun script de suivi publicitaire. Le service de protection anti-robots Cloudflare Turnstile peut déposer un cookie technique strictement nécessaire à la sécurité du formulaire, exempté de consentement.",
+          "Sous-traitants : Vercel Inc. (hébergement), Cloudflare, Inc. (protection anti-robots), [À REMPLIR — service d'envoi du formulaire], [À REMPLIR — service d'envoi du journal]."
+        ]
+      },
+      {
+        "eyebrow": "Finalité",
+        "title": "Pourquoi ces données sont collectées",
+        "body": [
+          "Vos données servent exclusivement à répondre à votre demande, ou à vous adresser le journal saisonnier si vous y avez souscrit. Elles ne sont jamais revendues ni transmises à des tiers à des fins commerciales.",
+          "La base légale du traitement est votre consentement, exprimé lors de l'envoi du formulaire ou de l'inscription au journal (article 6.1.a du RGPD).",
+          "Vos données sont conservées douze mois à compter de votre prise de contact, puis supprimées. Pour le journal, jusqu'à votre désinscription."
+        ]
+      },
+      {
+        "eyebrow": "Vos droits",
+        "title": "Quels sont vos droits",
+        "body": [
+          "Conformément au RGPD et à la loi bulgare sur la protection des données personnelles, vous disposez des droits suivants :",
+          "Pour les exercer, écrivez à contact@bulgarcamo.com. Une réponse vous sera adressée sous trente jours."
+        ]
+      },
+      {
+        "eyebrow": "Réclamation",
+        "title": "Autorité de contrôle",
+        "body": [
+          "En cas de manquement constaté, vous pouvez introduire une réclamation auprès de la Commission pour la protection des données personnelles (CPDP), autorité compétente en Bulgarie — cpdp.bg.",
+          "Si vous résidez dans un autre État membre, vous pouvez également saisir l'autorité de contrôle de votre pays."
+        ]
+      },
+      {
+        "eyebrow": "Propriété intellectuelle",
+        "title": "Contenus du site",
+        "body": [
+          "Les textes, photographies et éléments graphiques présents sur ce site sont la propriété de SOC TRADE BULGARIA EOOD, sauf mention contraire. Toute reproduction sans autorisation préalable est interdite.",
+          "Les motifs de camouflage présentés sont des textiles historiques documentés à titre informatif. Bulgarcamo ne vend ni insignes, ni emblèmes, ni équipement militaire."
+        ]
+      }
+    ],
+    "rights": [
+      "Droit d'accès à vos données",
+      "Droit de rectification",
+      "Droit à l'effacement",
+      "Droit d'opposition au traitement",
+      "Droit à la portabilité",
+      "Droit de retirer votre consentement"
+    ],
+    "footer_note": "SOC TRADE BULGARIA EOOD · ЕИК 208209146 · 64A ul. Maragidik, 1505 Sofia, Bulgarie"
+  },
   "footer": {
     "atelier": {
       "label": "Atelier",
@@ -212,8 +288,8 @@
     "legal": {
       "label": "Informations",
       "pro": "Professionnels",
-      "cgv": "Conditions de vente",
       "mentions": "Mentions légales",
+      "privacy": "Confidentialité",
       "contact": "Contact"
     },
     "copyright": "Tous droits réservés"

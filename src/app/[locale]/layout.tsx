@@ -11,6 +11,38 @@ import Footer from '@/components/shell/Footer';
 import Cursor from '@/components/primitives/Cursor';
 import '../globals.css';
 
+const BASE_URL = 'https://www.bulgarcamo.com';
+const OG_IMAGE = '/og-image.jpg';
+
+const titles: Record<string, string> = {
+  en: 'Bulgarcamo — Cuts from the archive',
+  fr: "Bulgarcamo — Coupes dans l'archive",
+  bg: 'Bulgarcamo — Кройки от архива',
+};
+
+const descriptions: Record<string, string> = {
+  en: 'Sofia, България. Bulgarian and German military textile archives, cut into rare civilian pieces.',
+  fr: 'Sofia, България. Archives textiles militaires bulgares et allemandes, taillées en pièces civiles rares.',
+  bg: 'София, България. Архивни военни текстили — български и германски — изрязани в редки граждански парчета.',
+};
+
+const ogLocales: Record<string, string> = {
+  en: 'en_US',
+  fr: 'fr_FR',
+  bg: 'bg_BG',
+};
+
+const ogAlts: Record<string, string> = {
+  en: 'Bulgarcamo — textile pieces cut from military camouflage archives, Sofia',
+  fr: 'Bulgarcamo — pièces textiles taillées dans les archives de camouflage militaire, Sofia',
+  bg: 'Bulgarcamo — текстилни парчета от архивни военни камуфлажи, София',
+};
+
+const languageAlternates = {
+  ...Object.fromEntries(locales.map((l) => [l, `/${l}`])),
+  'x-default': '/en',
+};
+
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
@@ -22,49 +54,33 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
 
-  const titles: Record<string, string> = {
-    en: 'Bulgarcamo — Cuts from the archive',
-    fr: "Bulgarcamo — Coupes dans l'archive",
-    bg: 'Bulgarcamo — Кройки от архива',
-  };
-
-  const descriptions: Record<string, string> = {
-    en: 'Sofia, България. Bulgarian and German military textile archives, cut into rare civilian pieces.',
-    fr: 'Sofia, България. Archives textiles militaires bulgares et allemandes, taillées en pièces civiles rares.',
-    bg: 'София, България. Архивни военни текстили — български и германски — изрязани в редки граждански парчета.',
-  };
-
-  const ogLocales: Record<string, string> = {
-    en: 'en_US',
-    fr: 'fr_FR',
-    bg: 'bg_BG',
-  };
-
-  const ogAlts: Record<string, string> = {
-    en: 'Bulgarcamo — textile pieces cut from military camouflage archives, Sofia',
-    fr: 'Bulgarcamo — pièces textiles taillées dans les archives de camouflage militaire, Sofia',
-    bg: 'Bulgarcamo — текстилни парчета от архивни военни камуфлажи, София',
-  };
+  const title = titles[locale] ?? titles.en;
+  const description = descriptions[locale] ?? descriptions.en;
 
   return {
+    metadataBase: new URL(BASE_URL),
     title: {
-      default: titles[locale] ?? titles.en,
+      default: title,
       template: '%s — Bulgarcamo',
     },
-    description: descriptions[locale] ?? descriptions.en,
-      metadataBase: new URL('https://www.bulgarcamo.com'),
+    description,
     verification: {
       google: 'BaYT13lGPokUJQ7dEMNZKT8d_J6r0o7usxwAeO0GuO8',
+    },
+    alternates: {
+      canonical: `/${locale}`,
+      languages: languageAlternates,
     },
     openGraph: {
       type: 'website',
       siteName: 'Bulgarcamo',
+      url: `/${locale}`,
       locale: ogLocales[locale] ?? 'en_US',
-      title: titles[locale] ?? titles.en,
-      description: descriptions[locale] ?? descriptions.en,
+      title,
+      description,
       images: [
         {
-          url: '/images/og-image.jpg',
+          url: OG_IMAGE,
           width: 1200,
           height: 630,
           alt: ogAlts[locale] ?? ogAlts.en,
@@ -73,17 +89,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: titles[locale] ?? titles.en,
-      description: descriptions[locale] ?? descriptions.en,
-      images: ['/images/og-image.jpg'],
-    },
-    alternates: {
-      languages: {
-        en: '/en',
-        fr: '/fr',
-        bg: '/bg',
-        'x-default': '/en',
-      },
+      title,
+      description,
+      images: [OG_IMAGE],
     },
   };
 }
