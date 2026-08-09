@@ -66,9 +66,9 @@ export default function MobileMenu({ open, onClose }: Props) {
           `}
           style={{ transitionDelay: open ? '200ms' : '0ms' }}
         >
-          <MobileLink href="/motifs" onClick={onClose}>{t('motifs')}</MobileLink>
-          <MobileLink href="/catalogue" onClick={onClose}>{t('catalogue')}</MobileLink>
-          <MobileLink href="/atelier" onClick={onClose}>{t('atelier')}</MobileLink>
+          <MobileLink href="/#motifs" onClick={onClose}>{t('motifs')}</MobileLink>
+          <MobileLink href="/#catalogue" onClick={onClose}>{t('catalogue')}</MobileLink>
+          <MobileLink href="/#manifest" onClick={onClose}>{t('atelier')}</MobileLink>
         </nav>
 
         {/* Footer mobile menu — langues */}
