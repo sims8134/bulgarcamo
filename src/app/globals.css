@@ -337,3 +337,64 @@
 ::-webkit-scrollbar-corner {
   background: var(--color-ivoire);
 }
+
+/* ============================================================
+   GRAIN DE PAPIER
+   ============================================================ */
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { display: none; }
+}
+
+.bg-encre .eyebrow,
+.bg-encre .ref-tag { color: rgba(242, 239, 232, 0.55); }
+
+.bg-encre .prose-narrow,
+.bg-encre .prose-editorial { color: rgba(242, 239, 232, 0.85); }
+
+.bg-encre .rule { background-color: rgba(242, 239, 232, 0.15); }
+
+/* ============================================================
+   SECTIONS INVERSÉES
+   ============================================================ */
+
+.section-dark {
+  background-color: var(--color-encre);
+  color: var(--color-ivoire);
+  position: relative;
+  z-index: 10;
+}
+
+.section-dark .eyebrow,
+.section-dark .ref-tag { color: rgba(242, 239, 232, 0.55); }
+
+.section-dark .prose-narrow,
+.section-dark .prose-editorial { color: rgba(242, 239, 232, 0.85); }
+
+.section-dark .lede,
+.section-dark .heading-display,
+.section-dark .heading-xl,
+.section-dark .heading-lg,
+.section-dark .heading-md,
+.section-dark .heading-sm { color: var(--color-ivoire); }
+
+.section-dark .rule { background-color: rgba(242, 239, 232, 0.15); }
+
+.section-dark .cta-quiet {
+  color: var(--color-ivoire);
+  border-bottom-color: rgba(242, 239, 232, 0.35);
+}
+.section-dark .cta-quiet:hover { border-bottom-color: var(--color-ivoire); }
+
+.section-dark .link-editorial { text-decoration-color: rgba(242, 239, 232, 0.35); }
+.section-dark .link-editorial:hover { text-decoration-color: var(--color-ivoire); }

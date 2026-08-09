@@ -9,7 +9,7 @@ export default function MadeToMeasure() {
   return (
     <section
       id="made-to-measure"
-      className="relative bg-ivoire border-t border-encre/8 section-y-lg"
+      className="section-dark section-y-lg"
       aria-labelledby="mtm-heading"
     >
       <div className="container-page">
@@ -27,7 +27,7 @@ export default function MadeToMeasure() {
             <Reveal delay={150}>
               <h2
                 id="mtm-heading"
-                className="font-display italic font-light text-encre tracking-tight"
+                className="font-display italic font-light text-ivoire tracking-tight"
                 style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', lineHeight: 1.1 }}
               >
                 {t('title')}
@@ -36,7 +36,7 @@ export default function MadeToMeasure() {
 
             {/* Texte court */}
             <Reveal delay={300}>
-              <p className="text-body text-encre/75 max-w-prose-editorial">
+              <p className="text-body text-ivoire/75 max-w-prose-editorial">
                 {t('body')}
               </p>
             </Reveal>
@@ -49,13 +49,10 @@ export default function MadeToMeasure() {
               </Link>
             </Reveal>
 
-            {/* Image atelier — pleine largeur du bloc, format paysage */}
-            <Reveal delay={600}>
-           {/* Image atelier — discrète, centrée */}
-         {/* Image atelier — même largeur que le texte */}
+            {/* Image atelier — même largeur que le texte */}
             <Reveal delay={600}>
               <figure className="max-w-prose-editorial">
-                <div className="relative aspect-[3/2] overflow-hidden bg-pierre/20">
+                <div className="relative aspect-[3/2] overflow-hidden bg-ivoire/5 ring-1 ring-ivoire/15">
                   <Image
                     src="/images/about/atelier-couture.jpg"
                     alt="Atelier — couture à la machine, gros plan sur le fil et l'aiguille"
@@ -64,12 +61,11 @@ export default function MadeToMeasure() {
                     className="object-cover"
                   />
                 </div>
-                <figcaption className="mt-3 flex items-baseline justify-between font-mono text-mono-xs uppercase text-encre/55">
+                <figcaption className="mt-3 flex items-baseline justify-between font-mono text-mono-xs uppercase text-ivoire/55">
                   <span>{t('eyebrow')}</span>
                   <span>София</span>
                 </figcaption>
               </figure>
-            </Reveal>
             </Reveal>
           </div>
         </div>

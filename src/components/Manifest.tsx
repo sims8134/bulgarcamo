@@ -55,29 +55,39 @@ export default function Manifest() {
     <section
       ref={sectionRef}
       id="manifest"
-      className="container-page section-y-lg border-t border-encre/8"
+      className="bg-encre text-ivoire section-y-lg relative z-10"
     >
-      <div className="grid grid-cols-12 gap-6">
-        {/* Eyebrow — colonne étroite à gauche */}
-        <div className="col-span-12 md:col-span-2">
-          <p ref={eyebrowRef} className="eyebrow">
-            — {t('eyebrow')}
-          </p>
-        </div>
+      <div className="container-page">
+        <div className="grid grid-cols-12 gap-6">
+          {/* Eyebrow — colonne étroite à gauche */}
+          <div className="col-span-12 md:col-span-2">
+            <p
+              ref={eyebrowRef}
+              className="font-mono text-mono-sm uppercase text-ivoire/55"
+            >
+              — {t('eyebrow')}
+            </p>
+          </div>
 
-        {/* Corps — colonne large décalée */}
-        <div className="col-span-12 md:col-span-9 md:col-start-4 space-y-10">
-          <p
-            ref={bodyRef}
-            className="font-display italic font-light text-encre leading-[1.25] tracking-tight"
-            style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.6rem)' }}
-          >
-            {t('body')}
-          </p>
+          {/* Corps — colonne large décalée */}
+          <div className="col-span-12 md:col-span-9 md:col-start-4 space-y-10">
+            <p
+              ref={bodyRef}
+              className="font-display italic font-light text-ivoire leading-[1.25] tracking-tight"
+              style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.6rem)' }}
+            >
+              {t('body')}
+            </p>
 
-          <p ref={sigRef} className="font-mono text-mono-xs uppercase text-encre/55">
-            {t('signature')}
-          </p>
+            <div className="h-px w-full bg-ivoire/15" />
+
+            <p
+              ref={sigRef}
+              className="font-mono text-mono-xs uppercase text-ivoire/55"
+            >
+              {t('signature')}
+            </p>
+          </div>
         </div>
       </div>
     </section>
