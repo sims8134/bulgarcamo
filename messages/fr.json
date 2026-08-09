@@ -283,7 +283,12 @@
       "label": "Le Journal",
       "body": "Un envoi par saison. Nouvelles pièces, notes, prélèvements.",
       "placeholder": "Adresse e-mail",
-      "cta": "S'inscrire"
+      "cta": "S'inscrire",
+      "sending": "Envoi…",
+      "done": "Inscription enregistrée. À la prochaine saison.",
+      "error": "Une erreur s'est produite. Réessayez.",
+      "consent": "J'accepte de recevoir le journal et j'ai lu la",
+      "consent_link": "politique de confidentialité"
     },
     "legal": {
       "label": "Informations",

@@ -283,7 +283,12 @@
       "label": "The Journal",
       "body": "One letter per season. New pieces, notes, sourcings.",
       "placeholder": "Email address",
-      "cta": "Subscribe"
+      "cta": "Subscribe",
+      "sending": "Sending…",
+      "done": "You're subscribed. See you next season.",
+      "error": "Something went wrong. Please try again.",
+      "consent": "I agree to receive the journal and have read the",
+      "consent_link": "privacy policy"
     },
     "legal": {
       "label": "Information",

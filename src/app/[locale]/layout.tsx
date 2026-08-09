@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale, getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -123,6 +124,11 @@ export default async function LocaleLayout({
             <main>{children}</main>
             <Footer />
           </NextIntlClientProvider>
+
+          <Script
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+            strategy="lazyOnload"
+          />
         </body>
       </html>
     </ViewTransitions>

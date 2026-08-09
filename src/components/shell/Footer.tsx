@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
+import NewsletterForm from '@/components/shell/NewsletterForm';
 
 export default function Footer() {
   const t = useTranslations('footer');
@@ -77,28 +78,7 @@ export default function Footer() {
           <div className="space-y-4">
             <p className="eyebrow">{t('journal.label')}</p>
             <p className="prose-narrow">{t('journal.body')}</p>
-            <form className="flex items-center border-b border-encre/30 pt-2 max-w-sm">
-              <input
-                type="email"
-                required
-                placeholder={t('journal.placeholder')}
-                className="
-                  flex-1 bg-transparent py-2 outline-none
-                  font-sans text-[14px] text-encre
-                  placeholder:text-encre/40
-                "
-              />
-              <button
-                type="submit"
-                className="
-                  font-mono text-mono-xs uppercase text-encre
-                  hover:text-sauge-deep transition-colors duration-400
-                  pl-4
-                "
-              >
-                {t('journal.cta')}
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
 
           {/* Liens */}

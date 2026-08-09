@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Reveal } from '@/components/primitives/Reveal';
 import { cn } from '@/lib/cn';
 
@@ -17,6 +17,7 @@ export default function ContactForm({
   initialPiece,
 }: Props) {
   const t = useTranslations('contact');
+  const locale = useLocale();
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   const subjectMap: Record<string, string> = {
@@ -41,42 +42,37 @@ export default function ContactForm({
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (status === 'sending') return;
     setStatus('sending');
 
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    const name = data.get('name') as string;
-    const email = data.get('email') as string;
-    const subject = data.get('subject') as string;
-    const message = data.get('message') as string;
+    const message = (data.get('message') as string) ?? '';
     const piece = data.get('piece') as string | null;
 
+    // Jeton Turnstile déposé par le widget dans un champ caché
+    const token =
+      (form.querySelector(
+        'input[name="cf-turnstile-response"]',
+      ) as HTMLInputElement | null)?.value ?? '';
+
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-          name,
-          email,
-          subject: subject || t('default_subject'),
+          name: data.get('name'),
+          email: data.get('email'),
+          subject: (data.get('subject') as string) || t('default_subject'),
           message: `${message}${piece ? `\n\n— Pièce : ${piece}` : ''}`,
-          from_name: 'Bulgarcamo',
-          replyto: email,
+          company: data.get('company'), // pot de miel
+          locale,
+          token,
         }),
       });
 
-      const result = await response.json();
-
-      if (result.success) {
-        setStatus('success');
-      } else {
-        setStatus('error');
-      }
+      setStatus(response.ok ? 'success' : 'error');
     } catch {
       setStatus('error');
     }
@@ -100,9 +96,7 @@ export default function ContactForm({
               </h1>
             </Reveal>
             <Reveal delay={300}>
-              <p className="lede max-w-prose-narrow text-encre/80">
-                {t('intro')}
-              </p>
+              <p className="lede max-w-prose-narrow text-encre/80">{t('intro')}</p>
             </Reveal>
             <Reveal delay={450}>
               <div className="space-y-1 pt-8 border-t border-encre/15">
@@ -142,6 +136,23 @@ export default function ContactForm({
                     required
                   />
 
+                  {/* Pot de miel — invisible pour un humain, rempli par les robots */}
+                  <input
+                    type="text"
+                    name="company"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden
+                    className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                  />
+
+                  <div
+                    className="cf-turnstile"
+                    data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                    data-theme="light"
+                    data-size="flexible"
+                  />
+
                   <div className="pt-6 border-t border-encre/15 space-y-4">
                     <button
                       type="submit"
@@ -153,7 +164,7 @@ export default function ContactForm({
                     </button>
 
                     {status === 'error' && (
-                      <p className="font-mono text-mono-xs uppercase text-red-700/80">
+                      <p className="font-mono text-mono-xs uppercase text-encre/55">
                         {t('error_message')}
                       </p>
                     )}
