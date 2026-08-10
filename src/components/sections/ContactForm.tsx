@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal } from '@/components/primitives/Reveal';
 import { cn } from '@/lib/cn';
@@ -19,6 +19,45 @@ export default function ContactForm({
   const t = useTranslations('contact');
   const locale = useLocale();
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [token, setToken] = useState('');
+  const widgetRef = useRef<HTMLDivElement>(null);
+  const widgetId = useRef<string | undefined>(undefined);
+
+  // Rendu explicite du widget Turnstile : le scan automatique du script
+  // n'a lieu qu'une fois, au chargement, et rate les pages atteintes ensuite.
+  useEffect(() => {
+    let cancelled = false;
+
+    const render = () => {
+      const ts = (window as unknown as { turnstile?: {
+        render: (el: HTMLElement, opts: Record<string, unknown>) => string;
+        reset: (id?: string) => void;
+      } }).turnstile;
+
+      if (!ts || !widgetRef.current || cancelled) return false;
+      if (widgetId.current !== undefined) return true;
+
+      widgetId.current = ts.render(widgetRef.current, {
+        sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+        theme: 'light',
+        callback: (value: string) => setToken(value),
+        'expired-callback': () => setToken(''),
+        'error-callback': () => setToken(''),
+      });
+      return true;
+    };
+
+    if (render()) return () => { cancelled = true; };
+
+    const interval = setInterval(() => {
+      if (render()) clearInterval(interval);
+    }, 300);
+
+    return () => {
+      cancelled = true;
+      clearInterval(interval);
+    };
+  }, []);
 
   const subjectMap: Record<string, string> = {
     'made-to-measure': t('subjects.made_to_measure'),
@@ -51,12 +90,6 @@ export default function ContactForm({
     const message = (data.get('message') as string) ?? '';
     const piece = data.get('piece') as string | null;
 
-    // Jeton Turnstile déposé par le widget dans un champ caché
-    const token =
-      (form.querySelector(
-        'input[name="cf-turnstile-response"]',
-      ) as HTMLInputElement | null)?.value ?? '';
-
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -72,7 +105,15 @@ export default function ContactForm({
         }),
       });
 
-      setStatus(response.ok ? 'success' : 'error');
+      if (response.ok) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+        // Un jeton Turnstile est à usage unique : on en redemande un.
+        const ts = (window as unknown as { turnstile?: { reset: (id?: string) => void } }).turnstile;
+        ts?.reset(widgetId.current);
+        setToken('');
+      }
     } catch {
       setStatus('error');
     }
@@ -146,12 +187,7 @@ export default function ContactForm({
                     className="absolute left-[-9999px] h-0 w-0 opacity-0"
                   />
 
-                  <div
-                    className="cf-turnstile"
-                    data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
-                    data-theme="light"
-                    data-size="flexible"
-                  />
+                  <div ref={widgetRef} />
 
                   <div className="pt-6 border-t border-encre/15 space-y-4">
                     <button

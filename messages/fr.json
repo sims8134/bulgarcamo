@@ -225,7 +225,7 @@
         "body": [
           "Nous collectons uniquement les données que vous nous transmettez volontairement : via le formulaire de contact, votre nom, votre adresse e-mail et le contenu de votre message ; via l'inscription au journal, votre adresse e-mail seule.",
           "Ce site n'utilise aucun outil de mesure d'audience et aucun script de suivi publicitaire. Le service de protection anti-robots Cloudflare Turnstile peut déposer un cookie technique strictement nécessaire à la sécurité du formulaire, exempté de consentement.",
-          "Sous-traitants : Vercel Inc. (hébergement), Cloudflare, Inc. (protection anti-robots), [À REMPLIR — service d'envoi du formulaire], [À REMPLIR — service d'envoi du journal]."
+          "Sous-traitants : Vercel Inc. (hébergement), Cloudflare, Inc. (protection anti-robots), Resend, Inc. (envoi des emails)."
         ]
       },
       {

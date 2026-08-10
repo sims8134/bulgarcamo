@@ -225,7 +225,7 @@
         "body": [
           "We only collect what you send us voluntarily: through the contact form, your name, email address and the content of your message; through the journal sign-up, your email address alone.",
           "This site uses no analytics and no advertising tracking scripts. The Cloudflare Turnstile anti-bot service may set a technical cookie strictly necessary to protect the form, which is exempt from consent.",
-          "Processors: Vercel Inc. (hosting), Cloudflare, Inc. (bot protection), [TO FILL — form delivery service], [TO FILL — newsletter service]."
+          "Processors: Vercel Inc. (hosting), Cloudflare, Inc. (bot protection), Resend, Inc. (email delivery)."
         ]
       },
       {
