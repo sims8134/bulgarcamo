@@ -84,13 +84,39 @@ export default async function ProductRoute({
 
   const product = activeProducts.find((p) => p.id === id);
 
-  // 404 si produit inexistant, hors collection, ou caché (image null)
   if (!product || product.image === null) {
     notFound();
   }
 
+  const t = await getTranslations({ locale, namespace: 'products' });
+  const tMotifs = await getTranslations({ locale, namespace: 'motifs' });
+
+  const BASE_URL = 'https://www.bulgarcamo.com';
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `${t(`names.${product.nameKey}`)} — ${tMotifs(`${product.motif}.name`)}`,
+    sku: product.ref,
+    image: (product.gallery ?? [product.image]).map((src) => `${BASE_URL}${src}`),
+    description: tMotifs(`${product.motif}.description`),
+    brand: { '@type': 'Brand', name: 'Bulgarcamo' },
+    ...(product.price != null && {
+      offers: {
+        '@type': 'Offer',
+        price: product.price,
+        priceCurrency: 'EUR',
+        availability: 'https://schema.org/InStock',
+        url: `${BASE_URL}/${locale}/catalogue/${product.id}`,
+      },
+    }),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ScrollTop />
       <ProductPage product={product} />
     </>
