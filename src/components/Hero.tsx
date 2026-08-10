@@ -141,8 +141,8 @@ export default function Hero() {
          <figure ref={captionRef as React.RefObject<HTMLElement>}>
             <div ref={imageRef} className="relative aspect-[3/4] overflow-hidden bg-pierre/30 will-change-transform">
               <Image
-                src="/images/products/flecktarn-multipouch.jpg"
-                alt=""
+                src="/images/products/flecktarn-multipouch-05.jpg"
+                alt="flecktarn-multipouch-01"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 42vw"

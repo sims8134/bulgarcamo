@@ -107,7 +107,7 @@
     },
     "items_count": "pièces",
     "coming_soon": "Photo à venir",
-    "footer_note": "Tarifs et disponibilités sur demande. Petites séries, pièces uniques.",
+    "footer_note": "Petites séries, pièces uniques. Disponibilités sur demande.",
     "footer_cta": "Demander un devis"
   },
   "sur_mesure": {
@@ -145,7 +145,10 @@
     "lead_time_label": "Délai",
     "lead_time_value": "4 à 6 semaines",
     "cta": "Acquérir cette pièce",
-    "back_to_catalogue": "Retour au catalogue"
+    "back_to_catalogue": "Retour au catalogue",
+    "dimensions_label": "Dimensions",
+    "dimensions_note": "Pièce cousue main — dimensions indicatives, fermé (±0,5 cm)"
+    
   },
   "about": {
     "eyebrow": "À propos",

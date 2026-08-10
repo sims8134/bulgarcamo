@@ -23,7 +23,7 @@ export default function PieceCard({ product, index }: Props) {
 
   const motif = motifs[product.motif];
   const primaryImage = product.image!;
-  const secondaryImage = product.gallery?.[1] ?? null;
+  const secondaryImage = product.imageHover ?? product.gallery?.[1] ?? null;
 
   const colSpan = product.span === 2 ? 'lg:col-span-8' : 'lg:col-span-4';
   const aspect =

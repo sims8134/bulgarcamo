@@ -121,13 +121,26 @@ export default function ProductPage({ product }: Props) {
                     </div>
                     <div className="flex justify-between gap-4">
                       <dt className="text-encre/55">{t('product.price_label')}</dt>
-                      <dd className="text-encre text-right">{t('product.price_value')}</dd>
+                      <dd className="text-encre text-right">
+                        {product.price != null ? `${product.price} €` : t('product.price_value')}
+                      </dd>
                     </div>
+                    {product.dimensions && (
+                      <div className="flex justify-between gap-4">
+                        <dt className="text-encre/55">{t('product.dimensions_label')}</dt>
+                        <dd className="text-encre text-right">{product.dimensions}</dd>
+                      </div>
+                    )}
                     <div className="flex justify-between gap-4">
                       <dt className="text-encre/55">{t('product.lead_time_label')}</dt>
                       <dd className="text-encre text-right">{t('product.lead_time_value')}</dd>
                     </div>
                   </dl>
+                  {product.dimensions && (
+                    <p className="font-mono text-mono-xs text-encre/45">
+                      {t('product.dimensions_note')}
+                    </p>
+                  )}
                 </div>
               </Reveal>
 

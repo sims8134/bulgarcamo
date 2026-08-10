@@ -14,15 +14,15 @@ const motifImages: Record<string, { src: string; alt: string }> = {
     alt: 'Textile Frogskin, vue rapprochée',
   },
   splinter_1991: {
-    src: '/images/products/splinter-1991-multipouch.jpg',
+    src: '/images/products/splinter-multipouch-02.jpg',
     alt: 'Textile Splinter 1991, vue rapprochée',
   },
   dpm: {
-    src: '/images/products/dpm-multipouch.jpg',
+    src: '/images/products/dpm-multipouch-01.jpg',
     alt: 'Textile Bulgarian DPM, vue rapprochée',
   },
   flecktarn: {
-    src: '/images/products/flecktarn-multipouch.jpg',
+    src: '/images/products/flecktarn-multipouch-05.jpg',
     alt: 'Textile Flecktarn, vue rapprochée',
   },
 };

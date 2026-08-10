@@ -12,6 +12,7 @@ export type Product = {
   category: ProductCategory;
   nameKey: string;
   image: string | null;
+  imageHover?: string;   // vue fermée affichée au survol dans le catalogue
   gallery?: string[];
   span?: 1 | 2;
   aspect?: 'square' | 'portrait' | 'landscape';
@@ -21,6 +22,8 @@ export type Product = {
   status?: 'available' | 'reserved' | 'archived';
   textileYear?: number | string;                  // année du tissu d'origine
   provenanceKey?: string;                         // i18n key custom si différente du motif
+  dimensions?: string;                            // affichable, ex. '~10,5 × 9,5 cm' (fermé, ±0,5 cm)
+  price?: number;                                 // en euros ; absent → « sur demande »
 };
 
 export const products: Product[] = [
@@ -69,14 +72,18 @@ export const products: Product[] = [
     motif: 'splinter_1991',
     category: 'edc',
     nameKey: 'card_holder',
-    image: '/images/products/splinter-1991-cardholder (1).jpg',
+    image: '/images/products/splinter-cardholder-04.jpg',
+    imageHover: '/images/products/splinter-cardholder-02.jpg',
     gallery: [
-      '/images/products/splinter-1991-cardholder (1).jpg',
-      '/images/products/splinter-1991-cardholder (2).jpg',
-      '/images/products/splinter-1991-cardholder (3).jpg',
+      '/images/products/splinter-cardholder-01.jpg',
+      '/images/products/splinter-cardholder-02.jpg',
+      '/images/products/splinter-cardholder-03.jpg',
+      '/images/products/splinter-cardholder-04.jpg',
     ],
     aspect: 'portrait',
     textileYear: 1991,
+    dimensions: '~10,5 × 9,5 cm',
+    price: 25,
   },
   {
     id: 'splinter91-earphone',
@@ -84,13 +91,18 @@ export const products: Product[] = [
     motif: 'splinter_1991',
     category: 'edc',
     nameKey: 'earphone_pouch',
-    image: '/images/products/splinter-1991-earbuds (1).jpg',
+    image: '/images/products/splinter-earphone-04.jpg',
+    imageHover: '/images/products/splinter-earphone-02.jpg',
     gallery: [
-      '/images/products/splinter-1991-earbuds (1).jpg',
-      '/images/products/splinter-1991-earbuds (2).jpg',
+      '/images/products/splinter-earphone-01.jpg',
+      '/images/products/splinter-earphone-02.jpg',
+      '/images/products/splinter-earphone-03.jpg',
+      '/images/products/splinter-earphone-04.jpg',
     ],
     aspect: 'square',
     textileYear: 1991,
+    dimensions: '~9 × 9 cm',
+    price: 19,
   },
   {
     id: 'splinter91-multipouch',
@@ -98,17 +110,18 @@ export const products: Product[] = [
     motif: 'splinter_1991',
     category: 'edc',
     nameKey: 'multi_pouch',
-    image: '/images/products/splinter-1991-multipouch.jpg',
+    image: '/images/products/splinter-multipouch-02.jpg',
+    imageHover: '/images/products/splinter-multipouch-01.jpg',
     gallery: [
-      '/images/products/splinter-1991-multipouch.jpg',
-      '/images/products/splinter-1991-multipouch (1).jpg',
-      '/images/products/splinter-1991-multipouch (2).jpg',
-      '/images/products/splinter-1991-multipouch (3).jpg',
-      '/images/products/splinter-1991-multipouch (4).jpg',
-      '/images/products/splinter-1991-multipouch (5).jpg',
+      '/images/products/splinter-multipouch-01.jpg',
+      '/images/products/splinter-multipouch-02.jpg',
+      '/images/products/splinter-multipouch-03.jpg',
+      '/images/products/splinter-multipouch-04.jpg',
     ],
     aspect: 'portrait',
     textileYear: 1991,
+    dimensions: '~21 × 11 cm',
+    price: 29,
   },
 
   // BULGARIAN DPM
@@ -118,14 +131,18 @@ export const products: Product[] = [
     motif: 'dpm',
     category: 'edc',
     nameKey: 'card_holder',
-    image: '/images/products/dpm-cardholder-1.jpg',
+    image: '/images/products/dpm-cardholder-04.jpg',
+    imageHover: '/images/products/dpm-cardholder-02.jpg',
     gallery: [
-      '/images/products/dpm-cardholder-1.jpg',
-      '/images/products/dpm-cardholder-2.jpg',
-      '/images/products/dpm-cardholder3.jpg',
+      '/images/products/dpm-cardholder-01.jpg',
+      '/images/products/dpm-cardholder-02.jpg',
+      '/images/products/dpm-cardholder-03.jpg',
+      '/images/products/dpm-cardholder-04.jpg',
     ],
     aspect: 'portrait',
     textileYear: 2004,
+    dimensions: '~10,5 × 9,5 cm',
+    price: 25,
   },
   {
     id: 'dpm-earphone',
@@ -133,13 +150,18 @@ export const products: Product[] = [
     motif: 'dpm',
     category: 'edc',
     nameKey: 'earphone_pouch',
-    image: '/images/products/dpm-earbuds1.jpg',
+    image: '/images/products/dpm-earphone-04.jpg',
+    imageHover: '/images/products/dpm-earphone-02.jpg',
     gallery: [
-      '/images/products/dpm-earbuds1.jpg',
-      '/images/products/dpm-earbuds2.jpg',
+      '/images/products/dpm-earphone-01.jpg',
+      '/images/products/dpm-earphone-02.jpg',
+      '/images/products/dpm-earphone-03.jpg',
+      '/images/products/dpm-earphone-04.jpg',
     ],
     aspect: 'square',
     textileYear: 2004,
+    dimensions: '~9 × 9 cm',
+    price: 19,
   },
   {
     id: 'dpm-multipouch',
@@ -147,17 +169,18 @@ export const products: Product[] = [
     motif: 'dpm',
     category: 'edc',
     nameKey: 'multi_pouch',
-    image: '/images/products/dpm-multipouch.jpg',
+    image: '/images/products/dpm-multipouch-01.jpg',
+    imageHover: '/images/products/dpm-multipouch-02.jpg',
     gallery: [
-      '/images/products/dpm-multipouch.jpg',
-      '/images/products/dpm-multipouch (1).jpg',
-      '/images/products/dpm-multipouch (2).jpg',
-      '/images/products/dpm-multipouch (3).jpg',
-      '/images/products/dpm-multipouch (4).jpg',
-      '/images/products/dpm-multipouch (5).jpg',
+      '/images/products/dpm-multipouch-01.jpg',
+      '/images/products/dpm-multipouch-02.jpg',
+      '/images/products/dpm-multipouch-03.jpg',
+      '/images/products/dpm-multipouch-04.jpg',
     ],
     aspect: 'portrait',
     textileYear: 2004,
+    dimensions: '~21 × 11 cm',
+    price: 29,
   },
 
   // GERMAN FLECKTARN
@@ -167,13 +190,18 @@ export const products: Product[] = [
     motif: 'flecktarn',
     category: 'edc',
     nameKey: 'card_holder',
-    image: '/images/products/flecktarn-cardholder (1).jpg',
+    image: '/images/products/flecktarn-cardholder-04.jpg',
+    imageHover: '/images/products/flecktarn-cardholder-02.jpg',
     gallery: [
-      '/images/products/flecktarn-cardholder (1).jpg',
-      '/images/products/flecktarn-cardholder (2).jpg',
+      '/images/products/flecktarn-cardholder-01.jpg',
+      '/images/products/flecktarn-cardholder-02.jpg',
+      '/images/products/flecktarn-cardholder-03.jpg',
+      '/images/products/flecktarn-cardholder-04.jpg',
     ],
     aspect: 'portrait',
     textileYear: 1991,
+    dimensions: '~10,5 × 9,5 cm',
+    price: 25,
   },
   {
     id: 'flecktarn-earphone',
@@ -181,14 +209,18 @@ export const products: Product[] = [
     motif: 'flecktarn',
     category: 'edc',
     nameKey: 'earphone_pouch',
-    image: '/images/products/Flecktarn-earbuds (1).jpg',
+    image: '/images/products/flecktarn-earphone-04.jpg',
+    imageHover: '/images/products/flecktarn-earphone-02.jpg',
     gallery: [
-      '/images/products/Flecktarn-earbuds (1).jpg',
-      '/images/products/Flecktarn-earbuds (2).jpg',
-      '/images/products/Flecktarn-earbuds (3).jpg',
+      '/images/products/flecktarn-earphone-01.jpg',
+      '/images/products/flecktarn-earphone-02.jpg',
+      '/images/products/flecktarn-earphone-03.jpg',
+      '/images/products/flecktarn-earphone-04.jpg',
     ],
     aspect: 'square',
     textileYear: 1991,
+    dimensions: '~9 × 9 cm',
+    price: 19,
   },
   {
     id: 'flecktarn-multipouch',
@@ -196,15 +228,19 @@ export const products: Product[] = [
     motif: 'flecktarn',
     category: 'edc',
     nameKey: 'multi_pouch',
-    image: '/images/products/flecktarn-multipouch.jpg',
+    image: '/images/products/flecktarn-multipouch-05.jpg',
+    imageHover: '/images/products/flecktarn-multipouch-04.jpg',
     gallery: [
-      '/images/products/flecktarn-multipouch.jpg',
-      '/images/products/flecktarn-multipouch (1).jpg',
-      '/images/products/flecktarn-multipouch (2).jpg',
-      '/images/products/flecktarn-multipouch (3).jpg',
+      '/images/products/flecktarn-multipouch-01.jpg',
+      '/images/products/flecktarn-multipouch-02.jpg',
+      '/images/products/flecktarn-multipouch-03.jpg',
+      '/images/products/flecktarn-multipouch-04.jpg',
+      '/images/products/flecktarn-multipouch-05.jpg',
     ],
     aspect: 'portrait',
     textileYear: 1991,
+    dimensions: '~21 × 11 cm',
+    price: 29,
   },
 ];
 // ─────────────────────────────────────────────────────────────

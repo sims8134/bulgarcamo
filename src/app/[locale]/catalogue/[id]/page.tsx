@@ -5,6 +5,7 @@ import { activeProducts } from '@/data/products';
 import type { Locale } from '@/i18n/config';
 import { locales } from '@/i18n/config';
 import ProductPage from '@/components/sections/ProductPage';
+import ScrollTop from '@/components/primitives/ScrollTop';
 
 // Pré-génération statique de toutes les fiches produit de la collection en cours
 export function generateStaticParams() {
@@ -39,7 +40,7 @@ export async function generateMetadata({
   const edition = tProduct('edition_default');
 
   const title = `${productName} — ${motifName}`;
-  const description = `${productName} — ${motifName}, ${era}. ${provenance} ${product.ref} · ${edition} · Sofia.`;
+  const description = `${productName} — ${motifName}, ${era}. ${provenance} ${product.ref} · ${edition}${product.price != null ? ` · ${product.price} €` : ''} · Sofia.`;
 
   const path = `/${locale}/catalogue/${product.id}`;
   const imageAlt = `${productName} ${motifName} — Bulgarcamo`;
@@ -88,5 +89,10 @@ export default async function ProductRoute({
     notFound();
   }
 
-  return <ProductPage product={product} />;
+  return (
+    <>
+      <ScrollTop />
+      <ProductPage product={product} />
+    </>
+  );
 }
