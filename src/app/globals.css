@@ -30,6 +30,7 @@
     --tilt-a: -2.4deg;
     --tilt-b: 1.9deg;
     --viseur: 54px;
+    --photo-frame: 10px;
   }
 
   @media (max-width: 479px) {
@@ -316,59 +317,59 @@ body::after {
     transform: rotate(var(--tilt-b));
   }
 
-  /* Scotch : derrière la photo (z-index -1), seul le dépassement
-     au-dessus du bord est visible. Les pixels de la photo ne sont
-     jamais recouverts. */
+  /* Boîte photo : cadre opaque de 10 px (--photo-frame) en var(--surface),
+     ombre portée sombre. L'image remplit l'intérieur du cadre et n'est
+     jamais retouchée. */
+  .photo-box {
+    position: relative;
+    overflow: hidden;
+    background: var(--surface);
+    border: var(--photo-frame) solid var(--surface);
+    box-shadow: 0 18px 40px -8px var(--photo-shadow);
+  }
+
+  /* Scotch : au-dessus de la photo, centré, à cheval sur le bord haut.
+     Placement calculé pour que son coin le plus bas (rotation comprise)
+     s'arrête juste avant le bord intérieur du cadre : il couvre le cadre
+     et l'espace au-dessus, jamais les pixels de l'image.
+     Demi-hauteur tournée = (h·cos5° + w·sin5°) / 2
+       desktop 120×32 : 21,2 px → centre à -12 px du bord haut
+       mobile   90×24 : 15,9 px → centre à  -7 px du bord haut */
   .photo-tilt::after {
     content: '';
     position: absolute;
-    top: -20px;
+    top: calc(-12px - 16px);
     left: 50%;
     width: 120px;
     height: 32px;
     background: var(--tape);
     transform: translateX(-50%) rotate(-5deg);
-    z-index: -1;
+    z-index: 3;
     pointer-events: none;
   }
 
-  /* Boîte photo : fond opaque, ombre portée sombre, aucune retouche */
-  .photo-box {
-    position: relative;
-    overflow: hidden;
-    background: var(--surface);
-    box-shadow: 0 18px 40px -8px var(--photo-shadow);
+  @media (max-width: 639px) {
+    .photo-tilt::after {
+      top: calc(-7px - 12px);
+      width: 90px;
+      height: 24px;
+    }
   }
 
-  /* Viseur : quatre équerres hors de l'image, droites par rapport à la photo */
+  /* Viseur : quatre équerres hors de l'image, droites par rapport à la photo,
+     toujours au-dessus du scotch */
   .viseur-corner {
     position: absolute;
     width: var(--viseur);
     height: var(--viseur);
     border: 0 solid var(--accent);
     pointer-events: none;
-    z-index: 2;
+    z-index: 4;
   }
   .viseur-tl { top: -10px; left: -10px; border-top-width: 4px; border-left-width: 4px; }
   .viseur-tr { top: -10px; right: -10px; border-top-width: 4px; border-right-width: 4px; }
   .viseur-bl { bottom: -10px; left: -10px; border-bottom-width: 4px; border-left-width: 4px; }
   .viseur-br { bottom: -10px; right: -10px; border-bottom-width: 4px; border-right-width: 4px; }
-
-  /* Variante compacte pour les vignettes du catalogue */
-  .viseur-sm .viseur-corner {
-    width: 26px;
-    height: 26px;
-    border-width: 0;
-  }
-  .viseur-sm .viseur-tl { top: -7px; left: -7px; border-top-width: 3px; border-left-width: 3px; }
-  .viseur-sm .viseur-tr { top: -7px; right: -7px; border-top-width: 3px; border-right-width: 3px; }
-  .viseur-sm .viseur-bl { bottom: -7px; left: -7px; border-bottom-width: 3px; border-left-width: 3px; }
-  .viseur-sm .viseur-br { bottom: -7px; right: -7px; border-bottom-width: 3px; border-right-width: 3px; }
-  .viseur-sm.photo-tilt::after {
-    width: 72px;
-    height: 20px;
-    top: -12px;
-  }
 
   /* Logo cassé du hero : l'inclinaison est déjà dans le SVG */
   .logo-casse {

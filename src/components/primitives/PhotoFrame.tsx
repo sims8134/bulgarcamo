@@ -2,21 +2,20 @@ import { cn } from '@/lib/cn';
 
 /**
  * Cadre photo « vision nocturne cassé » :
- * inclinaison alternée, ombre portée, scotch (derrière la photo) et viseur
+ * inclinaison alternée, cadre opaque de 10 px, ombre portée, scotch posé
+ * sur le cadre (jamais sur l'image) et viseur
  * à quatre équerres. Le viseur tourne avec la photo et reste donc droit
  * par rapport à elle. La photo elle-même n'est jamais filtrée ni recouverte.
  */
 export function PhotoFrame({
   children,
   tilt = 'a',
-  size = 'lg',
   className,
   boxClassName,
   style,
 }: {
   children: React.ReactNode;
   tilt?: 'a' | 'b' | 'none';
-  size?: 'lg' | 'sm';
   className?: string;
   boxClassName?: string;
   style?: React.CSSProperties;
@@ -27,7 +26,6 @@ export function PhotoFrame({
         'photo-tilt',
         tilt === 'a' && 'photo-tilt-a',
         tilt === 'b' && 'photo-tilt-b',
-        size === 'sm' && 'viseur-sm',
         className,
       )}
     >
