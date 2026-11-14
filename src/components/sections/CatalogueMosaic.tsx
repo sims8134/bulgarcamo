@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
 import { activeProducts, ACTIVE_MOTIFS } from '@/data/products';
 import type { MotifKey } from '@/data/products';
 import { motifsList } from '@/content/motifs';
@@ -58,10 +57,15 @@ export default function CatalogueMosaic() {
 
         <div className="mt-22 pt-10 border-t border-line flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <p className="label text-text-muted max-w-md">{t('catalogue.footer_note')}</p>
-          <Link href="/contact" className="cta self-start">
+          <a
+            href="https://ig.me/m/bulgarcamo"
+            target="_blank"
+            rel="noopener"
+            className="cta self-start"
+          >
             <span>{t('catalogue.footer_cta')}</span>
             <span aria-hidden>→</span>
-          </Link>
+          </a>
         </div>
       </div>
     </section>

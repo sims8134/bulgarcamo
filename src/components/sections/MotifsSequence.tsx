@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { IMAGE_SIZES } from '@/lib/imageSizes';
 import { useTranslations } from 'next-intl';
 import { motifsList, type Motif } from '@/content/motifs';
 import { ACTIVE_MOTIFS } from '@/data/products';
@@ -113,7 +114,7 @@ function MotifBlock({
                   src={image.src}
                   alt={image.alt}
                   fill
-                  sizes="(max-width: 1024px) 90vw, 46vw"
+                  sizes={IMAGE_SIZES.motif}
                   className="object-cover"
                 />
               </PhotoFrame>

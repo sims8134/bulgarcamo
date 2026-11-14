@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { IMAGE_SIZES } from '@/lib/imageSizes';
 import { useTranslations } from 'next-intl';
 import { PhotoFrame } from '@/components/primitives/PhotoFrame';
 
@@ -33,7 +34,7 @@ export default function About() {
                   src="/images/about/sofia-tram.jpg"
                   alt="Sofia — tramway sur le pont, mont Vitosha en arrière-plan"
                   fill
-                  sizes="(max-width: 768px) 90vw, 55vw"
+                  sizes={IMAGE_SIZES.prose}
                   className="object-cover"
                 />
               </PhotoFrame>

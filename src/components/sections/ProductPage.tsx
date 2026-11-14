@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { IMAGE_SIZES } from '@/lib/imageSizes';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import type { Product } from '@/data/products';
@@ -44,7 +45,7 @@ export default function ProductPage({ product }: Props) {
                       src={src}
                       alt=""
                       fill
-                      sizes="(max-width: 1024px) 90vw, 55vw"
+                      sizes={IMAGE_SIZES.productGallery}
                       priority={i === 0}
                       className="object-cover"
                     />

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { IMAGE_SIZES } from '@/lib/imageSizes';
 import { useTranslations } from 'next-intl';
 import { PhotoFrame } from '@/components/primitives/PhotoFrame';
 
@@ -39,7 +40,7 @@ export default function Hero() {
                 alt={t('imageCaption')}
                 fill
                 priority
-                sizes="(max-width: 1024px) 90vw, 40vw"
+                sizes={IMAGE_SIZES.hero}
                 className="object-cover"
               />
             </PhotoFrame>

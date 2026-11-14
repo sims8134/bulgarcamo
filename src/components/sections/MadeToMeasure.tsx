@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { IMAGE_SIZES } from '@/lib/imageSizes';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { AccentTitle } from '@/components/primitives/AccentTitle';
@@ -37,7 +38,7 @@ export default function MadeToMeasure() {
                   src="/images/about/atelier-couture.jpg"
                   alt="Atelier — couture à la machine, gros plan sur le fil et l'aiguille"
                   fill
-                  sizes="(max-width: 768px) 90vw, 55vw"
+                  sizes={IMAGE_SIZES.prose}
                   className="object-cover"
                 />
               </PhotoFrame>

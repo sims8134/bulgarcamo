@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { IMAGE_SIZES } from '@/lib/imageSizes';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import type { Product } from '@/data/products';
@@ -20,6 +21,7 @@ export default function PieceCard({ product, index }: Props) {
   const name = t(`products.names.${product.nameKey}`);
 
   const colSpan = product.span === 2 ? 'lg:col-span-8' : 'lg:col-span-4';
+  const sizes = product.span === 2 ? IMAGE_SIZES.cardWide : IMAGE_SIZES.card;
   const aspect =
     product.aspect === 'landscape'
       ? 'aspect-[4/3]'
@@ -39,7 +41,7 @@ export default function PieceCard({ product, index }: Props) {
             src={primaryImage}
             alt=""
             fill
-            sizes="(max-width: 1024px) 90vw, 30vw"
+            sizes={sizes}
             className={cn('object-cover', secondaryImage && 'group-hover:opacity-0')}
           />
           {secondaryImage && (
@@ -47,8 +49,9 @@ export default function PieceCard({ product, index }: Props) {
               src={secondaryImage}
               alt=""
               fill
-              sizes="(max-width: 1024px) 90vw, 30vw"
-              className="object-cover opacity-0 group-hover:opacity-100"
+              sizes={sizes}
+              // Vue de survol : masquée (donc jamais téléchargée) sans souris
+              className="hidden [@media(hover:hover)]:block object-cover opacity-0 group-hover:opacity-100"
             />
           )}
         </PhotoFrame>
