@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { IMAGE_SIZES } from '@/lib/imageSizes';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
 import { AccentTitle } from '@/components/primitives/AccentTitle';
 import { PhotoFrame } from '@/components/primitives/PhotoFrame';
 
@@ -27,10 +26,16 @@ export default function MadeToMeasure() {
 
             <p className="prose-editorial">{t('body')}</p>
 
-            <Link href="/contact?subject=made-to-measure" className="cta">
-              <span>{t('cta')}</span>
-              <span aria-hidden>→</span>
-            </Link>
+            <p className="lede">
+              <a
+                href="https://ig.me/m/bulgarcamo"
+                target="_blank"
+                rel="noopener"
+                className="link-line"
+              >
+                {t('instagram')}
+              </a>
+            </p>
 
             <figure className="max-w-prose-editorial pt-6 px-3 sm:px-0">
               <PhotoFrame tilt="a" boxClassName="aspect-[3/2]">

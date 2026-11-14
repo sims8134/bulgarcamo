@@ -3,7 +3,6 @@
     "motifs": "Patterns",
     "pieces": "Pieces",
     "atelier": "Studio",
-    "pro": "Trade",
     "contact": "Contact",
     "catalogue": "Catalogue",
     "menu": "Menu",
@@ -113,8 +112,8 @@
   "sur_mesure": {
     "eyebrow": "Made to measure",
     "title": "Every piece, to your measurements",
-    "body": "Every catalogue piece can be made to measure. Sizing adjusted to your body, choice of pattern among the available camouflages, finishes and linings on request. Bulgarcamo accepts individual orders — garments, EDC accessories or home pieces. Lead times and pricing on request, depending on complexity and material availability.",
-    "cta": "Make a request"
+    "body": "Every catalogue piece can be made to measure. Sizing adjusted to your body, choice of pattern among the available camouflages, finishes and linings on request. Bulgarcamo accepts individual orders — garments, EDC accessories or home pieces.",
+    "instagram": "A specific request? Write to us on Instagram."
   },
   "products": {
     "names": {
@@ -138,13 +137,10 @@
     "atelier": "Making",
     "atelier_note": "Cut and sewn in Sofia by a neighbourhood seamstress. Natural cotton lining where available.",
     "availability": "Availability",
-    "edition_label": "Edition",
-    "edition_default": "Small run",
-    "lead_time_label": "Lead time",
-    "lead_time_value": "4 to 6 weeks",
     "back_to_catalogue": "Back to catalogue",
     "dimensions_label": "Dimensions",
-    "dimensions_note": "Handmade piece — approximate dimensions, closed (±0.5 cm)"
+    "dimensions_note": "Handmade piece — approximate dimensions, closed (±0.5 cm)",
+    "availability_note": "Small runs, sometimes a single piece. When the material runs out, the piece leaves the catalogue."
   },
   "about": {
     "eyebrow": "About",
@@ -156,38 +152,11 @@
     ],
     "signature": "Sofia, by appointment"
   },
-  "pro": {
-    "eyebrow": "For trade & wholesale",
-    "title": "Sourcing & collaborations",
-    "body": "Bulgarcamo works with fashion designers, studios and brands seeking materials with distinctive patterns. Small runs, samples, custom sourcing — on request.",
-    "cta": "Get in touch"
-  },
   "contact": {
     "eyebrow": "Contact",
     "title": "Write to us",
     "intro": "To acquire a piece, request a made-to-measure work, or collaborate. We reply within 48 working hours.",
-    "direct_label": "Direct",
-    "fields": {
-      "name": "Name",
-      "email": "Email address",
-      "subject": "Subject",
-      "message": "Message"
-    },
-    "sending": "Sending…",
-    "error_message": "Something went wrong. Please try again or email us directly.",
-    "subjects": {
-      "piece": "Request — piece {ref}",
-      "made_to_measure": "Made-to-measure request",
-      "trade": "Sourcing & collaboration"
-    },
-    "preset_message_piece": "Hello,\n\nI would like to know more about piece {ref}.\n\nKind regards,",
-    "preset_message_mtm": "Hello,\n\nI would like a made-to-measure piece. Some details:\n\n— Type of piece:\n— Pattern of choice:\n— Measurements / build:\n\nKind regards,",
-    "preset_message_trade": "Hello,\n\nI represent:\n\nWe are interested in:\n\nKind regards,",
-    "default_subject": "Bulgarcamo — enquiry",
-    "submit": "Send",
-    "sent_eyebrow": "Sent",
-    "sent_title": "Your message is on its way.",
-    "sent_body": "Thank you — we've received your message and will reply within 48 working hours. If anything's urgent, write directly to contact@bulgarcamo.com."
+    "direct_label": "Direct"
   },
   "not_found": {
     "eyebrow": "Page not found",
@@ -250,11 +219,10 @@
         "eyebrow": "Data",
         "title": "Data processed",
         "body": [
-          "This site offers no accounts, no payments and no audience measurement. It keeps no database of its own. It only processes:",
+          "This site offers no accounts, no payments, no forms and no audience measurement, and it keeps no database. The only data involved is:",
           "Technical logs: on each visit, the host Vercel records technical data (IP address, date and time, page requested, browser).",
-          "Bot protection: the Cloudflare Turnstile service, loaded on the site’s pages, analyses technical signals (IP address, TLS fingerprint, User-Agent header) to tell a human visitor from a bot before a form is sent.",
-          "Contact form: your name, email address, subject and message, sent by email through the Resend service and received in Bulgarcamo’s mailbox.",
-          "Seasonal journal: your email address and your consent, sent the same way."
+          "Emails: if you choose to write to contact@bulgarcamo.com, your email address and the content of your message are received in Bulgarcamo’s mailbox.",
+          "Instagram messages: if you write to @bulgarcamo on Instagram, your message is received and handled within Instagram."
         ]
       },
       {
@@ -262,26 +230,25 @@
         "title": "Why, and on what basis",
         "body": [
           "Technical logs: running and securing the site. Legal basis: legitimate interest (Article 6(1)(f) GDPR).",
-          "Bot protection: protecting the forms against abuse. Legal basis: legitimate interest (Article 6(1)(f) GDPR).",
-          "Contact form: replying to your message. Legal basis: legitimate interest in replying to messages received (Article 6(1)(f) GDPR).",
-          "Seasonal journal: sending you the journal. Legal basis: your consent (Article 6(1)(a) GDPR), which you can withdraw at any time."
+          "Emails: replying to your message. Legal basis: legitimate interest in replying to messages received (Article 6(1)(f) GDPR).",
+          "Instagram messages: handling your order request. Legal basis: steps taken at your request (Article 6(1)(b) GDPR)."
         ]
       },
       {
         "eyebrow": "Retention",
         "title": "How long data is kept",
         "body": [
-          "Technical logs and bot protection signals: a limited period set by Vercel and Cloudflare in their own policies.",
-          "Contact messages: twelve months after the last exchange, then deleted.",
-          "Seasonal journal: until you unsubscribe."
+          "Technical logs: a limited period set by Vercel in its own policy.",
+          "Emails: twelve months after the last exchange, then deleted.",
+          "Instagram messages: kept within Instagram under Meta’s policy. You can ask at any time for the conversation to be deleted on our side."
         ]
       },
       {
-        "eyebrow": "Providers",
-        "title": "Processors and transfers outside the EU",
+        "eyebrow": "Provider",
+        "title": "Host and transfer outside the EU",
         "body": [
-          "Vercel Inc. (hosting), Cloudflare, Inc. (bot protection) and Plus Five Five, Inc., which operates Resend (email delivery). All three are based in the United States, so your data may be transferred outside the European Union.",
-          "Vercel and Resend state that these transfers rely on the EU-U.S. Data Privacy Framework and on the European Commission’s Standard Contractual Clauses. Cloudflare covers them under its own privacy policy."
+          "The site is hosted by Vercel Inc., based in the United States, so technical logs may be transferred outside the European Union.",
+          "Vercel states that these transfers rely on the EU-U.S. Data Privacy Framework and on the European Commission’s Standard Contractual Clauses."
         ]
       },
       {
@@ -295,7 +262,7 @@
         "eyebrow": "Cookies",
         "title": "Cookies",
         "body": [
-          "This site uses no advertising or audience measurement cookies. Only Cloudflare Turnstile may set a cookie that is strictly necessary for form security. This is why no consent banner is shown."
+          "This site sets no cookies and uses no audience measurement. This is why no consent banner is shown."
         ]
       },
       {
@@ -320,8 +287,7 @@
       "Right to rectification",
       "Right to erasure",
       "Right to object to processing",
-      "Right to restriction and portability",
-      "Right to withdraw your consent"
+      "Right to restriction of processing"
     ]
   },
   "footer": {
@@ -331,20 +297,8 @@
       "note": "By appointment",
       "email": "contact@bulgarcamo.com"
     },
-    "journal": {
-      "label": "The Journal",
-      "body": "One letter per season. New pieces, notes, sourcings.",
-      "placeholder": "Email address",
-      "cta": "Subscribe",
-      "sending": "Sending…",
-      "done": "You're subscribed. See you next season.",
-      "error": "Something went wrong. Please try again.",
-      "consent": "I agree to receive the journal and have read the",
-      "consent_link": "privacy policy"
-    },
     "legal": {
       "label": "Information",
-      "pro": "Trade & wholesale",
       "mentions": "Legal notice",
       "privacy": "Privacy",
       "contact": "Contact"

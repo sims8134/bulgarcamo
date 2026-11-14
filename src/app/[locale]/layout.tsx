@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale, getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -118,8 +117,8 @@ export default async function LocaleLayout({
   setRequestLocale(locale as Locale);
   const allMessages = await getMessages();
   // Seuls les espaces lus par des composants client sont envoyés au navigateur
-  // (en-tête, newsletter, catalogue filtrable, formulaire de contact).
-  const CLIENT_NAMESPACES = ['nav', 'footer', 'catalogue', 'products', 'contact'] as const;
+  // (en-tête et menu, catalogue filtrable).
+  const CLIENT_NAMESPACES = ['nav', 'catalogue', 'products'] as const;
   const messages = Object.fromEntries(
     CLIENT_NAMESPACES.filter((k) => k in allMessages).map((k) => [k, allMessages[k]]),
   );
@@ -133,11 +132,6 @@ export default async function LocaleLayout({
           <main className="site-layer">{children}</main>
           <Footer />
         </NextIntlClientProvider>
-
-        <Script
-          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-          strategy="lazyOnload"
-        />
       </body>
     </html>
   );

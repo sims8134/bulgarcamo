@@ -31,16 +31,14 @@ export async function generateMetadata({
 
   const t = await getTranslations({ locale, namespace: 'products' });
   const tMotifs = await getTranslations({ locale, namespace: 'motifs' });
-  const tProduct = await getTranslations({ locale, namespace: 'product' });
 
   const productName = t(`names.${product.nameKey}`);
   const motifName = tMotifs(`${product.motif}.name`);
   const provenance = tMotifs(`${product.motif}.provenance`);
   const era = tMotifs(`${product.motif}.era`);
-  const edition = tProduct('edition_default');
 
   const title = `${productName} — ${motifName}`;
-  const description = `${productName} — ${motifName}, ${era}. ${provenance} ${product.ref} · ${edition} · Sofia.`;
+  const description = `${productName} — ${motifName}, ${era}. ${provenance} ${product.ref} · Sofia.`;
 
   const path = `/${locale}/catalogue/${product.id}`;
   const imageAlt = `${productName} ${motifName} — Bulgarcamo`;

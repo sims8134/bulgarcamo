@@ -1,23 +1,49 @@
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/config';
-import ContactForm from '@/components/sections/ContactForm';
+import { AccentTitle } from '@/components/primitives/AccentTitle';
 
+// Contact : pas de formulaire, seulement l'e-mail et Instagram.
 export default async function ContactPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ subject?: string; ref?: string; piece?: string }>;
 }) {
   const { locale } = await params;
-  const sp = await searchParams;
   setRequestLocale(locale as Locale);
+  const t = await getTranslations({ locale, namespace: 'contact' });
 
   return (
-    <ContactForm
-      initialSubject={sp.subject}
-      initialRef={sp.ref}
-      initialPiece={sp.piece}
-    />
+    <article className="relative">
+      <div className="container-page pt-14 lg:pt-22 pb-22">
+        <div className="max-w-3xl space-y-10">
+          <p className="eyebrow">{t('eyebrow')}</p>
+          <h1 className="heading-md">
+            <AccentTitle text={t('title')} />
+          </h1>
+          <p className="lede max-w-prose-narrow">{t('intro')}</p>
+
+          <div className="space-y-4 pt-8 border-t border-line">
+            <p className="eyebrow">{t('direct_label')}</p>
+            <ul className="space-y-3">
+              <li>
+                <a href="mailto:contact@bulgarcamo.com" className="link-line text-lede">
+                  contact@bulgarcamo.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/bulgarcamo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-line text-lede"
+                >
+                  Instagram · @bulgarcamo
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
   );
 }

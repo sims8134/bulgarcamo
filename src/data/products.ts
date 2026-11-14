@@ -18,7 +18,6 @@ export type Product = {
   aspect?: 'square' | 'portrait' | 'landscape';
 
   // 🆕 Enrichissements luxe-archive (optionnels, à remplir au fil de l'eau)
-  edition?: { current: number; total: number };  // { current: 1, total: 1 } → "1/1"
   status?: 'available' | 'reserved' | 'archived';
   textileYear?: number | string;                  // année du tissu d'origine
   provenanceKey?: string;                         // i18n key custom si différente du motif

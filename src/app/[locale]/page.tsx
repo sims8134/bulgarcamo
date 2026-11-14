@@ -5,7 +5,6 @@ import MotifsSequence from '@/components/sections/MotifsSequence';
 import CatalogueMosaic from '@/components/sections/CatalogueMosaic';
 import MadeToMeasure from '@/components/sections/MadeToMeasure';
 import About from '@/components/sections/About';
-import Pro from '@/components/sections/Pro';
 import type { Locale } from '@/i18n/config';
 
 const BASE_URL = 'https://www.bulgarcamo.com';
@@ -40,7 +39,6 @@ export default async function HomePage({
       <CatalogueMosaic />
       <MadeToMeasure />
       <About />
-      <Pro />
     </>
   );
 }

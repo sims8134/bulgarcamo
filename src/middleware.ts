@@ -6,6 +6,7 @@ export default createMiddleware({
   defaultLocale: 'en',          // ← changé de 'fr' à 'en'
   localePrefix: 'always',
   localeDetection: false,        // ← important, on garde la décision côté serveur
+  localeCookie: false,           // aucun cookie déposé par le site
 });
 
 export const config = {

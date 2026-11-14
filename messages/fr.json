@@ -3,7 +3,6 @@
     "motifs": "Motifs",
     "pieces": "Pièces",
     "atelier": "Atelier",
-    "pro": "Pro",
     "contact": "Contact",
     "catalogue": "Catalogue",
     "menu": "Menu",
@@ -113,8 +112,8 @@
   "sur_mesure": {
     "eyebrow": "Sur mesure",
     "title": "Toutes les pièces, à vos mesures",
-    "body": "Chaque pièce du catalogue peut être réalisée sur mesure. Tailles et longueurs adaptées à votre morphologie, choix du motif parmi les camouflages disponibles, finitions et doublures à la demande. Bulgarcamo accepte les commandes individuelles — vêtements, accessoires EDC ou pièces de maison. Délais et tarifs sur demande, selon la complexité de la pièce et la disponibilité de la matière.",
-    "cta": "Faire une demande"
+    "body": "Chaque pièce du catalogue peut être réalisée sur mesure. Tailles et longueurs adaptées à votre morphologie, choix du motif parmi les camouflages disponibles, finitions et doublures à la demande. Bulgarcamo accepte les commandes individuelles — vêtements, accessoires EDC ou pièces de maison.",
+    "instagram": "Une demande particulière ? Écrivez-nous sur Instagram."
   },
   "products": {
     "names": {
@@ -138,13 +137,10 @@
     "atelier": "Fabrication",
     "atelier_note": "Pièce coupée et cousue à Sofia par une couturière de quartier. Doublure en coton naturel selon disponibilité.",
     "availability": "Disponibilité",
-    "edition_label": "Édition",
-    "edition_default": "Petite série",
-    "lead_time_label": "Délai",
-    "lead_time_value": "4 à 6 semaines",
     "back_to_catalogue": "Retour au catalogue",
     "dimensions_label": "Dimensions",
-    "dimensions_note": "Pièce cousue main — dimensions indicatives, fermé (±0,5 cm)"
+    "dimensions_note": "Pièce cousue main — dimensions indicatives, fermé (±0,5 cm)",
+    "availability_note": "Petites séries, parfois une pièce unique. Quand la matière est épuisée, la pièce quitte le catalogue."
   },
   "about": {
     "eyebrow": "À propos",
@@ -156,38 +152,11 @@
     ],
     "signature": "Sofia, sur rendez-vous"
   },
-  "pro": {
-    "eyebrow": "Pour les professionnels",
-    "title": "Sourcing & collaborations",
-    "body": "Bulgarcamo travaille avec des créateurs mode, ateliers et marques en quête de matières à motifs distinctifs. Petites séries, échantillons, sourcing sur mesure — sur demande.",
-    "cta": "Nous écrire"
-  },
   "contact": {
     "eyebrow": "Contact",
     "title": "Écrivez-nous",
     "intro": "Pour acquérir une pièce, demander une réalisation sur mesure, ou collaborer. Réponse sous 48h ouvrées.",
-    "direct_label": "Direct",
-    "fields": {
-      "name": "Nom",
-      "email": "Adresse e-mail",
-      "subject": "Objet",
-      "message": "Message"
-    },
-    "sending": "Envoi…",
-    "error_message": "Une erreur s'est produite. Réessayez ou écrivez-nous directement.",
-    "subjects": {
-      "piece": "Demande — pièce {ref}",
-      "made_to_measure": "Demande sur mesure",
-      "trade": "Sourcing & collaboration"
-    },
-    "preset_message_piece": "Bonjour,\n\nJe souhaite en savoir plus sur la pièce {ref}.\n\nCordialement,",
-    "preset_message_mtm": "Bonjour,\n\nJe souhaite réaliser une pièce sur mesure. Voici quelques précisions :\n\n— Type de pièce :\n— Motif souhaité :\n— Mesures / morphologie :\n\nCordialement,",
-    "preset_message_trade": "Bonjour,\n\nJe représente :\n\nNous sommes intéressés par :\n\nCordialement,",
-    "default_subject": "Bulgarcamo — demande",
-    "submit": "Envoyer",
-    "sent_eyebrow": "Envoyé",
-    "sent_title": "Votre message est en route.",
-    "sent_body": "Merci — nous avons bien reçu votre message et vous répondrons sous 48h ouvrées. Pour toute urgence, écrivez directement à contact@bulgarcamo.com."
+    "direct_label": "Direct"
   },
   "not_found": {
     "eyebrow": "Page introuvable",
@@ -250,11 +219,10 @@
         "eyebrow": "Données",
         "title": "Données traitées",
         "body": [
-          "Ce site ne propose ni compte, ni paiement, ni outil de mesure d’audience. Il ne conserve lui-même aucune base de données. Il traite uniquement :",
+          "Ce site ne propose ni compte, ni paiement, ni formulaire, ni outil de mesure d’audience, et il ne conserve aucune base de données. Les seules données concernées sont :",
           "Journaux techniques : à chaque visite, l’hébergeur Vercel enregistre des données techniques (adresse IP, date et heure, page demandée, navigateur).",
-          "Protection anti-robots : le service Cloudflare Turnstile, chargé sur les pages du site, analyse des signaux techniques (adresse IP, empreinte TLS, en-tête User-Agent) pour distinguer un visiteur humain d’un robot avant l’envoi d’un formulaire.",
-          "Formulaire de contact : votre nom, votre adresse e-mail, l’objet et le contenu de votre message, transmis par e-mail via le service Resend et reçus dans la boîte e-mail de Bulgarcamo.",
-          "Journal saisonnier : votre adresse e-mail et votre consentement, transmis de la même façon."
+          "E-mails : si vous écrivez volontairement à contact@bulgarcamo.com, votre adresse e-mail et le contenu de votre message sont reçus dans la boîte e-mail de Bulgarcamo.",
+          "Messages Instagram : si vous écrivez à @bulgarcamo sur Instagram, votre message est reçu et traité dans Instagram."
         ]
       },
       {
@@ -262,26 +230,25 @@
         "title": "Pourquoi et sur quelle base",
         "body": [
           "Journaux techniques : faire fonctionner et sécuriser le site. Base légale : intérêt légitime (article 6.1.f du RGPD).",
-          "Protection anti-robots : protéger les formulaires contre les abus. Base légale : intérêt légitime (article 6.1.f du RGPD).",
-          "Formulaire de contact : répondre à votre message. Base légale : intérêt légitime à répondre aux messages reçus (article 6.1.f du RGPD).",
-          "Journal saisonnier : vous envoyer le journal. Base légale : votre consentement (article 6.1.a du RGPD), que vous pouvez retirer à tout moment."
+          "E-mails : répondre à votre message. Base légale : intérêt légitime à répondre aux messages reçus (article 6.1.f du RGPD).",
+          "Messages Instagram : traiter votre demande de commande. Base légale : mesures prises à votre demande (article 6.1.b du RGPD)."
         ]
       },
       {
         "eyebrow": "Conservation",
         "title": "Durée de conservation",
         "body": [
-          "Journaux techniques et signaux anti-robots : durée limitée, fixée par Vercel et Cloudflare dans leurs propres politiques.",
-          "Messages de contact : douze mois après le dernier échange, puis suppression.",
-          "Journal saisonnier : jusqu’à votre désinscription."
+          "Journaux techniques : durée limitée, fixée par Vercel dans sa propre politique.",
+          "E-mails : douze mois après le dernier échange, puis suppression.",
+          "Messages Instagram : conservés dans Instagram selon la politique de Meta. Vous pouvez demander à tout moment la suppression de la conversation de notre côté."
         ]
       },
       {
-        "eyebrow": "Prestataires",
-        "title": "Sous-traitants et transferts hors UE",
+        "eyebrow": "Prestataire",
+        "title": "Hébergeur et transfert hors UE",
         "body": [
-          "Vercel Inc. (hébergement), Cloudflare, Inc. (protection anti-robots) et Plus Five Five, Inc., qui exploite Resend (envoi des e-mails). Ces trois prestataires sont établis aux États-Unis : vos données peuvent donc être transférées hors de l’Union européenne.",
-          "Vercel et Resend indiquent encadrer ces transferts par le cadre de protection des données UE-États-Unis (Data Privacy Framework) et par les clauses contractuelles types de la Commission européenne. Cloudflare les encadre selon sa propre politique de confidentialité."
+          "Le site est hébergé par Vercel Inc., établi aux États-Unis : les journaux techniques peuvent donc être transférés hors de l’Union européenne.",
+          "Vercel indique encadrer ces transferts par le cadre de protection des données UE-États-Unis (Data Privacy Framework) et par les clauses contractuelles types de la Commission européenne."
         ]
       },
       {
@@ -295,7 +262,7 @@
         "eyebrow": "Cookies",
         "title": "Cookies",
         "body": [
-          "Ce site n’utilise aucun cookie publicitaire ni de mesure d’audience. Seul Cloudflare Turnstile peut déposer un cookie strictement nécessaire à la sécurité des formulaires. C’est pourquoi aucun bandeau de consentement n’est affiché."
+          "Ce site ne dépose aucun cookie et n’utilise aucun outil de mesure d’audience. C’est pourquoi aucun bandeau de consentement n’est affiché."
         ]
       },
       {
@@ -320,8 +287,7 @@
       "Droit de rectification",
       "Droit à l’effacement",
       "Droit d’opposition au traitement",
-      "Droit à la limitation et à la portabilité",
-      "Droit de retirer votre consentement"
+      "Droit à la limitation du traitement"
     ]
   },
   "footer": {
@@ -331,20 +297,8 @@
       "note": "Sur rendez-vous",
       "email": "contact@bulgarcamo.com"
     },
-    "journal": {
-      "label": "Le Journal",
-      "body": "Un envoi par saison. Nouvelles pièces, notes, prélèvements.",
-      "placeholder": "Adresse e-mail",
-      "cta": "S'inscrire",
-      "sending": "Envoi…",
-      "done": "Inscription enregistrée. À la prochaine saison.",
-      "error": "Une erreur s'est produite. Réessayez.",
-      "consent": "J'accepte de recevoir le journal et j'ai lu la",
-      "consent_link": "politique de confidentialité"
-    },
     "legal": {
       "label": "Informations",
-      "pro": "Professionnels",
       "mentions": "Mentions légales",
       "privacy": "Confidentialité",
       "contact": "Contact"

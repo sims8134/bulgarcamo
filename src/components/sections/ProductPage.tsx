@@ -101,18 +101,11 @@ export default function ProductPage({ product }: Props) {
               {/* Édition et disponibilité */}
               <div className="space-y-4 pt-8 border-t border-line">
                 <p className="eyebrow">{t('product.availability')}</p>
+                <p className="prose-narrow">{t('product.availability_note')}</p>
                 <dl className="space-y-2 text-body">
-                  <InfoRow label={t('product.edition_label')}>
-                    {product.edition
-                      ? `${product.edition.current} / ${product.edition.total}`
-                      : t('product.edition_default')}
-                  </InfoRow>
                   {product.dimensions && (
                     <InfoRow label={t('product.dimensions_label')}>{product.dimensions}</InfoRow>
                   )}
-                  <InfoRow label={t('product.lead_time_label')}>
-                    {t('product.lead_time_value')}
-                  </InfoRow>
                 </dl>
                 {product.dimensions && (
                   <p className="text-caption text-text-muted">{t('product.dimensions_note')}</p>
