@@ -23,7 +23,7 @@ export const motifs: Record<MotifKey, Motif> = {
   },
   splinter_1991: {
     key: 'splinter_1991',
-    name: 'Splinter 1991',
+    name: 'Splinter 91',
     nameCyrillic: 'Сплинтер',
     year: 1991,
     eraKey: 'motifs.splinter_1991.era',
@@ -49,6 +49,16 @@ export const motifs: Record<MotifKey, Motif> = {
     descriptionKey: 'motifs.flecktarn.description',
   },
 };
+
+// Le nom du motif contient-il déjà une année (« Splinter 91 ») ?
+export function nameHasYear(name: string): boolean {
+  return /\d/.test(name);
+}
+
+// « Bulgarian DPM · 2004 », mais « Splinter 91 » seul : pas d'année répétée
+export function motifWithYear(name: string, year: number | string): string {
+  return nameHasYear(name) ? name : `${name} · ${year}`;
+}
 
 // Ordre canonique du site (frogskin en premier — c'est le motif vedette de Bulgarcamo)
 export const motifsList: Motif[] = [

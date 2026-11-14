@@ -63,7 +63,7 @@ export const products: Product[] = [
     textileYear: 1968,
   },
 
-  // SPLINTER 1991
+  // SPLINTER 91
   {
     id: 'splinter91-cardholder',
     ref: 'B.01',

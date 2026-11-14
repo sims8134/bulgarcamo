@@ -3,7 +3,7 @@ import { IMAGE_SIZES } from '@/lib/imageSizes';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import type { Product } from '@/data/products';
-import { motifs } from '@/content/motifs';
+import { motifs, motifWithYear } from '@/content/motifs';
 import { AccentTitle } from '@/components/primitives/AccentTitle';
 import { PhotoFrame } from '@/components/primitives/PhotoFrame';
 import { tapeFor } from '@/content/tapePlacement';
@@ -65,7 +65,7 @@ export default function ProductPage({ product }: Props) {
                   <AccentTitle text={t(`products.names.${product.nameKey}`)} />
                 </h1>
                 <p className="label text-text-muted">
-                  {motif.name} · {product.textileYear ?? motif.year}
+                  {motifWithYear(motif.name, product.textileYear ?? motif.year)}
                 </p>
               </div>
 
