@@ -46,7 +46,7 @@ export default function Hero() {
             </PhotoFrame>
             <figcaption className="mt-8 flex items-baseline justify-between gap-4 label text-text-muted">
               <span>D.03 · {t('imageCaption')}</span>
-              <span>1991</span>
+              <span>1990</span>
             </figcaption>
           </figure>
         </div>

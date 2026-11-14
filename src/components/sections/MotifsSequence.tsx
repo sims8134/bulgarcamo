@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { IMAGE_SIZES } from '@/lib/imageSizes';
 import { useTranslations } from 'next-intl';
-import { motifsList, type Motif } from '@/content/motifs';
+import { motifsList, nameHasYear, type Motif } from '@/content/motifs';
 import { ACTIVE_MOTIFS } from '@/data/products';
 import { AccentTitle } from '@/components/primitives/AccentTitle';
 import { PhotoFrame } from '@/components/primitives/PhotoFrame';
@@ -14,7 +14,7 @@ const motifImages: Record<string, { src: string; alt: string }> = {
   },
   splinter_1991: {
     src: '/images/products/splinter-multipouch-02.jpg',
-    alt: 'Textile Splinter 1991, vue rapprochée',
+    alt: 'Textile Splinter 91, vue rapprochée',
   },
   dpm: {
     src: '/images/products/dpm-multipouch-01.jpg',
@@ -121,7 +121,7 @@ function MotifBlock({
               </PhotoFrame>
               <figcaption className="mt-8 flex items-baseline justify-between label text-text-muted">
                 <span>{motif.name}</span>
-                <span>{motif.year}</span>
+                {!nameHasYear(motif.name) && <span>{motif.year}</span>}
               </figcaption>
             </figure>
           </div>

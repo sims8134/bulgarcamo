@@ -63,7 +63,7 @@ export const products: Product[] = [
     textileYear: 1968,
   },
 
-  // SPLINTER 1991
+  // SPLINTER 91
   {
     id: 'splinter91-cardholder',
     ref: 'B.01',
@@ -191,7 +191,7 @@ export const products: Product[] = [
       '/images/products/flecktarn-cardholder-04.jpg',
     ],
     aspect: 'portrait',
-    textileYear: 1991,
+    textileYear: 1990,
     dimensions: '~10,5 × 9,5 cm',
   },
   {
@@ -209,7 +209,7 @@ export const products: Product[] = [
       '/images/products/flecktarn-earphone-04.jpg',
     ],
     aspect: 'square',
-    textileYear: 1991,
+    textileYear: 1990,
     dimensions: '~9 × 9 cm',
   },
   {
@@ -228,7 +228,7 @@ export const products: Product[] = [
       '/images/products/flecktarn-multipouch-05.jpg',
     ],
     aspect: 'portrait',
-    textileYear: 1991,
+    textileYear: 1990,
     dimensions: '~21 × 11 cm',
   },
 ];

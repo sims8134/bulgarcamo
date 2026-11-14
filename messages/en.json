@@ -49,25 +49,25 @@
       "description": "Bright green spots and brown rain straits on a grey background. Introduced circa 1968 alongside the splinter pattern, on the same coverall cut, possibly to confuse NATO forces. The coveralls were later reissued to border troops."
     },
     "splinter_1991": {
-      "name": "Splinter 1991",
+      "name": "Splinter 91",
       "ref": "REF. 02",
-      "era": "Bulgaria · 1991–2002",
-      "provenance": "Fifth and last version of the Bulgarian splinter.",
-      "description": "Angular dark green and dark brown shapes over olive, crossed by thin rain straits. The end of a lineage opened in the 1940s from the German Splittertarnmuster and run through five successive versions. Universal issue within the armed forces until 2002."
+      "era": "Bulgaria, from 1991 to around 2002",
+      "provenance": "Fifth and last version of the Bulgarian splinter, issued across the whole armed forces.",
+      "description": "Dark green and dark brown angular shapes on an olive ground, crossed by thin rain stripes. A lineage that began during or just after the Second World War, derived from the German Splittertarnmuster."
     },
     "dpm": {
       "name": "Bulgarian DPM",
       "ref": "REF. 03",
-      "era": "Bulgaria · 2004–2018",
-      "provenance": "Adopted after Bulgaria joined NATO.",
-      "description": "Five-colour design — black, russet, medium olive and light olive green over a pale green or khaki ground. Modelled on British DPM, first fielded by units serving in the Balkans, then extended to the entire armed forces until 2018."
+      "era": "Bulgaria, from 2004 to 2018",
+      "provenance": "Introduced just after Bulgaria joined NATO in 2004.",
+      "description": "Black, russet, medium olive and light olive shapes on a pale green or khaki ground, five colours in total. Based on the British DPM, first fielded by units serving in the Balkans, then the standard pattern of the whole armed forces until 2018."
     },
     "flecktarn": {
       "name": "German Flecktarn",
       "ref": "REF. 04",
-      "era": "Germany · 1991",
-      "provenance": "Standard uniform of the Bundeswehr.",
-      "description": "Five-colour speckle — dark green, light green, black, red-brown, khaki — on a light base. The European reference for temperate-zone camouflage. In 2018 Bulgaria adopted M-18, a semi-digital pattern built on the same palette."
+      "era": "Germany, 1990",
+      "provenance": "Developed in 1976 and tested the same year in the Bundeswehr's Truppenversuch 76 trials, issued across the Bundeswehr from 1990.",
+      "description": "Five colours in spots: light green, light olive, dark green, brown and black. The European reference for temperate camouflage. In 2018 Bulgaria introduced the M18, a digital hybrid pattern with a palette very close to Flecktarn."
     }
   },
   "pieces_section": {

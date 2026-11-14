@@ -13,15 +13,15 @@ const BASE_URL = 'https://www.bulgarcamo.com';
 const OG_IMAGE = '/og-image.jpg';
 
 const titles: Record<string, string> = {
-  en: 'Bulgarcamo — Cuts from the archive',
-  fr: "Bulgarcamo — Coupes dans l'archive",
-  bg: 'Bulgarcamo — Кройки от архива',
+  en: 'Bulgarcamo · Cuts from the archive',
+  fr: "Bulgarcamo · Coupes dans l'archive",
+  bg: 'Bulgarcamo · Кройки от архива',
 };
 
 const descriptions: Record<string, string> = {
   en: 'Sofia, България. Bulgarian and German military textile archives, cut into rare civilian pieces.',
   fr: 'Sofia, България. Archives textiles militaires bulgares et allemandes, taillées en pièces civiles rares.',
-  bg: 'София, България. Архивни военни текстили — български и германски — изрязани в редки граждански парчета.',
+  bg: 'София, България. Архивни военни текстили, български и германски, изрязани в редки граждански парчета.',
 };
 
 const ogLocales: Record<string, string> = {
@@ -31,9 +31,9 @@ const ogLocales: Record<string, string> = {
 };
 
 const ogAlts: Record<string, string> = {
-  en: 'Bulgarcamo — textile pieces cut from military camouflage archives, Sofia',
-  fr: 'Bulgarcamo — pièces textiles taillées dans les archives de camouflage militaire, Sofia',
-  bg: 'Bulgarcamo — текстилни парчета от архивни военни камуфлажи, София',
+  en: 'Bulgarcamo · textile pieces cut from military camouflage archives, Sofia',
+  fr: 'Bulgarcamo · pièces textiles taillées dans les archives de camouflage militaire, Sofia',
+  bg: 'Bulgarcamo · текстилни парчета от архивни военни камуфлажи, София',
 };
 
 const languageAlternates = {
@@ -59,7 +59,7 @@ export async function generateMetadata({
     metadataBase: new URL(BASE_URL),
     title: {
       default: title,
-      template: '%s — Bulgarcamo',
+      template: '%s · Bulgarcamo',
     },
     description,
     icons: {
