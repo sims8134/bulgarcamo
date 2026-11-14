@@ -43,7 +43,7 @@ export const motifs: Record<MotifKey, Motif> = {
     key: 'flecktarn',
     name: 'Flecktarn',
     nameCyrillic: 'Флектарн',
-    year: 1991,
+    year: 1990,
     eraKey: 'motifs.flecktarn.era',
     provenanceKey: 'motifs.flecktarn.provenance',
     descriptionKey: 'motifs.flecktarn.description',

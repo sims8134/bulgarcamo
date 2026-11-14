@@ -38,7 +38,9 @@ export async function generateMetadata({
   const era = tMotifs(`${product.motif}.era`);
 
   const title = `${productName} — ${motifName}`;
-  const description = `${productName} — ${motifName}, ${era}. ${provenance} ${product.ref} · Sofia.`;
+  // l'étiquette bulgare finit déjà par « г. » : pas de second point
+  const eraEnd = era.endsWith('.') ? era : `${era}.`;
+  const description = `${productName} — ${motifName}, ${eraEnd} ${provenance} ${product.ref} · Sofia.`;
 
   const path = `/${locale}/catalogue/${product.id}`;
   const imageAlt = `${productName} ${motifName} — Bulgarcamo`;

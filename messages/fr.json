@@ -51,23 +51,23 @@
     "splinter_1991": {
       "name": "Splinter 1991",
       "ref": "REF. 02",
-      "era": "Bulgarie · 1991–2002",
-      "provenance": "Cinquième et dernière version du splinter bulgare.",
-      "description": "Formes anguleuses vert foncé et brun foncé sur fond olive, traversées de fines stries de pluie. Aboutissement d'une lignée ouverte dans les années 1940 à partir du Splittertarnmuster allemand et déclinée en cinq versions successives. Distribution universelle dans les forces armées jusqu'en 2002."
+      "era": "Bulgarie, de 1991 à 2002 environ",
+      "provenance": "Cinquième et dernière version du splinter bulgare, distribuée dans toute l'armée.",
+      "description": "Formes angulaires vert foncé et brun foncé sur fond olive, traversées de fines rayures de pluie. Une lignée ouverte pendant ou juste après la Seconde Guerre mondiale, à partir du Splittertarnmuster allemand."
     },
     "dpm": {
       "name": "Bulgarian DPM",
       "ref": "REF. 03",
-      "era": "Bulgarie · 2004–2018",
-      "provenance": "Adopté après l'entrée de la Bulgarie dans l'OTAN.",
-      "description": "Motif à cinq couleurs — noir, roux, olive moyen et vert olive clair sur fond vert pâle ou kaki. Inspiré du DPM britannique, d'abord porté par les unités déployées dans les Balkans, puis étendu à l'ensemble des forces armées jusqu'en 2018."
+      "era": "Bulgarie, de 2004 à 2018",
+      "provenance": "Introduit juste après l'entrée de la Bulgarie dans l'OTAN en 2004.",
+      "description": "Formes noires, rousses, olive moyen et olive clair sur fond vert pâle ou kaki, soit cinq couleurs au total. Inspiré du DPM britannique, d'abord porté par les unités servant dans les Balkans, puis camouflage standard de toute l'armée jusqu'en 2018."
     },
     "flecktarn": {
       "name": "German Flecktarn",
       "ref": "REF. 04",
-      "era": "Allemagne · 1991",
-      "provenance": "Uniforme standard de la Bundeswehr.",
-      "description": "Mouchetures à cinq couleurs — vert sombre, vert clair, noir, brun-rouge, kaki — sur base claire. Référence européenne du camouflage en zone tempérée. La Bulgarie adoptera en 2018 le M-18, motif semi-numérique bâti sur la même palette."
+      "era": "Allemagne, 1990",
+      "provenance": "Développé en 1976 et testé la même année lors des essais Truppenversuch 76 de la Bundeswehr, généralisé dans la Bundeswehr en 1990.",
+      "description": "Cinq couleurs en taches : vert clair, olive clair, vert foncé, brun et noir. Référence européenne du camouflage tempéré. En 2018, la Bulgarie a introduit le M18, un motif numérique hybride à la palette très proche du Flecktarn."
     }
   },
   "pieces_section": {
