@@ -3,13 +3,11 @@ import Script from 'next/script';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale, getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { ViewTransitions } from 'next-view-transitions';
 import { locales, type Locale } from '@/i18n/config';
 import { fontVariables } from '@/lib/fonts';
-import SmoothScroll from '@/components/shell/SmoothScroll';
 import Header from '@/components/shell/Header';
+import MetaBar from '@/components/shell/MetaBar';
 import Footer from '@/components/shell/Footer';
-import Cursor from '@/components/primitives/Cursor';
 import '../globals.css';
 
 const BASE_URL = 'https://www.bulgarcamo.com';
@@ -65,6 +63,13 @@ export async function generateMetadata({
       template: '%s — Bulgarcamo',
     },
     description,
+    icons: {
+      icon: [
+        { url: '/brand/favicon.svg', type: 'image/svg+xml' },
+        { url: '/brand/favicon.png', type: 'image/png', sizes: '512x512' },
+      ],
+      apple: [{ url: '/brand/apple-touch-icon.png', sizes: '180x180' }],
+    },
     verification: {
       google: 'BaYT13lGPokUJQ7dEMNZKT8d_J6r0o7usxwAeO0GuO8',
     },
@@ -111,26 +116,29 @@ export default async function LocaleLayout({
   }
 
   setRequestLocale(locale as Locale);
-  const messages = await getMessages();
+  const allMessages = await getMessages();
+  // Seuls les espaces lus par des composants client sont envoyés au navigateur
+  // (en-tête, newsletter, catalogue filtrable, formulaire de contact).
+  const CLIENT_NAMESPACES = ['nav', 'footer', 'catalogue', 'products', 'contact'] as const;
+  const messages = Object.fromEntries(
+    CLIENT_NAMESPACES.filter((k) => k in allMessages).map((k) => [k, allMessages[k]]),
+  );
 
   return (
-    <ViewTransitions>
-      <html lang={locale} className={fontVariables}>
-        <body className="bg-ivoire text-encre font-sans antialiased">
-          <NextIntlClientProvider messages={messages} locale={locale}>
-            <SmoothScroll />
-            <Cursor />
-            <Header />
-            <main>{children}</main>
-            <Footer />
-          </NextIntlClientProvider>
+    <html lang={locale} className={fontVariables}>
+      <body className="bg-bg text-text font-sans antialiased">
+        <NextIntlClientProvider messages={messages} locale={locale}>
+          <Header />
+          <MetaBar />
+          <main className="site-layer">{children}</main>
+          <Footer />
+        </NextIntlClientProvider>
 
-          <Script
-            src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-            strategy="lazyOnload"
-          />
-        </body>
-      </html>
-    </ViewTransitions>
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          strategy="lazyOnload"
+        />
+      </body>
+    </html>
   );
 }

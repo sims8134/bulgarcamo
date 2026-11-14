@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { Reveal } from '@/components/primitives/Reveal';
+import { AccentTitle } from '@/components/primitives/AccentTitle';
 
 export default function Pro() {
   const t = useTranslations('pro');
@@ -8,41 +8,24 @@ export default function Pro() {
   return (
     <section
       id="pro"
-      className="relative section-y border-t border-encre/8"
-      style={{ backgroundColor: 'rgba(201, 194, 182, 0.18)' }}
+      className="relative section-y bg-surface border-t border-line"
       aria-labelledby="pro-heading"
     >
       <div className="container-page">
-        <div className="grid grid-cols-12 gap-6 items-end">
-          {/* Colonne gauche — eyebrow + titre */}
-          <div className="col-span-12 md:col-span-6 space-y-8">
-            <Reveal>
-              <p className="eyebrow">— {t('eyebrow')}</p>
-            </Reveal>
-            <Reveal delay={150}>
-              <h2
-                id="pro-heading"
-                className="font-display font-light text-encre tracking-tight"
-                style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: 1.1 }}
-              >
-                {t('title')}
-              </h2>
-            </Reveal>
+        <div className="grid grid-cols-12 gap-6 gap-y-10 items-end">
+          <div className="col-span-12 md:col-span-6 space-y-10">
+            <p className="eyebrow">{t('eyebrow')}</p>
+            <h2 id="pro-heading" className="heading-md">
+              <AccentTitle text={t('title')} />
+            </h2>
           </div>
 
-          {/* Colonne droite — body + CTA */}
           <div className="col-span-12 md:col-span-5 md:col-start-8 space-y-8">
-            <Reveal delay={300}>
-              <p className="text-body text-encre/75 max-w-prose-narrow">
-                {t('body')}
-              </p>
-            </Reveal>
-            <Reveal delay={450}>
-              <Link href="/contact?subject=trade" className="cta-quiet">
-                <span>{t('cta')}</span>
-                <span aria-hidden>→</span>
-              </Link>
-            </Reveal>
+            <p className="prose-narrow">{t('body')}</p>
+            <Link href="/contact?subject=trade" className="cta">
+              <span>{t('cta')}</span>
+              <span aria-hidden>→</span>
+            </Link>
           </div>
         </div>
       </div>

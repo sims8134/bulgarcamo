@@ -2,11 +2,12 @@
 
 import { useState, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import { activeProducts, ACTIVE_MOTIFS } from '@/data/products';
 import type { MotifKey } from '@/data/products';
 import { motifsList } from '@/content/motifs';
-import { Reveal } from '@/components/primitives/Reveal';
 import PieceCard from '@/components/sections/PieceCard';
+import { AccentTitle } from '@/components/primitives/AccentTitle';
 import { cn } from '@/lib/cn';
 
 type Filter = 'all' | MotifKey;
@@ -15,7 +16,6 @@ export default function CatalogueMosaic() {
   const t = useTranslations();
   const [filter, setFilter] = useState<Filter>('all');
 
-  // On filtre les produits visibles (image non null) + filtre motif
   const visibleProducts = useMemo(() => {
     return activeProducts
       .filter((p) => p.image !== null)
@@ -25,70 +25,48 @@ export default function CatalogueMosaic() {
   return (
     <section
       id="catalogue"
-      className="relative bg-ivoire border-t border-encre/8 section-y-lg"
+      className="relative border-t border-line section-y-lg scroll-mt-16"
       aria-labelledby="catalogue-heading"
     >
       <div className="container-page">
-        {/* Header de section — eyebrow + titre + intro */}
-        <div className="grid grid-cols-12 gap-6 mb-22 lg:mb-30">
+        <div className="grid grid-cols-12 gap-6 mb-18 lg:mb-22">
           <div className="col-span-12 md:col-span-2">
-            <Reveal>
-              <p className="eyebrow">— {t('catalogue.eyebrow')}</p>
-            </Reveal>
+            <p className="eyebrow">{t('catalogue.eyebrow')}</p>
           </div>
-          <div className="col-span-12 md:col-span-9 md:col-start-4 space-y-8">
-            <Reveal delay={150}>
-              <h2 id="catalogue-heading" className="heading-lg text-encre">
-                {t('catalogue.title')}
-              </h2>
-            </Reveal>
-            <Reveal delay={300}>
-              <p className="lede max-w-prose-narrow text-encre/80">
-                {t('catalogue.intro')}
-              </p>
-            </Reveal>
+          <div className="col-span-12 md:col-span-9 md:col-start-4 space-y-10">
+            <h2 id="catalogue-heading" className="heading-lg">
+              <AccentTitle text={t('catalogue.title')} />
+            </h2>
+            <p className="lede max-w-prose-narrow">{t('catalogue.intro')}</p>
           </div>
         </div>
 
         {/* Filtres + compteur */}
-        <Reveal delay={150}>
-          <div className="flex flex-wrap items-center justify-between gap-y-6 gap-x-8 mb-16 pb-4 border-b border-encre/15">
-            <FilterBar filter={filter} setFilter={setFilter} />
-            <p className="font-mono text-mono-xs uppercase text-encre/55">
-              {visibleProducts.length} {t('catalogue.items_count')}
-            </p>
-          </div>
-        </Reveal>
+        <div className="flex flex-wrap items-center justify-between gap-y-6 gap-x-8 mb-16 pb-5 border-b border-line">
+          <FilterBar filter={filter} setFilter={setFilter} />
+          <p className="label text-text-muted" aria-live="polite">
+            {visibleProducts.length} {t('catalogue.items_count')}
+          </p>
+        </div>
 
-        {/* Grille mosaïque */}
-        <div className="grid grid-cols-2 lg:grid-cols-12 gap-x-4 lg:gap-x-6 gap-y-16 lg:gap-y-22">
+        {/* Grille */}
+        <div className="grid grid-cols-2 lg:grid-cols-12 gap-x-6 lg:gap-x-14 gap-y-16 lg:gap-y-22">
           {visibleProducts.map((product, index) => (
-            <PieceCard
-              key={product.id}
-              product={product}
-              index={index}
-            />
+            <PieceCard key={product.id} product={product} index={index} />
           ))}
         </div>
 
-        {/* Footer de section — note + CTA */}
-        <Reveal>
-          <div className="mt-30 pt-10 border-t border-encre/15 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <p className="font-mono text-mono-xs uppercase text-encre/55 max-w-md">
-              {t('catalogue.footer_note')}
-            </p>
-            <a href="#contact" className="cta-quiet">
-              <span>{t('catalogue.footer_cta')}</span>
-              <span aria-hidden>→</span>
-            </a>
-          </div>
-        </Reveal>
+        <div className="mt-22 pt-10 border-t border-line flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <p className="label text-text-muted max-w-md">{t('catalogue.footer_note')}</p>
+          <Link href="/contact" className="cta self-start">
+            <span>{t('catalogue.footer_cta')}</span>
+            <span aria-hidden>→</span>
+          </Link>
+        </div>
       </div>
     </section>
   );
 }
-
-/* — Sous-composant : barre de filtres — */
 
 function FilterBar({
   filter,
@@ -99,7 +77,6 @@ function FilterBar({
 }) {
   const t = useTranslations();
 
-  // On ne garde que les motifs de la collection en cours
   const activeMotifsList = motifsList.filter((m) =>
     ACTIVE_MOTIFS.includes(m.key as MotifKey),
   );
@@ -110,28 +87,19 @@ function FilterBar({
   ];
 
   return (
-    <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+    <div className="flex flex-wrap items-center gap-3">
       {items.map(({ key, label }) => (
         <button
           key={key}
+          type="button"
           onClick={() => setFilter(key)}
-          className={cn(
-            'font-mono text-mono-sm uppercase tracking-wider transition-all duration-400 ease-expo-out',
-            'relative pb-1',
-            filter === key
-              ? 'text-encre'
-              : 'text-encre/40 hover:text-encre/70'
-          )}
           aria-pressed={filter === key}
+          className={cn(
+            'tag',
+            filter === key ? 'bg-accent text-bg' : 'border-line text-text hover:border-accent',
+          )}
         >
           {label}
-          <span
-            aria-hidden
-            className={cn(
-              'absolute left-0 right-0 -bottom-px h-px bg-encre transition-transform duration-500 ease-expo-out origin-left',
-              filter === key ? 'scale-x-100' : 'scale-x-0'
-            )}
-          />
         </button>
       ))}
     </div>

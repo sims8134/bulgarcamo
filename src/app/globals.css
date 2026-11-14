@@ -2,57 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   BULGARCAMO · VISION NOCTURNE CASSÉ
+   Source unique des couleurs : les variables ci-dessous.
+   Tailwind les mappe dans tailwind.config.ts (bg-bg, text-accent…).
+   ============================================================ */
+
 @layer base {
   :root {
-    --color-ivoire: #F2EFE8;
-    --color-encre: #1A1A18;
-    --color-sauge: #7A8470;
-    --color-sauge-fonce: #5F6857;
-    --color-pierre: #C9C2B6;
+    --bg: #050805;            /* fond */
+    --surface: #0b120b;       /* cartes et blocs */
+    --accent: #7dff4f;        /* vert phosphore */
+    --accent-dim: #3f8a2a;    /* métadonnées secondaires ≥ 18 px */
+    --text: #e9ffe0;          /* titres et texte principal */
+    --text-muted: #cfe8c6;    /* texte courant long */
+    --line: rgba(125, 255, 79, 0.35);
+    --scanline: rgba(125, 255, 79, 0.05);
 
-    /* filets et voiles dérivés de l'encre — une seule source de vérité */
-    --rule-faible: rgba(26, 26, 24, 0.15);
-    --rule-moyen: rgba(26, 26, 24, 0.30);
-    --texte-doux: rgba(26, 26, 24, 0.85);
-    --texte-tertiaire: rgba(26, 26, 24, 0.55);
+    /* dérivés utilisés par les effets */
+    --title-shadow-accent: rgba(125, 255, 79, 0.6);
+    --title-shadow-white: rgba(255, 255, 255, 0.25);
+    --tape: rgba(125, 255, 79, 0.45);
+    --photo-shadow: rgba(0, 0, 0, 0.7);
+
+    /* rotations « cassé », réduites de moitié sous 480 px */
+    --tilt-title: -2deg;
+    --tilt-a: -2.4deg;
+    --tilt-b: 1.9deg;
+    --viseur: 54px;
+  }
+
+  @media (max-width: 479px) {
+    :root {
+      --tilt-title: -1deg;
+      --tilt-a: -1.2deg;
+      --tilt-b: 0.95deg;
+      --viseur: 36px;
+    }
   }
 
   html {
-    color-scheme: light;
-    text-rendering: optimizeLegibility;
+    color-scheme: dark;
+    background-color: var(--bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: auto;
   }
 
   body {
-    @apply bg-ivoire text-encre font-sans;
-    font-size: 15px;
+    @apply bg-bg font-sans text-text;
+    font-size: 16px;
     line-height: 1.65;
     font-weight: 400;
-    font-feature-settings: 'ss01', 'cv11', 'calt';
+    min-height: 100vh;
+    /* aucune barre de défilement horizontale, même avec les rotations */
+    overflow-x: clip;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
-    font-weight: 300;
-    letter-spacing: -0.02em;
+  /* Titres h1/h2 : Inter 900, capitales, tirage mal calé.
+     Le mot en accent est posé par <AccentTitle /> ou une <span class="text-accent">. */
+  h1,
+  h2 {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.045em;
+    word-spacing: 0.14em;
+    line-height: 0.88;
+    color: var(--text);
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    transform: rotate(var(--tilt-title));
+    transform-origin: left center;
+    text-shadow:
+      -5px 0 0 var(--title-shadow-accent),
+      5px 2px 0 var(--title-shadow-white);
   }
 
-  /* text-wrap: balance équilibre les titres sur plusieurs lignes.
-     Ignoré par les navigateurs qui ne le connaissent pas. */
-  h1, h2, h3 {
+  h3 {
     text-wrap: balance;
   }
 
   ::selection {
-    background: var(--color-encre);
-    color: var(--color-ivoire);
+    background: var(--accent);
+    color: var(--bg);
   }
 
   :focus-visible {
-    outline: 1px solid var(--color-sauge-fonce);
-    outline-offset: 4px;
-    border-radius: 1px;
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 
   a {
@@ -60,341 +98,324 @@
     text-decoration: none;
   }
 
-  ul, ol {
+  input[type='checkbox'],
+  input[type='radio'] {
+    accent-color: var(--accent);
+  }
+
+  ul,
+  ol {
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
+  /* Le site n'a aucune animation ; ceinture et bretelles pour les
+     contenus tiers si l'utilisateur demande moins de mouvement. */
   @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      transition-duration: 0.01ms !important;
-    }
-
-    /* neutralise aussi les transitions de vue */
-    ::view-transition-group(*),
-    ::view-transition-old(root),
-    ::view-transition-new(root) {
+    *,
+    *::before,
+    *::after {
       animation: none !important;
+      transition: none !important;
     }
   }
 }
 
+/* ============================================================
+   FOND : GRAIN + LIGNES DE BALAYAGE
+   Les deux calques sont fixes, sous le contenu (z-index 0).
+   Le contenu (.site-layer) est au-dessus : les photos, opaques,
+   ne sont jamais recouvertes.
+   ============================================================ */
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* grain très léger */
+body::before {
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* lignes de balayage statiques */
+body::after {
+  background-image: repeating-linear-gradient(
+    0deg,
+    var(--scanline) 0 2px,
+    transparent 2px 5px
+  );
+}
+
 @layer components {
+  .site-layer {
+    position: relative;
+    z-index: 1;
+  }
+
   .container-page {
-    @apply mx-auto px-6 md:px-10 lg:px-16;
+    @apply mx-auto px-4 sm:px-6 md:px-10 lg:px-16;
     max-width: 1600px;
   }
 
   .container-narrow {
-    @apply mx-auto px-6 md:px-10;
+    @apply mx-auto px-4 sm:px-6 md:px-10;
     max-width: 1100px;
   }
 
-  .eyebrow {
+  /* Étiquette mono : navigation, références, années, métadonnées */
+  .label {
     @apply font-mono text-mono-sm uppercase;
-    color: var(--texte-tertiaire);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+  }
+
+  /* Cadre d'étiquette : langue, section, série */
+  .tag {
+    @apply font-mono text-mono-sm uppercase inline-flex items-center;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1;
+    padding: 0.45em 0.7em 0.4em;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    background: transparent;
+  }
+
+  /* anciens noms conservés, restylés */
+  .eyebrow {
+    @apply tag;
   }
 
   .ref-tag {
-    @apply font-mono text-mono-xs uppercase;
-    color: rgba(26, 26, 24, 0.5);
+    @apply label text-text-muted;
   }
 
-  .heading-display {
-    @apply font-display text-h-display tracking-tighter;
-    font-weight: 300;
+  /* Métadonnées décoratives en accent atténué : 18 px minimum */
+  .meta-dim {
+    @apply font-mono text-meta uppercase text-accent-dim;
+    font-weight: 700;
+    letter-spacing: 0.14em;
   }
 
   .heading-xl {
-    @apply font-display text-h-xl tracking-tight;
-    font-weight: 300;
+    @apply text-h-xl;
   }
-
   .heading-lg {
-    @apply font-display text-h-lg tracking-tight;
-    font-weight: 300;
+    @apply text-h-lg;
   }
-
   .heading-md {
-    @apply font-display text-h-md tracking-tight;
-    font-weight: 400;
+    @apply text-h-md;
   }
-
   .heading-sm {
-    @apply font-display text-h-sm;
-    font-weight: 400;
+    @apply text-h-sm;
   }
 
-  .piece-name {
-    @apply font-display italic;
-    font-weight: 400;
+  /* Nom bulgare d'un motif */
+  .cyr-name {
+    @apply font-tektur;
+    font-weight: 500;
+    letter-spacing: 0.01em;
   }
 
   .prose-editorial {
-    @apply text-body max-w-prose-editorial;
-    color: var(--texte-doux);
+    @apply text-body max-w-prose-editorial text-text-muted;
   }
 
   .prose-narrow {
-    @apply text-body max-w-prose-narrow;
-    color: var(--texte-doux);
+    @apply text-body max-w-prose-narrow text-text-muted;
   }
 
   .lede {
-    @apply font-display text-lede text-encre;
-    font-weight: 400;
-    font-style: italic;
+    @apply text-lede text-text;
+    font-weight: 500;
   }
 
-  /* Le texte du lien reste en encre — seul le filet passe en sauge au survol. */
-  .link-editorial {
-    @apply relative inline-block transition-colors duration-400 ease-expo-out;
+  .link-line {
+    color: var(--accent);
     text-decoration: underline;
-    text-decoration-color: var(--rule-moyen);
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
   }
-  .link-editorial:hover {
-    text-decoration-color: var(--color-sauge-fonce);
+  .link-line:hover {
+    color: var(--text);
   }
 
-  .cta-quiet {
-    @apply inline-flex items-center gap-3 font-mono text-mono-sm uppercase
-           transition-all duration-400 ease-expo-out
-           pb-1;
-    border-bottom: 1px solid var(--rule-moyen);
+  /* Bouton / lien d'action : droit, cadre 2 px, aucune transition */
+  .cta {
+    @apply label inline-flex items-center gap-3;
+    padding: 0.85em 1.2em;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    background: transparent;
   }
-  .cta-quiet:hover {
-    border-bottom-color: var(--color-sauge-fonce);
+  .cta:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .cta:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    background: transparent;
+    color: var(--accent);
   }
 
   .rule {
-    @apply h-px w-full;
-    background-color: var(--rule-faible);
+    @apply h-px w-full bg-line;
+  }
+
+  .rule-accent {
+    height: 2px;
+    width: 100%;
+    background: var(--accent);
+  }
+
+  /* Champ de formulaire */
+  .field {
+    @apply w-full bg-transparent text-body font-sans text-text px-0 pb-3 pt-2 outline-none;
+    border-bottom: 1px solid var(--line);
+  }
+  .field:focus {
+    border-bottom-color: var(--accent);
+  }
+  .field::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+
+  /* --------------------------------------------------------
+     REC : point vert de l'en-tête (décoratif)
+     -------------------------------------------------------- */
+  .rec-dot {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 9999px;
+    background: var(--accent);
+  }
+
+  /* --------------------------------------------------------
+     PHOTO « CASSÉE » : inclinaison, ombre, scotch, viseur
+     Structure : .photo-tilt > (.photo-box > img) + .viseur-corner ×4
+     -------------------------------------------------------- */
+  .photo-tilt {
+    position: relative;
+    isolation: isolate;
+  }
+  .photo-tilt-a {
+    transform: rotate(var(--tilt-a));
+  }
+  .photo-tilt-b {
+    transform: rotate(var(--tilt-b));
+  }
+
+  /* Scotch : derrière la photo (z-index -1), seul le dépassement
+     au-dessus du bord est visible. Les pixels de la photo ne sont
+     jamais recouverts. */
+  .photo-tilt::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 120px;
+    height: 32px;
+    background: var(--tape);
+    transform: translateX(-50%) rotate(-5deg);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* Boîte photo : fond opaque, ombre portée sombre, aucune retouche */
+  .photo-box {
+    position: relative;
+    overflow: hidden;
+    background: var(--surface);
+    box-shadow: 0 18px 40px -8px var(--photo-shadow);
+  }
+
+  /* Viseur : quatre équerres hors de l'image, droites par rapport à la photo */
+  .viseur-corner {
+    position: absolute;
+    width: var(--viseur);
+    height: var(--viseur);
+    border: 0 solid var(--accent);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .viseur-tl { top: -10px; left: -10px; border-top-width: 4px; border-left-width: 4px; }
+  .viseur-tr { top: -10px; right: -10px; border-top-width: 4px; border-right-width: 4px; }
+  .viseur-bl { bottom: -10px; left: -10px; border-bottom-width: 4px; border-left-width: 4px; }
+  .viseur-br { bottom: -10px; right: -10px; border-bottom-width: 4px; border-right-width: 4px; }
+
+  /* Variante compacte pour les vignettes du catalogue */
+  .viseur-sm .viseur-corner {
+    width: 26px;
+    height: 26px;
+    border-width: 0;
+  }
+  .viseur-sm .viseur-tl { top: -7px; left: -7px; border-top-width: 3px; border-left-width: 3px; }
+  .viseur-sm .viseur-tr { top: -7px; right: -7px; border-top-width: 3px; border-right-width: 3px; }
+  .viseur-sm .viseur-bl { bottom: -7px; left: -7px; border-bottom-width: 3px; border-left-width: 3px; }
+  .viseur-sm .viseur-br { bottom: -7px; right: -7px; border-bottom-width: 3px; border-right-width: 3px; }
+  .viseur-sm.photo-tilt::after {
+    width: 72px;
+    height: 20px;
+    top: -12px;
+  }
+
+  /* Logo cassé du hero : l'inclinaison est déjà dans le SVG */
+  .logo-casse {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 }
 
 @layer utilities {
-  .watermark-cyrl {
-    @apply font-display tracking-tighter pointer-events-none select-none;
-    font-weight: 300;
-    color: rgba(26, 26, 24, 0.06);
-  }
-
   .section-y {
-    padding-block: clamp(4rem, 10vw, 10rem);
+    padding-block: clamp(4rem, 9vw, 8rem);
   }
 
   .section-y-lg {
-    padding-block: clamp(6rem, 14vw, 14rem);
-  }
-}
-
-/* ============================================================
-   CURSEUR CUSTOM GLOBAL
-   3 états : default (8px) — link (56px) — image (80px + label)
-   Désactivé sur tactile et reduced-motion
-   ============================================================ */
-
-@media (hover: hover) and (pointer: fine) {
-  html.has-custom-cursor,
-  html.has-custom-cursor body,
-  html.has-custom-cursor a,
-  html.has-custom-cursor button,
-  html.has-custom-cursor [role="button"],
-  html.has-custom-cursor label {
-    cursor: none;
+    padding-block: clamp(5rem, 12vw, 11rem);
   }
 
-  html.has-custom-cursor input,
-  html.has-custom-cursor textarea,
-  html.has-custom-cursor select {
-    cursor: text;
+  /* Titre sans inclinaison (petits titres de rubrique) */
+  .title-straight {
+    transform: none;
   }
-}
-
-/* Sur tactile ou en mouvement réduit, le curseur natif doit revenir. */
-@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
-  html.has-custom-cursor,
-  html.has-custom-cursor body,
-  html.has-custom-cursor a,
-  html.has-custom-cursor button,
-  html.has-custom-cursor [role="button"],
-  html.has-custom-cursor label {
-    cursor: auto;
-  }
-
-  .cursor-custom {
-    display: none !important;
-  }
-}
-
-.cursor-custom {
-  transition:
-    width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.cursor-custom[data-state="default"] {
-  width: 8px;
-  height: 8px;
-  background-color: var(--color-encre);
-  mix-blend-mode: difference;
-}
-
-.cursor-custom[data-state="link"] {
-  width: 56px;
-  height: 56px;
-  background-color: var(--color-encre);
-  mix-blend-mode: difference;
-}
-
-.cursor-custom[data-state="image"] {
-  width: 80px;
-  height: 80px;
-  background-color: var(--color-ivoire);
-  color: var(--color-encre);
-  mix-blend-mode: normal;
-}
-
-.cursor-label {
-  opacity: 0;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.cursor-custom[data-state="image"] .cursor-label {
-  opacity: 1;
-}
-
-/* ============================================================
-   VIEW TRANSITIONS — catalogue → fiche produit
-   Ne s'appliquent qu'aux navigations inter-documents.
-   ============================================================ */
-
-@view-transition {
-  navigation: auto;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 0.5s;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-::view-transition-group(*) {
-  animation-duration: 0.7s;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* SplitText — wrapper line pour reveals propres */
-.split-line {
-  overflow: hidden;
-  display: block;
 }
 
 /* ============================================================
    BARRE DE DÉFILEMENT
-   Sauge sur ivoire, aucun arrondi. La bordure de 4 px reprend
-   la couleur du fond : le curseur se lit comme un filet vertical.
    ============================================================ */
 
-/* Firefox */
 @supports (scrollbar-color: auto) {
   html {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-sauge) var(--color-ivoire);
+    scrollbar-color: var(--accent-dim) var(--bg);
   }
 }
 
-/* WebKit — Chrome, Edge, Safari */
 ::-webkit-scrollbar {
   width: 11px;
   height: 11px;
 }
-
 ::-webkit-scrollbar-track {
-  background: var(--color-ivoire);
-  border-left: 1px solid var(--rule-faible);
+  background: var(--bg);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--color-sauge);
-  border: 4px solid var(--color-ivoire);
+  background: var(--accent-dim);
+  border: 3px solid var(--bg);
   border-radius: 0;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-sauge-fonce);
+  background: var(--accent);
 }
-
-::-webkit-scrollbar-corner {
-  background: var(--color-ivoire);
-}
-
-/* ============================================================
-   GRAIN DE PAPIER
-   ============================================================ */
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body::before { display: none; }
-}
-
-.bg-encre .eyebrow,
-.bg-encre .ref-tag { color: rgba(242, 239, 232, 0.55); }
-
-.bg-encre .prose-narrow,
-.bg-encre .prose-editorial { color: rgba(242, 239, 232, 0.85); }
-
-.bg-encre .rule { background-color: rgba(242, 239, 232, 0.15); }
-
-/* ============================================================
-   SECTIONS INVERSÉES
-   ============================================================ */
-
-.section-dark {
-  background-color: var(--color-encre);
-  color: var(--color-ivoire);
-  position: relative;
-  z-index: 10;
-}
-
-.section-dark .eyebrow,
-.section-dark .ref-tag { color: rgba(242, 239, 232, 0.55); }
-
-.section-dark .prose-narrow,
-.section-dark .prose-editorial { color: rgba(242, 239, 232, 0.85); }
-
-.section-dark .lede,
-.section-dark .heading-display,
-.section-dark .heading-xl,
-.section-dark .heading-lg,
-.section-dark .heading-md,
-.section-dark .heading-sm { color: var(--color-ivoire); }
-
-.section-dark .rule { background-color: rgba(242, 239, 232, 0.15); }
-
-.section-dark .cta-quiet {
-  color: var(--color-ivoire);
-  border-bottom-color: rgba(242, 239, 232, 0.35);
-}
-.section-dark .cta-quiet:hover { border-bottom-color: var(--color-ivoire); }
-
-.section-dark .link-editorial { text-decoration-color: rgba(242, 239, 232, 0.35); }
-.section-dark .link-editorial:hover { text-decoration-color: var(--color-ivoire); }

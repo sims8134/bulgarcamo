@@ -3,7 +3,8 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import type { Product } from '@/data/products';
 import { motifs } from '@/content/motifs';
-import { Reveal } from '@/components/primitives/Reveal';
+import { AccentTitle } from '@/components/primitives/AccentTitle';
+import { PhotoFrame } from '@/components/primitives/PhotoFrame';
 
 interface Props {
   product: Product;
@@ -17,158 +18,156 @@ export default function ProductPage({ product }: Props) {
   const contactHref = `/contact?ref=${product.ref}&piece=${product.id}`;
 
   return (
-    <article className="relative bg-ivoire">
-      <div className="container-page pt-22 lg:pt-30 pb-30">
-        {/* Breadcrumb */}
-        <Reveal>
-          <nav className="mb-12 lg:mb-16 font-mono text-mono-xs uppercase text-encre/55">
-            <Link href="/" className="hover:text-encre transition-colors duration-400">
-              {t('product.breadcrumb_home')}
-            </Link>
-            <span className="mx-3 text-encre/30">/</span>
-            <Link href="/#catalogue" className="hover:text-encre transition-colors duration-400">
-              {t('product.breadcrumb_catalogue')}
-            </Link>
-            <span className="mx-3 text-encre/30">/</span>
-            <span className="text-encre/70">{product.ref}</span>
-          </nav>
-        </Reveal>
+    <article className="relative">
+      <div className="container-page pt-10 lg:pt-16 pb-22">
+        {/* Fil d'Ariane */}
+        <nav aria-label={t('product.breadcrumb_catalogue')} className="mb-12 lg:mb-16 label">
+          <Link href="/" className="text-text-muted hover:text-accent">
+            {t('product.breadcrumb_home')}
+          </Link>
+          <span aria-hidden className="mx-3 text-text-muted">/</span>
+          <Link href="/#catalogue" className="text-text-muted hover:text-accent">
+            {t('product.breadcrumb_catalogue')}
+          </Link>
+          <span aria-hidden className="mx-3 text-text-muted">/</span>
+          <span aria-current="page" className="text-accent">{product.ref}</span>
+        </nav>
 
-        <div className="grid grid-cols-12 gap-x-6 gap-y-12">
-          {/* COLONNE GAUCHE — Galerie */}
-          <div className="col-span-12 lg:col-span-7">
-            <div className="space-y-3 lg:space-y-4">
+        <div className="grid grid-cols-12 gap-x-6 gap-y-16">
+          {/* Galerie */}
+          <div className="col-span-12 lg:col-span-7 px-3 sm:px-6 lg:px-4">
+            <div className="space-y-16 lg:space-y-20">
               {allImages.map((src, i) => (
-                <Reveal key={src} delay={i === 0 ? 0 : 100}>
-                  <figure
-                    className="relative aspect-[3/4] overflow-hidden bg-pierre/15"
-                    data-cursor="image"
-                    style={
-                      i === 0
-                        ? ({ viewTransitionName: `piece-${product.id}` } as React.CSSProperties)
-                        : undefined
-                    }
-                  >
+                <figure key={src}>
+                  <PhotoFrame tilt={i % 2 === 0 ? 'a' : 'b'} boxClassName="aspect-[3/4]">
                     <Image
                       src={src}
                       alt=""
                       fill
-                      sizes="(max-width: 1024px) 100vw, 56vw"
+                      sizes="(max-width: 1024px) 90vw, 55vw"
                       priority={i === 0}
                       className="object-cover"
                     />
-                  </figure>
-                </Reveal>
+                  </PhotoFrame>
+                </figure>
               ))}
             </div>
           </div>
 
-          {/* COLONNE DROITE — Sidebar sticky */}
-          <aside className="col-span-12 lg:col-span-4 lg:col-start-9">
-            <div className="lg:sticky lg:top-24 space-y-12">
-              {/* Bloc identité */}
-              <Reveal>
-                <div className="space-y-4">
-                  <p className="font-mono text-mono-xs uppercase text-encre/55">
-                    {product.ref} · {t(`products.categories.${product.category}`)}
-                  </p>
-                  <h1
-                    className="font-display italic font-light text-encre tracking-tight"
-                    style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', lineHeight: 1.05 }}
-                  >
-                    {t(`products.names.${product.nameKey}`)}
-                  </h1>
-                  <p className="font-mono text-mono-sm uppercase text-encre/70">
-                    {motif.name} · {product.textileYear ?? motif.year}
-                  </p>
-                </div>
-              </Reveal>
+          {/* Colonne d'information */}
+          <aside className="col-span-12 lg:col-span-4 lg:col-start-9 lg:row-start-1">
+            <div className="lg:sticky lg:top-24 space-y-10">
+              <div className="space-y-6">
+                <p className="tag">
+                  {product.ref} · {t(`products.categories.${product.category}`)}
+                </p>
+                <h1 className="heading-md">
+                  <AccentTitle text={t(`products.names.${product.nameKey}`)} />
+                </h1>
+                <p className="label text-text-muted">
+                  {motif.name} · {product.textileYear ?? motif.year}
+                </p>
+              </div>
+
+              {/* Fiche technique */}
+              <dl className="grid grid-cols-[7.5rem_1fr] gap-x-4 border-2 border-accent bg-surface font-mono font-bold uppercase tracking-label text-mono-sm">
+                <SpecRow label="REF">{product.ref}</SpecRow>
+                <SpecRow label="PATTERN">
+                  {motif.name}
+                  <br />
+                  <span lang="bg" className="cyr-name normal-case text-[15px] text-accent">
+                    {motif.nameCyrillic}
+                  </span>
+                </SpecRow>
+                <SpecRow label="ORIGIN">{t(motif.eraKey)}</SpecRow>
+                <SpecRow label="MADE" last>
+                  Sofia · <span lang="bg">София</span>
+                </SpecRow>
+              </dl>
 
               {/* Provenance */}
-              <Reveal delay={150}>
-                <div className="space-y-3 pt-8 border-t border-encre/15">
-                  <p className="eyebrow">{t('product.provenance')}</p>
-                  <p
-                    className="font-display italic text-encre"
-                    style={{ fontSize: '1.0625rem', lineHeight: 1.5 }}
-                  >
-                    {t(motif.provenanceKey)}
-                  </p>
-                  <p className="text-body text-encre/75">{t(motif.descriptionKey)}</p>
-                </div>
-              </Reveal>
+              <div className="space-y-4 pt-8 border-t border-line">
+                <p className="eyebrow">{t('product.provenance')}</p>
+                <p className="lede">{t(motif.provenanceKey)}</p>
+                <p className="prose-narrow">{t(motif.descriptionKey)}</p>
+              </div>
 
-              {/* Atelier */}
-              <Reveal delay={200}>
-                <div className="space-y-3 pt-8 border-t border-encre/15">
-                  <p className="eyebrow">{t('product.atelier')}</p>
-                  <p className="text-body text-encre/75">{t('product.atelier_note')}</p>
-                </div>
-              </Reveal>
+              {/* Fabrication */}
+              <div className="space-y-4 pt-8 border-t border-line">
+                <p className="eyebrow">{t('product.atelier')}</p>
+                <p className="prose-narrow">{t('product.atelier_note')}</p>
+              </div>
 
-              {/* Édition & disponibilité */}
-              <Reveal delay={250}>
-                <div className="space-y-4 pt-8 border-t border-encre/15">
-                  <p className="eyebrow">{t('product.availability')}</p>
-                  <dl className="space-y-2 text-body">
-                    <div className="flex justify-between gap-4">
-                      <dt className="text-encre/55">{t('product.edition_label')}</dt>
-                      <dd className="text-encre text-right">
-                        {product.edition
-                          ? `${product.edition.current} / ${product.edition.total}`
-                          : t('product.edition_default')}
-                      </dd>
-                    </div>
-                    <div className="flex justify-between gap-4">
-                      <dt className="text-encre/55">{t('product.price_label')}</dt>
-                      <dd className="text-encre text-right">
-                        {product.price != null ? `${product.price} €` : t('product.price_value')}
-                      </dd>
-                    </div>
-                    {product.dimensions && (
-                      <div className="flex justify-between gap-4">
-                        <dt className="text-encre/55">{t('product.dimensions_label')}</dt>
-                        <dd className="text-encre text-right">{product.dimensions}</dd>
-                      </div>
-                    )}
-                    <div className="flex justify-between gap-4">
-                      <dt className="text-encre/55">{t('product.lead_time_label')}</dt>
-                      <dd className="text-encre text-right">{t('product.lead_time_value')}</dd>
-                    </div>
-                  </dl>
+              {/* Édition et disponibilité */}
+              <div className="space-y-4 pt-8 border-t border-line">
+                <p className="eyebrow">{t('product.availability')}</p>
+                <dl className="space-y-2 text-body">
+                  <InfoRow label={t('product.edition_label')}>
+                    {product.edition
+                      ? `${product.edition.current} / ${product.edition.total}`
+                      : t('product.edition_default')}
+                  </InfoRow>
+                  <InfoRow label={t('product.price_label')}>
+                    {product.price != null ? `${product.price} €` : t('product.price_value')}
+                  </InfoRow>
                   {product.dimensions && (
-                    <p className="font-mono text-mono-xs text-encre/45">
-                      {t('product.dimensions_note')}
-                    </p>
+                    <InfoRow label={t('product.dimensions_label')}>{product.dimensions}</InfoRow>
                   )}
-                </div>
-              </Reveal>
+                  <InfoRow label={t('product.lead_time_label')}>
+                    {t('product.lead_time_value')}
+                  </InfoRow>
+                </dl>
+                {product.dimensions && (
+                  <p className="text-caption text-text-muted">{t('product.dimensions_note')}</p>
+                )}
+              </div>
 
-              {/* CTA */}
-              <Reveal delay={300}>
-                <div className="pt-8 border-t border-encre/15">
-                  <Link href={contactHref} className="cta-quiet">
-                    <span>{t('product.cta')}</span>
-                    <span aria-hidden>→</span>
-                  </Link>
-                </div>
-              </Reveal>
+              <div className="pt-8 border-t border-line">
+                <Link href={contactHref} className="cta">
+                  <span>{t('product.cta')}</span>
+                  <span aria-hidden>→</span>
+                </Link>
+              </div>
             </div>
           </aside>
         </div>
       </div>
 
-      {/* Footer de page produit — retour catalogue */}
-      <div className="border-t border-encre/8">
-        <div className="container-page py-16 lg:py-22">
-          <Reveal>
-            <Link href="/#catalogue" className="cta-quiet">
-              <span aria-hidden>←</span>
-              <span>{t('product.back_to_catalogue')}</span>
-            </Link>
-          </Reveal>
+      <div className="border-t border-line">
+        <div className="container-page py-14 lg:py-18">
+          <Link href="/#catalogue" className="cta">
+            <span aria-hidden>←</span>
+            <span>{t('product.back_to_catalogue')}</span>
+          </Link>
         </div>
       </div>
     </article>
+  );
+}
+
+function SpecRow({
+  label,
+  children,
+  last = false,
+}: {
+  label: string;
+  children: React.ReactNode;
+  last?: boolean;
+}) {
+  const border = last ? '' : 'border-b border-line';
+  return (
+    <>
+      <dt className={`pl-4 py-3 text-accent ${border}`}>{label}</dt>
+      <dd className={`pr-4 py-3 text-text ${border}`}>{children}</dd>
+    </>
+  );
+}
+
+function InfoRow({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="flex justify-between gap-4">
+      <dt className="text-text-muted">{label}</dt>
+      <dd className="text-text text-right">{children}</dd>
+    </div>
   );
 }

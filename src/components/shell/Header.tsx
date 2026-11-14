@@ -1,117 +1,70 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Link, usePathname } from '@/i18n/navigation';
-import { useTranslations, useLocale } from 'next-intl';
+import { useState } from 'react';
+import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 import MobileMenu from './MobileMenu';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Header() {
   const t = useTranslations('nav');
-  const locale = useLocale();
-  const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  const pathWithoutLocale = pathname.replace(/^\/(fr|en|bg)/, '') || '/';
-  const otherLocales = (['en', 'fr', 'bg'] as const).filter((l) => l !== locale);
 
   return (
     <>
-      <header
-        className={`
-          fixed top-0 left-0 right-0 z-40
-          transition-all duration-600 ease-expo-out
-          ${
-            scrolled
-              ? 'h-12 bg-ivoire/85 backdrop-blur-md border-b border-encre/8'
-              : 'h-16 bg-ivoire/0 border-b border-transparent'
-          }
-        `}
-      >
-        <div className="container-page h-full flex items-center justify-between">
-          {/* Wordmark */}
-          <Link
-            href="/"
-            className="font-display text-[15px] tracking-tight text-encre transition-opacity duration-400 hover:opacity-70"
-          >
-            БЪЛГАРКАМО
-          </Link>
-
-          {/* Navigation centre — desktop */}
-          <nav className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
-            <NavLink href="/#motifs">{t('motifs')}</NavLink>
-            <NavLink href="/#catalogue">{t('catalogue')}</NavLink>
-            <NavLink href="/#manifest">{t('atelier')}</NavLink>
-          </nav>
-
-          {/* Sélecteur langue */}
-          <div className="hidden md:flex items-center gap-2 font-mono text-mono-xs uppercase">
-            <span className="text-encre">{locale}</span>
-            {otherLocales.map((l) => (
-              <span key={l} className="flex items-center gap-2">
-                <span className="text-encre/30">·</span>
-                <Link
-                  href={pathWithoutLocale}
-                  locale={l}
-                  className="text-encre/50 hover:text-encre transition-colors duration-300"
-                >
-                  {l}
-                </Link>
-              </span>
-            ))}
+      <header className="site-layer sticky top-0 z-40 bg-bg border-b-2 border-accent">
+        <div className="container-page h-14 md:h-16 flex items-center justify-between gap-3">
+          {/* REC + logo phosphore */}
+          <div className="flex items-center gap-3 min-w-0">
+            <span aria-hidden className="label text-accent flex items-center gap-2">
+              <span className="rec-dot" />
+              REC
+            </span>
+            <Link href="/" className="block py-2">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/brand/bulgarcamo-wordmark-phosphor.svg"
+                alt="Bulgarcamo"
+                width={680}
+                height={86}
+                className="h-[14px] sm:h-[18px] md:h-5 w-auto"
+              />
+            </Link>
           </div>
 
-          {/* Mobile — bouton menu */}
-          <button
-            onClick={() => setMobileOpen(true)}
-            className="md:hidden font-mono text-mono-sm uppercase text-encre"
-            aria-label="Ouvrir le menu"
-          >
-            {t('menu')}
-          </button>
+          {/* Navigation desktop */}
+          <nav aria-label={t('menu')} className="hidden lg:block">
+            <ul className="flex items-center gap-8">
+              <li><NavLink href="/#motifs">{t('motifs')}</NavLink></li>
+              <li><NavLink href="/#catalogue">{t('catalogue')}</NavLink></li>
+              <li><NavLink href="/#manifest">{t('atelier')}</NavLink></li>
+            </ul>
+          </nav>
+
+          <div className="flex items-center gap-1 sm:gap-3">
+            <LanguageSwitcher />
+            <button
+              type="button"
+              onClick={() => setMobileOpen(true)}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+              className="lg:hidden label text-text hover:text-accent px-2 py-2"
+            >
+              {t('menu')}
+            </button>
+          </div>
         </div>
       </header>
-
-      {/* Spacer */}
-      <div className="h-16" aria-hidden />
 
       <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
     </>
   );
 }
 
-/* — NavLink avec soulignement animé — */
-
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <Link
-      href={href}
-      className="
-        relative group
-        font-sans text-[13px] tracking-wide text-encre/70
-        hover:text-encre
-        transition-colors duration-400 ease-expo-out
-        py-1
-      "
-    >
+    <Link href={href} className="label text-text hover:text-accent py-2">
       {children}
-      <span
-        aria-hidden
-        className="
-          absolute left-0 right-0 -bottom-0.5
-          h-px bg-encre
-          origin-left scale-x-0
-          group-hover:scale-x-100
-          transition-transform duration-500 ease-expo-out
-        "
-      />
     </Link>
   );
 }

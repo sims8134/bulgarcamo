@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { Reveal } from '@/components/primitives/Reveal';
 import { cn } from '@/lib/cn';
+import { AccentTitle } from '@/components/primitives/AccentTitle';
 
 interface Props {
   initialSubject?: string;
@@ -39,7 +39,7 @@ export default function ContactForm({
 
       widgetId.current = ts.render(widgetRef.current, {
         sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
-        theme: 'light',
+        theme: 'dark',
         callback: (value: string) => setToken(value),
         'expired-callback': () => setToken(''),
         'error-callback': () => setToken(''),
@@ -120,44 +120,30 @@ export default function ContactForm({
   }
 
   return (
-    <article className="relative bg-ivoire min-h-screen">
-      <div className="container-page pt-22 lg:pt-30 pb-30">
+    <article className="relative min-h-screen">
+      <div className="container-page pt-14 lg:pt-22 pb-22">
         <div className="grid grid-cols-12 gap-6">
           {/* Colonne gauche — intro sticky */}
           <div className="col-span-12 lg:col-span-4 space-y-8 lg:sticky lg:top-24 lg:self-start">
-            <Reveal>
-              <p className="eyebrow">— {t('eyebrow')}</p>
-            </Reveal>
-            <Reveal delay={150}>
-              <h1
-                className="font-display font-light text-encre tracking-tight"
-                style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1.1 }}
-              >
-                {t('title')}
-              </h1>
-            </Reveal>
-            <Reveal delay={300}>
-              <p className="lede max-w-prose-narrow text-encre/80">{t('intro')}</p>
-            </Reveal>
-            <Reveal delay={450}>
-              <div className="space-y-1 pt-8 border-t border-encre/15">
-                <p className="eyebrow">{t('direct_label')}</p>
-                <a
-                  href="mailto:contact@bulgarcamo.com"
-                  className="font-display italic text-encre hover:text-encre/60 transition-colors duration-400"
-                  style={{ fontSize: '1.125rem' }}
-                >
+            <p className="eyebrow">{t('eyebrow')}</p>
+            <h1 className="heading-md">
+              <AccentTitle text={t('title')} />
+            </h1>
+            <p className="lede max-w-prose-narrow">{t('intro')}</p>
+            <div className="space-y-3 pt-8 border-t border-line">
+              <p className="eyebrow">{t('direct_label')}</p>
+              <p>
+                <a href="mailto:contact@bulgarcamo.com" className="link-line text-lede">
                   contact@bulgarcamo.com
                 </a>
-              </div>
-            </Reveal>
+              </p>
+            </div>
           </div>
 
           {/* Colonne droite — formulaire */}
           <div className="col-span-12 lg:col-span-7 lg:col-start-6">
             {status !== 'success' ? (
-              <Reveal delay={200}>
-                <form onSubmit={handleSubmit} className="space-y-10">
+              <form onSubmit={handleSubmit} className="space-y-10">
                   {initialPiece && (
                     <input type="hidden" name="piece" defaultValue={initialPiece} />
                   )}
@@ -189,39 +175,36 @@ export default function ContactForm({
 
                   <div ref={widgetRef} />
 
-                  <div className="pt-6 border-t border-encre/15 space-y-4">
+                  <div className="pt-6 border-t border-line space-y-4">
                     <button
                       type="submit"
                       disabled={status === 'sending'}
-                      className="cta-quiet disabled:opacity-40 disabled:cursor-not-allowed"
+                      className="cta"
                     >
                       <span>{status === 'sending' ? t('sending') : t('submit')}</span>
                       <span aria-hidden>→</span>
                     </button>
 
                     {status === 'error' && (
-                      <p className="font-mono text-mono-xs uppercase text-encre/55">
+                      <p role="alert" className="label text-text">
                         {t('error_message')}
                       </p>
                     )}
                   </div>
-                </form>
-              </Reveal>
+              </form>
             ) : (
-              <Reveal>
-                <div className="space-y-6 pt-12">
+              <div role="status" className="space-y-6 pt-12">
                   <p className="eyebrow">{t('sent_eyebrow')}</p>
                   <p
-                    className="font-display italic text-encre"
+                    className="text-text font-medium"
                     style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', lineHeight: 1.2 }}
                   >
                     {t('sent_title')}
                   </p>
-                  <p className="text-body text-encre/75 max-w-prose-narrow">
+                  <p className="prose-narrow">
                     {t('sent_body')}
                   </p>
                 </div>
-              </Reveal>
             )}
           </div>
         </div>
@@ -245,24 +228,15 @@ function FormField({
   multiline?: boolean;
   defaultValue?: string;
 }) {
-  const baseClasses = cn(
-    'w-full bg-transparent text-encre',
-    'text-body font-sans',
-    'border-b border-encre/25',
-    'pb-3 pt-2 px-0',
-    'outline-none',
-    'transition-colors duration-400 ease-expo-out',
-    'focus:border-encre',
-    'placeholder:text-encre/30'
-  );
+  const baseClasses = 'field';
 
   return (
     <div className="space-y-2">
       <label
         htmlFor={name}
-        className="block font-mono text-mono-xs uppercase text-encre/55"
+        className="block label text-text-muted"
       >
-        {label} {required && <span className="text-encre/40">*</span>}
+        {label} {required && <span aria-hidden className="text-accent">*</span>}
       </label>
       {multiline ? (
         <textarea

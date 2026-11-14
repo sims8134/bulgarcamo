@@ -34,7 +34,7 @@ export default function NewsletterForm() {
 
       widgetId.current = ts.render(widgetRef.current, {
         sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
-        theme: 'light',
+        theme: 'dark',
         callback: (value: string) => setToken(value),
         'expired-callback': () => setToken(''),
         'error-callback': () => setToken(''),
@@ -81,39 +81,41 @@ export default function NewsletterForm() {
   }
 
   if (state === 'done') {
-    return <p className="prose-narrow">{t('done')}</p>;
+    return <p className="prose-narrow" role="status">{t('done')}</p>;
   }
 
   return (
     <form onSubmit={handleSubmit} className="max-w-sm space-y-4">
-      <div className="flex items-center border-b border-encre/30 pt-2">
+      <div className="flex items-end gap-4 pt-2">
         <input
           type="email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder={t('placeholder')}
-          className="flex-1 bg-transparent py-2 outline-none font-sans text-[14px] text-encre placeholder:text-encre/40"
+          aria-label={t('placeholder')}
+          autoComplete="email"
+          className="field flex-1 min-w-0"
         />
         <button
           type="submit"
           disabled={state === 'sending' || !consent}
-          className="font-mono text-mono-xs uppercase text-encre hover:text-sauge-deep transition-colors duration-400 pl-4 disabled:opacity-40 disabled:cursor-not-allowed"
+          className="cta flex-shrink-0"
         >
           {state === 'sending' ? t('sending') : t('cta')}
         </button>
       </div>
 
-      <label className="flex items-start gap-3 font-mono text-mono-xs uppercase text-encre/55 cursor-pointer">
+      <label className="flex items-start gap-3 text-caption text-text-muted cursor-pointer">
         <input
           type="checkbox"
           checked={consent}
           onChange={(e) => setConsent(e.target.checked)}
-          className="mt-0.5 accent-encre"
+          className="mt-1 h-4 w-4"
         />
         <span>
           {t('consent')}{' '}
-          <Link href="/legal" className="underline underline-offset-2">
+          <Link href="/legal" className="link-line">
             {t('consent_link')}
           </Link>
         </span>
@@ -134,7 +136,7 @@ export default function NewsletterForm() {
       <div ref={widgetRef} />
 
       {state === 'error' && (
-        <p className="font-mono text-mono-xs uppercase text-encre/55">{t('error')}</p>
+        <p role="alert" className="label text-text">{t('error')}</p>
       )}
     </form>
   );

@@ -53,8 +53,8 @@ export default async function LegalPage({
     <div className="container-narrow section-y">
       <header className="mb-24">
         <p className="eyebrow">{t('eyebrow')}</p>
-        <h1 className="heading-lg mt-4">{t('title')}</h1>
-        <p className="ref-tag mt-6">{t('updated')}</p>
+        <h1 className="heading-lg mt-8">{t('title')}</h1>
+        <p className="ref-tag mt-8">{t('updated')}</p>
       </header>
 
       {sections.map((section, i) => (
@@ -62,9 +62,9 @@ export default async function LegalPage({
           <div className="rule mb-8" />
 
           <p className="eyebrow">
-            {String(i + 1).padStart(2, '0')} — {section.eyebrow}
+            {String(i + 1).padStart(2, '0')} · {section.eyebrow}
           </p>
-          <h2 className="heading-sm mt-3 mb-6">{section.title}</h2>
+          <h2 className="heading-sm mt-6 mb-6">{section.title}</h2>
 
           {section.body.map((paragraph, j) => (
             <p key={j} className="prose-narrow mb-4">
