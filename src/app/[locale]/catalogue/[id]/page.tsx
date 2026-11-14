@@ -37,13 +37,13 @@ export async function generateMetadata({
   const provenance = tMotifs(`${product.motif}.provenance`);
   const era = tMotifs(`${product.motif}.era`);
 
-  const title = `${productName} — ${motifName}`;
+  const title = `${productName} · ${motifName}`;
   // l'étiquette bulgare finit déjà par « г. » : pas de second point
   const eraEnd = era.endsWith('.') ? era : `${era}.`;
-  const description = `${productName} — ${motifName}, ${eraEnd} ${provenance} ${product.ref} · Sofia.`;
+  const description = `${productName} · ${motifName}, ${eraEnd} ${provenance} ${product.ref} · Sofia.`;
 
   const path = `/${locale}/catalogue/${product.id}`;
-  const imageAlt = `${productName} ${motifName} — Bulgarcamo`;
+  const imageAlt = `${productName} · ${motifName} · Bulgarcamo`;
 
   return {
     title,
@@ -61,13 +61,13 @@ export async function generateMetadata({
       type: 'website',
       siteName: 'Bulgarcamo',
       url: path,
-      title: `${title} — Bulgarcamo`,
+      title: `${title} · Bulgarcamo`,
       description,
       images: [{ url: product.image, alt: imageAlt }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${title} — Bulgarcamo`,
+      title: `${title} · Bulgarcamo`,
       description,
       images: [product.image],
     },
