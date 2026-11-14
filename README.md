@@ -48,17 +48,27 @@ Trois langues : **FR** (défaut) · **EN** · **BG**. Routes : `/fr`, `/en`, `/b
 
 Pour modifier les textes : éditer les fichiers dans `messages/`.
 
-## Palette
+## Identité « vision nocturne cassé »
 
-| Nom              | Hex       | Usage                            |
-|------------------|-----------|----------------------------------|
-| `cream`          | `#F1ECDC` | fond principal                   |
-| `olive-deep`     | `#1F2818` | texte principal, fond Pro        |
-| `olive-medium`   | `#3D4D2A` | accents                          |
-| `warm-grey`      | `#7A7560` | texte secondaire                 |
-| `frogskin`       | `#7FA052` | accent vert (liens hover, CTA)   |
-| `earth`          | `#5C4A30` | accents bruns                    |
-| `khaki`          | `#B8AC8E` | accents clairs                   |
+Pour changer une couleur ou une police, on ne touche qu'à deux fichiers :
+
+- **Couleurs** : variables CSS dans `src/app/globals.css` (`:root`), mappées dans `tailwind.config.ts` (`bg-bg`, `text-accent`, `border-line`…). Aucune couleur en dur dans les composants.
+- **Polices** : `src/lib/fonts.ts` (next/font/local, fichiers woff2 latin + cyrillique dans `src/fonts/`, licence OFL).
+
+| Variable        | Valeur                   | Usage                                   |
+|-----------------|--------------------------|-----------------------------------------|
+| `--bg`          | `#050805`                | fond                                    |
+| `--surface`     | `#0b120b`                | cartes et blocs                         |
+| `--accent`      | `#7dff4f`                | vert phosphore : logo, filets, liens    |
+| `--accent-dim`  | `#3f8a2a`                | métadonnées décoratives ≥ 18 px         |
+| `--text`        | `#e9ffe0`                | titres et texte principal               |
+| `--text-muted`  | `#cfe8c6`                | texte courant long                      |
+| `--line`        | `rgba(125,255,79,.35)`   | filets fins                             |
+| `--scanline`    | `rgba(125,255,79,.05)`   | lignes de balayage                      |
+
+Effets (lignes de balayage, grain, viseur, scotch, titres cassés, étiquettes) : classes de `globals.css` (`.photo-tilt`, `.viseur-corner`, `.tag`, `.cta`…) et composant `PhotoFrame`. Les photos produit ne reçoivent jamais de filtre.
+
+Assets de marque : `public/brand/` (les logos `cwb_logo_*` ne sont pas utilisés sur le site).
 
 ## Déploiement Vercel
 

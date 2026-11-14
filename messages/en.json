@@ -3,7 +3,6 @@
     "motifs": "Patterns",
     "pieces": "Pieces",
     "atelier": "Studio",
-    "pro": "Trade",
     "contact": "Contact",
     "catalogue": "Catalogue",
     "menu": "Menu",
@@ -108,13 +107,13 @@
     "items_count": "pieces",
     "coming_soon": "Photo coming soon",
     "footer_note": "Small runs, one-of-a-kind pieces. Availability on request.",
-    "footer_cta": "Request a quote"
+    "footer_cta": "Order on Instagram"
   },
   "sur_mesure": {
     "eyebrow": "Made to measure",
     "title": "Every piece, to your measurements",
-    "body": "Every catalogue piece can be made to measure. Sizing adjusted to your body, choice of pattern among the available camouflages, finishes and linings on request. Bulgarcamo accepts individual orders — garments, EDC accessories or home pieces. Lead times and pricing on request, depending on complexity and material availability.",
-    "cta": "Make a request"
+    "body": "Every catalogue piece can be made to measure. Sizing adjusted to your body, choice of pattern among the available camouflages, finishes and linings on request. Bulgarcamo accepts individual orders — garments, EDC accessories or home pieces.",
+    "instagram": "A specific request? Write to us on Instagram."
   },
   "products": {
     "names": {
@@ -138,16 +137,10 @@
     "atelier": "Making",
     "atelier_note": "Cut and sewn in Sofia by a neighbourhood seamstress. Natural cotton lining where available.",
     "availability": "Availability",
-    "edition_label": "Edition",
-    "edition_default": "Small run",
-    "price_label": "Price",
-    "price_value": "On request",
-    "lead_time_label": "Lead time",
-    "lead_time_value": "4 to 6 weeks",
-    "cta": "Acquire this piece",
     "back_to_catalogue": "Back to catalogue",
     "dimensions_label": "Dimensions",
-    "dimensions_note": "Handmade piece — approximate dimensions, closed (±0.5 cm)"
+    "dimensions_note": "Handmade piece — approximate dimensions, closed (±0.5 cm)",
+    "availability_note": "Small runs, sometimes a single piece. When the material runs out, the piece leaves the catalogue."
   },
   "about": {
     "eyebrow": "About",
@@ -159,38 +152,11 @@
     ],
     "signature": "Sofia, by appointment"
   },
-  "pro": {
-    "eyebrow": "For trade & wholesale",
-    "title": "Sourcing & collaborations",
-    "body": "Bulgarcamo works with fashion designers, studios and brands seeking materials with distinctive patterns. Small runs, samples, custom sourcing — on request.",
-    "cta": "Get in touch"
-  },
   "contact": {
     "eyebrow": "Contact",
     "title": "Write to us",
-    "intro": "To acquire a piece, request a made-to-measure work, or collaborate. We reply within 48 working hours.",
-    "direct_label": "Direct",
-    "fields": {
-      "name": "Name",
-      "email": "Email address",
-      "subject": "Subject",
-      "message": "Message"
-    },
-    "sending": "Sending…",
-    "error_message": "Something went wrong. Please try again or email us directly.",
-    "subjects": {
-      "piece": "Request — piece {ref}",
-      "made_to_measure": "Made-to-measure request",
-      "trade": "Sourcing & collaboration"
-    },
-    "preset_message_piece": "Hello,\n\nI would like to know more about piece {ref}.\n\nKind regards,",
-    "preset_message_mtm": "Hello,\n\nI would like a made-to-measure piece. Some details:\n\n— Type of piece:\n— Pattern of choice:\n— Measurements / build:\n\nKind regards,",
-    "preset_message_trade": "Hello,\n\nI represent:\n\nWe are interested in:\n\nKind regards,",
-    "default_subject": "Bulgarcamo — enquiry",
-    "submit": "Send",
-    "sent_eyebrow": "Sent",
-    "sent_title": "Your message is on its way.",
-    "sent_body": "Thank you — we've received your message and will reply within 48 working hours. If anything's urgent, write directly to contact@bulgarcamo.com."
+    "intro": "To acquire a piece or request a made-to-measure work.",
+    "direct_label": "Direct"
   },
   "not_found": {
     "eyebrow": "Page not found",
@@ -200,67 +166,119 @@
   },
   "legal": {
     "eyebrow": "Legal information",
-    "title": "Legal notice and privacy",
-    "updated": "Last updated — 2026",
-    "intro": "Site publisher, hosting, personal data and user rights.",
+    "title": "Legal notice",
+    "updated": "Last updated: 14 November 2026",
+    "intro": "Publisher, hosting and ownership of the site’s content.",
     "sections": [
       {
         "eyebrow": "Publisher",
         "title": "Who publishes this site",
         "body": [
-          "This site is published by SOC TRADE BULGARIA EOOD, a company registered in Bulgaria under number ЕИК 208209146, with its registered office at 64A ul. Maragidik, 1505 Sofia, Bulgaria.",
-          "Bulgarcamo is a trading name of that company. Publication director: the company manager.",
-          "Contact: contact@bulgarcamo.com"
+          "Bulgarcamo, a personal project by Simon Beltran, Sofia, Bulgaria.",
+          "Contact: contact@bulgarcamo.com or by Instagram message, @bulgarcamo."
         ]
       },
       {
         "eyebrow": "Hosting",
         "title": "Where the site is hosted",
         "body": [
-          "The site is hosted by Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, United States — vercel.com.",
-          "Some technical data may be transferred outside the European Union. Such transfers are covered by the European Commission's standard contractual clauses."
+          "The site is hosted by Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, United States (vercel.com)."
         ]
       },
       {
-        "eyebrow": "Data collected",
-        "title": "What data is collected",
+        "eyebrow": "Ownership",
+        "title": "Site content",
         "body": [
-          "We only collect what you send us voluntarily: through the contact form, your name, email address and the content of your message; through the journal sign-up, your email address alone.",
-          "This site uses no analytics and no advertising tracking scripts. The Cloudflare Turnstile anti-bot service may set a technical cookie strictly necessary to protect the form, which is exempt from consent.",
-          "Processors: Vercel Inc. (hosting), Cloudflare, Inc. (bot protection), Resend, Inc. (email delivery)."
+          "The texts, photographs and logo on this site belong to Bulgarcamo. Any reproduction, in whole or in part, requires prior permission."
         ]
       },
       {
-        "eyebrow": "Purpose",
-        "title": "Why this data is collected",
+        "eyebrow": "Patterns",
+        "title": "Original textiles",
         "body": [
-          "Your data is used solely to answer your enquiry, or to send you the seasonal journal if you subscribed. It is never sold or passed to third parties for commercial purposes.",
-          "The legal basis is your consent, given when you submit the form or subscribe to the journal (GDPR article 6.1.a).",
-          "Data is kept for twelve months from your enquiry, then deleted. For the journal, until you unsubscribe."
+          "Bulgarcamo is not affiliated with the Bulgarian Army or the Bundeswehr. Pattern names refer to the original textiles used."
+        ]
+      }
+    ]
+  },
+  "privacy": {
+    "eyebrow": "Legal information",
+    "title": "Privacy policy",
+    "updated": "Last updated: 14 November 2026",
+    "intro": "What data this site processes, why, for how long, and how to exercise your rights.",
+    "sections": [
+      {
+        "eyebrow": "Controller",
+        "title": "Data controller",
+        "body": [
+          "Simon Beltran (Bulgarcamo personal project), Sofia, Bulgaria.",
+          "Contact: contact@bulgarcamo.com."
+        ]
+      },
+      {
+        "eyebrow": "Data",
+        "title": "Data processed",
+        "body": [
+          "This site offers no accounts, no payments, no forms and no audience measurement, and it keeps no database. The only data involved is:",
+          "Technical logs: on each visit, the host Vercel records technical data (IP address, date and time, page requested, browser).",
+          "Emails: if you choose to write to contact@bulgarcamo.com, your email address and the content of your message are received in Bulgarcamo’s mailbox.",
+          "Instagram messages: if you write to @bulgarcamo on Instagram, your message is received and handled within Instagram."
+        ]
+      },
+      {
+        "eyebrow": "Purposes",
+        "title": "Why, and on what basis",
+        "body": [
+          "Technical logs: running and securing the site. Legal basis: legitimate interest (Article 6(1)(f) GDPR).",
+          "Emails: replying to your message. Legal basis: legitimate interest in replying to messages received (Article 6(1)(f) GDPR).",
+          "Instagram messages: handling your order request. Legal basis: steps taken at your request (Article 6(1)(b) GDPR)."
+        ]
+      },
+      {
+        "eyebrow": "Retention",
+        "title": "How long data is kept",
+        "body": [
+          "Technical logs: a limited period set by Vercel in its own policy.",
+          "Emails: twelve months after the last exchange, then deleted.",
+          "Instagram messages: kept within Instagram under Meta’s policy. You can ask at any time for the conversation to be deleted on our side."
+        ]
+      },
+      {
+        "eyebrow": "Provider",
+        "title": "Host and transfer outside the EU",
+        "body": [
+          "The site is hosted by Vercel Inc., based in the United States, so technical logs may be transferred outside the European Union.",
+          "Vercel states that these transfers rely on the EU-U.S. Data Privacy Framework and on the European Commission’s Standard Contractual Clauses."
+        ]
+      },
+      {
+        "eyebrow": "Instagram",
+        "title": "Orders through Instagram",
+        "body": [
+          "Orders are placed only by Instagram message. Once on Instagram, Meta’s privacy policy applies. Order messages are used only to handle your request."
+        ]
+      },
+      {
+        "eyebrow": "Cookies",
+        "title": "Cookies",
+        "body": [
+          "This site sets no cookies and uses no audience measurement. This is why no consent banner is shown."
         ]
       },
       {
         "eyebrow": "Your rights",
         "title": "What your rights are",
         "body": [
-          "Under the GDPR and Bulgarian data protection law, you have the following rights:",
-          "To exercise them, write to contact@bulgarcamo.com. You will receive a reply within thirty days."
+          "Under the GDPR, you have the following rights:",
+          "To exercise them, write to contact@bulgarcamo.com. You will receive a reply within one month."
         ]
       },
       {
         "eyebrow": "Complaints",
         "title": "Supervisory authority",
         "body": [
-          "If you believe your rights have not been respected, you may lodge a complaint with the Commission for Personal Data Protection (CPDP), the competent authority in Bulgaria — cpdp.bg.",
-          "If you live in another member state, you may also contact your national supervisory authority."
-        ]
-      },
-      {
-        "eyebrow": "Intellectual property",
-        "title": "Site content",
-        "body": [
-          "Texts, photographs and graphic elements on this site are the property of SOC TRADE BULGARIA EOOD unless otherwise stated. Reproduction without prior permission is prohibited.",
-          "The camouflage patterns shown are historical textiles documented for informational purposes. Bulgarcamo sells no insignia, emblems or military equipment."
+          "You can lodge a complaint with the Bulgarian Commission for Personal Data Protection (Комисия за защита на личните данни, КЗЛД), cpdp.bg.",
+          "If you live in another EU member state, you can also contact the supervisory authority of your country."
         ]
       }
     ],
@@ -269,10 +287,8 @@
       "Right to rectification",
       "Right to erasure",
       "Right to object to processing",
-      "Right to data portability",
-      "Right to withdraw consent"
-    ],
-    "footer_note": "SOC TRADE BULGARIA EOOD · ЕИК 208209146 · 64A ul. Maragidik, 1505 Sofia, Bulgaria"
+      "Right to restriction of processing"
+    ]
   },
   "footer": {
     "atelier": {
@@ -281,20 +297,8 @@
       "note": "By appointment",
       "email": "contact@bulgarcamo.com"
     },
-    "journal": {
-      "label": "The Journal",
-      "body": "One letter per season. New pieces, notes, sourcings.",
-      "placeholder": "Email address",
-      "cta": "Subscribe",
-      "sending": "Sending…",
-      "done": "You're subscribed. See you next season.",
-      "error": "Something went wrong. Please try again.",
-      "consent": "I agree to receive the journal and have read the",
-      "consent_link": "privacy policy"
-    },
     "legal": {
       "label": "Information",
-      "pro": "Trade & wholesale",
       "mentions": "Legal notice",
       "privacy": "Privacy",
       "contact": "Contact"

@@ -1,12 +1,11 @@
-'use client';
-
-import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { IMAGE_SIZES } from '@/lib/imageSizes';
 import { useTranslations } from 'next-intl';
 import { motifsList, type Motif } from '@/content/motifs';
 import { ACTIVE_MOTIFS } from '@/data/products';
-import { Reveal } from '@/components/primitives/Reveal';
-import { gsap, ScrollTrigger, SplitText } from '@/lib/gsap';
+import { AccentTitle } from '@/components/primitives/AccentTitle';
+import { PhotoFrame } from '@/components/primitives/PhotoFrame';
+import { tapeFor } from '@/content/tapePlacement';
 
 const motifImages: Record<string, { src: string; alt: string }> = {
   frogskin: {
@@ -30,35 +29,22 @@ const motifImages: Record<string, { src: string; alt: string }> = {
 export default function MotifsSequence() {
   const t = useTranslations();
 
-  // Motifs de la collection en cours, dans l'ordre défini par ACTIVE_MOTIFS
   const activeMotifsList = ACTIVE_MOTIFS
     .map((key) => motifsList.find((m) => m.key === key))
     .filter((m): m is Motif => Boolean(m));
 
   return (
-    <section
-      id="motifs"
-      className="relative bg-ivoire border-t border-encre/8"
-      aria-labelledby="motifs-heading"
-    >
-      <div className="container-page pt-30 pb-16 lg:pt-38 lg:pb-22">
+    <section id="motifs" className="relative scroll-mt-16" aria-labelledby="motifs-heading">
+      <div className="container-page pt-30 pb-12 lg:pt-38 lg:pb-18">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12 md:col-span-2">
-            <Reveal>
-              <p className="eyebrow">— {t('motifs_section.eyebrow')}</p>
-            </Reveal>
+            <p className="eyebrow">{t('motifs_section.eyebrow')}</p>
           </div>
           <div className="col-span-12 md:col-span-9 md:col-start-4">
-            <Reveal delay={150}>
-              <h2 id="motifs-heading" className="heading-lg text-encre">
-                {t('motifs_section.title')}
-              </h2>
-            </Reveal>
-            <Reveal delay={300}>
-              <p className="lede mt-8 max-w-prose-narrow text-encre/80">
-                {t('motifs_section.intro')}
-              </p>
-            </Reveal>
+            <h2 id="motifs-heading" className="heading-lg">
+              <AccentTitle text={t('motifs_section.title')} />
+            </h2>
+            <p className="lede mt-10 max-w-prose-narrow">{t('motifs_section.intro')}</p>
           </div>
         </div>
       </div>
@@ -90,169 +76,54 @@ function MotifBlock({
   const image = motifImages[motif.key];
   const isEven = index % 2 === 0;
 
-  const articleRef = useRef<HTMLElement>(null);
-  const watermarkRef = useRef<HTMLSpanElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const ctx = gsap.context(() => {
-      // Parallax watermark — direction selon parité
-      if (watermarkRef.current) {
-        gsap.to(watermarkRef.current, {
-          xPercent: isEven ? -10 : 10,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: articleRef.current,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1,
-          },
-        });
-      }
-
-      // Léger parallax sur l'image
-      if (imageRef.current) {
-        gsap.to(imageRef.current, {
-          yPercent: -6,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: articleRef.current,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1.5,
-          },
-        });
-      }
-
-      // SplitText reveal sur le nom du motif
-      if (titleRef.current) {
-        const split = new SplitText(titleRef.current, { type: 'chars' });
-        gsap.set(split.chars, { yPercent: 110, opacity: 0 });
-
-        gsap.to(split.chars, {
-          yPercent: 0,
-          opacity: 1,
-          duration: 1.1,
-          stagger: 0.025,
-          ease: 'expo.out',
-          scrollTrigger: {
-            trigger: articleRef.current,
-            start: 'top 70%',
-            toggleActions: 'play none none none',
-          },
-        });
-      }
-    }, articleRef);
-
-    return () => ctx.revert();
-  }, [isEven]);
-
   return (
-    <article
-      ref={articleRef}
-      className={`
-        relative min-h-[80vh] py-22 lg:py-30 overflow-hidden
-        ${index < total - 1 ? 'border-b border-encre/8' : ''}
-      `}
-    >
-      <div
-        aria-hidden
-        className={`
-          absolute inset-y-0 flex items-center pointer-events-none select-none
-          ${isEven ? 'right-[-5%]' : 'left-[-5%]'}
-        `}
-      >
-        <span
-          ref={watermarkRef}
-          className="font-display font-light tracking-tighter leading-none whitespace-nowrap will-change-transform"
-          style={{
-            fontSize: 'clamp(6rem, 18vw, 16rem)',
-            color: 'rgba(26, 26, 24, 0.05)',
-          }}
-        >
-          {motif.nameCyrillic}
-        </span>
-      </div>
+    <article className="relative py-18 lg:py-30 border-t border-line">
+      <div className="container-page">
+        <div className="grid grid-cols-12 gap-x-6 gap-y-16 items-center">
+          <div className={`col-span-12 lg:col-span-5 space-y-6 ${isEven ? '' : 'lg:order-2 lg:col-start-8'}`}>
+            <p className="meta-dim">
+              {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+            </p>
 
-      <div className="container-page relative z-10 h-full flex items-center">
-        <div
-          className={`
-            grid grid-cols-12 gap-x-6 gap-y-12 w-full items-center
-            ${isEven ? '' : 'lg:[direction:rtl]'}
-          `}
-        >
-          <div className="col-span-12 lg:col-span-5 space-y-8 lg:[direction:ltr]">
-            <Reveal>
-              <p className="font-mono text-mono-xs uppercase text-encre/45">
-                {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-              </p>
-            </Reveal>
-
-            <div className="space-y-2">
+            <div className="space-y-3">
               <h3
-                ref={titleRef}
-                className="font-display font-light text-encre tracking-tight overflow-hidden"
-                style={{ fontSize: 'clamp(2rem, 4.5vw, 3.75rem)', lineHeight: 1.05 }}
+                className="font-black uppercase tracking-title text-text"
+                style={{ fontSize: 'clamp(2rem, 4.5vw, 3.75rem)', lineHeight: 0.92, wordSpacing: '0.14em' }}
               >
                 {motif.name}
               </h3>
-              <Reveal delay={200}>
-                <p
-                  className="font-display italic text-encre/60"
-                  style={{ fontSize: 'clamp(1.125rem, 1.6vw, 1.4rem)' }}
-                >
-                  {motif.nameCyrillic}
-                </p>
-              </Reveal>
+              <p
+                lang="bg"
+                className="cyr-name text-accent"
+                style={{ fontSize: 'clamp(1.25rem, 1.8vw, 1.6rem)' }}
+              >
+                {motif.nameCyrillic}
+              </p>
             </div>
 
-            <Reveal delay={300}>
-              <p className="font-mono text-mono-sm uppercase text-encre/70">
-                {t(motif.eraKey)}
-              </p>
-            </Reveal>
+            <p className="tag">{t(motif.eraKey)}</p>
 
-            <Reveal delay={400}>
-              <p
-                className="font-display italic font-light text-encre"
-                style={{ fontSize: 'clamp(1rem, 1.4vw, 1.25rem)', lineHeight: 1.5 }}
-              >
-                {t(motif.provenanceKey)}
-              </p>
-            </Reveal>
+            <p className="lede">{t(motif.provenanceKey)}</p>
 
-            <Reveal delay={500}>
-              <p className="text-body text-encre/75 max-w-prose-narrow">
-                {t(motif.descriptionKey)}
-              </p>
-            </Reveal>
+            <p className="prose-narrow">{t(motif.descriptionKey)}</p>
           </div>
 
-          <div className="col-span-12 lg:col-span-6 lg:col-start-7 lg:[direction:ltr]">
-            <Reveal delay={250}>
-              <figure className="relative">
-                <div
-                  ref={imageRef}
-                  className="relative aspect-[3/4] overflow-hidden bg-pierre/20 will-change-transform"
-                  data-cursor="image"
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 48vw"
-                    className="object-cover"
-                  />
-                </div>
-                <figcaption className="mt-3 flex items-baseline justify-between font-mono text-mono-xs uppercase text-encre/55">
-                  <span>{motif.name}</span>
-                  <span>{motif.year}</span>
-                </figcaption>
-              </figure>
-            </Reveal>
+          <div className={`col-span-12 lg:col-span-6 px-3 sm:px-6 lg:px-0 ${isEven ? 'lg:col-start-7' : 'lg:order-1 lg:col-start-1'}`}>
+            <figure>
+              <PhotoFrame tilt={isEven ? 'b' : 'a'} tape={tapeFor(image.src)} boxClassName="aspect-[3/4]">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes={IMAGE_SIZES.motif}
+                  className="object-cover"
+                />
+              </PhotoFrame>
+              <figcaption className="mt-8 flex items-baseline justify-between label text-text-muted">
+                <span>{motif.name}</span>
+                <span>{motif.year}</span>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </div>

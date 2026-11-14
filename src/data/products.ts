@@ -18,12 +18,10 @@ export type Product = {
   aspect?: 'square' | 'portrait' | 'landscape';
 
   // 🆕 Enrichissements luxe-archive (optionnels, à remplir au fil de l'eau)
-  edition?: { current: number; total: number };  // { current: 1, total: 1 } → "1/1"
   status?: 'available' | 'reserved' | 'archived';
   textileYear?: number | string;                  // année du tissu d'origine
   provenanceKey?: string;                         // i18n key custom si différente du motif
   dimensions?: string;                            // affichable, ex. '~10,5 × 9,5 cm' (fermé, ±0,5 cm)
-  price?: number;                                 // en euros ; absent → « sur demande »
 };
 
 export const products: Product[] = [
@@ -83,7 +81,6 @@ export const products: Product[] = [
     aspect: 'portrait',
     textileYear: 1991,
     dimensions: '~10,5 × 9,5 cm',
-    price: 25,
   },
   {
     id: 'splinter91-earphone',
@@ -102,7 +99,6 @@ export const products: Product[] = [
     aspect: 'square',
     textileYear: 1991,
     dimensions: '~9 × 9 cm',
-    price: 19,
   },
   {
     id: 'splinter91-multipouch',
@@ -121,7 +117,6 @@ export const products: Product[] = [
     aspect: 'portrait',
     textileYear: 1991,
     dimensions: '~21 × 11 cm',
-    price: 29,
   },
 
   // BULGARIAN DPM
@@ -142,7 +137,6 @@ export const products: Product[] = [
     aspect: 'portrait',
     textileYear: 2004,
     dimensions: '~10,5 × 9,5 cm',
-    price: 25,
   },
   {
     id: 'dpm-earphone',
@@ -161,7 +155,6 @@ export const products: Product[] = [
     aspect: 'square',
     textileYear: 2004,
     dimensions: '~9 × 9 cm',
-    price: 19,
   },
   {
     id: 'dpm-multipouch',
@@ -180,7 +173,6 @@ export const products: Product[] = [
     aspect: 'portrait',
     textileYear: 2004,
     dimensions: '~21 × 11 cm',
-    price: 29,
   },
 
   // GERMAN FLECKTARN
@@ -201,7 +193,6 @@ export const products: Product[] = [
     aspect: 'portrait',
     textileYear: 1991,
     dimensions: '~10,5 × 9,5 cm',
-    price: 25,
   },
   {
     id: 'flecktarn-earphone',
@@ -220,7 +211,6 @@ export const products: Product[] = [
     aspect: 'square',
     textileYear: 1991,
     dimensions: '~9 × 9 cm',
-    price: 19,
   },
   {
     id: 'flecktarn-multipouch',
@@ -240,7 +230,6 @@ export const products: Product[] = [
     aspect: 'portrait',
     textileYear: 1991,
     dimensions: '~21 × 11 cm',
-    price: 29,
   },
 ];
 // ─────────────────────────────────────────────────────────────

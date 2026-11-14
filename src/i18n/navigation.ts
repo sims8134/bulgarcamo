@@ -4,4 +4,5 @@ import { locales } from './config';
 export const { Link, redirect, usePathname, useRouter, getPathname } = createNavigation({
   locales,
   defaultLocale: 'en',  // ← changé de 'fr' à 'en'
+  localeCookie: false,  // aucun cookie déposé par le site
 });
