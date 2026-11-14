@@ -6,6 +6,7 @@ import type { Product } from '@/data/products';
 import { motifs } from '@/content/motifs';
 import { AccentTitle } from '@/components/primitives/AccentTitle';
 import { PhotoFrame } from '@/components/primitives/PhotoFrame';
+import { tapeFor } from '@/content/tapePlacement';
 
 interface Props {
   product: Product;
@@ -40,7 +41,7 @@ export default function ProductPage({ product }: Props) {
             <div className="space-y-16 lg:space-y-20">
               {allImages.map((src, i) => (
                 <figure key={src}>
-                  <PhotoFrame tilt={i % 2 === 0 ? 'a' : 'b'} boxClassName="aspect-[3/4]">
+                  <PhotoFrame tilt={i % 2 === 0 ? 'a' : 'b'} tape={tapeFor(src)} boxClassName="aspect-[3/4]">
                     <Image
                       src={src}
                       alt=""

@@ -6,6 +6,7 @@ import type { Product } from '@/data/products';
 import { motifs } from '@/content/motifs';
 import { cn } from '@/lib/cn';
 import { PhotoFrame } from '@/components/primitives/PhotoFrame';
+import { tapeFor } from '@/content/tapePlacement';
 
 interface Props {
   product: Product;
@@ -36,7 +37,7 @@ export default function PieceCard({ product, index }: Props) {
         className="group block"
         aria-label={`${product.ref} · ${name} · ${motif.name}`}
       >
-        <PhotoFrame tilt={index % 2 === 0 ? 'a' : 'b'} boxClassName={aspect}>
+        <PhotoFrame tilt={index % 2 === 0 ? 'a' : 'b'} tape={tapeFor(primaryImage)} boxClassName={aspect}>
           <Image
             src={primaryImage}
             alt=""

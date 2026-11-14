@@ -22,7 +22,7 @@
     /* dérivés utilisés par les effets */
     --title-shadow-accent: rgba(125, 255, 79, 0.6);
     --title-shadow-white: rgba(255, 255, 255, 0.25);
-    --tape: rgba(125, 255, 79, 0.45);
+    --tape: rgba(125, 255, 79, 0.38);
     --photo-shadow: rgba(0, 0, 0, 0.7);
 
     /* rotations « cassé », réduites de moitié sous 480 px */
@@ -30,7 +30,21 @@
     --tilt-a: -2.4deg;
     --tilt-b: 1.9deg;
     --viseur: 54px;
+
+    /* tirage photo et scotch */
     --photo-frame: 10px;
+    --photo-frame-color: #e4ecdc;
+    --tape-edge: rgba(233, 255, 224, 0.25);
+    --tape-w: 120px;
+    --tape-h: 32px;
+  }
+
+  @media (max-width: 639px) {
+    :root {
+      --photo-frame: 8px;
+      --tape-w: 90px;
+      --tape-h: 24px;
+    }
   }
 
   @media (max-width: 479px) {
@@ -317,44 +331,54 @@ body::after {
     transform: rotate(var(--tilt-b));
   }
 
-  /* Boîte photo : cadre opaque de 10 px (--photo-frame) en var(--surface),
-     ombre portée sombre. L'image remplit l'intérieur du cadre et n'est
-     jamais retouchée. */
+  /* Boîte photo : cadre de tirage clair et opaque (10 px, 8 px sur mobile),
+     ombre portée sombre. Le cadre fait partie de la boîte et tourne avec elle ;
+     l'image remplit l'intérieur et n'est jamais retouchée. */
   .photo-box {
     position: relative;
     overflow: hidden;
     background: var(--surface);
-    border: var(--photo-frame) solid var(--surface);
+    border: var(--photo-frame) solid var(--photo-frame-color);
     box-shadow: 0 18px 40px -8px var(--photo-shadow);
   }
 
-  /* Scotch : au-dessus de la photo, centré, à cheval sur le bord haut.
-     Placement calculé pour que son coin le plus bas (rotation comprise)
-     s'arrête juste avant le bord intérieur du cadre : il couvre le cadre
-     et l'espace au-dessus, jamais les pixels de l'image.
-     Demi-hauteur tournée = (h·cos5° + w·sin5°) / 2
-       desktop 120×32 : 21,2 px → centre à -12 px du bord haut
-       mobile   90×24 : 15,9 px → centre à  -7 px du bord haut */
+  /* Scotch : ruban translucide posé SUR la photo, à cheval sur le bord haut.
+     Son centre est sur le bord extérieur du cadre : 50 % de sa hauteur
+     au-dessus de la photo, 50 % sur le cadre et le haut de l'image.
+     Il est dans le conteneur incliné, donc tourne avec la photo, plus -5deg.
+     Profondeur max dans l'image (coin le plus bas, rotation comprise) :
+       desktop 120×32, cadre 10 : 16·cos5° + 60·sin5° − 10 ≈ 11 px
+       mobile   90×24, cadre  8 : 12·cos5° + 45·sin5° −  8 ≈  8 px
+     soit toujours moins de 16 px. Position par photo : .photo-tape-*. */
   .photo-tilt::after {
     content: '';
     position: absolute;
-    top: calc(-12px - 16px);
-    left: 50%;
-    width: 120px;
-    height: 32px;
+    top: calc(var(--tape-h) / -2);
+    left: var(--tape-x, 50%);
+    width: var(--tape-w);
+    height: var(--tape-h);
     background: var(--tape);
+    border: 1px solid var(--tape-edge);
+    backdrop-filter: none;
     transform: translateX(-50%) rotate(-5deg);
+    /* bords gauche et droit déchirés en dents fines */
+    clip-path: polygon(
+      0% 0%, 100% 0%,
+      97.5% 12.5%, 100% 25%, 97.5% 37.5%, 100% 50%,
+      97.5% 62.5%, 100% 75%, 97.5% 87.5%, 100% 100%,
+      0% 100%,
+      2.5% 87.5%, 0% 75%, 2.5% 62.5%, 0% 50%,
+      2.5% 37.5%, 0% 25%, 2.5% 12.5%
+    );
     z-index: 3;
     pointer-events: none;
   }
 
-  @media (max-width: 639px) {
-    .photo-tilt::after {
-      top: calc(-7px - 12px);
-      width: 90px;
-      height: 24px;
-    }
-  }
+  /* Placement du scotch quand la pièce est trop près du bord haut
+     (voir src/content/tapePlacement.ts) */
+  .photo-tape-left { --tape-x: 24%; }
+  .photo-tape-right { --tape-x: 76%; }
+  .photo-tape-none::after { content: none; }
 
   /* Viseur : quatre équerres hors de l'image, droites par rapport à la photo,
      toujours au-dessus du scotch */

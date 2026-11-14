@@ -5,6 +5,7 @@ import { motifsList, type Motif } from '@/content/motifs';
 import { ACTIVE_MOTIFS } from '@/data/products';
 import { AccentTitle } from '@/components/primitives/AccentTitle';
 import { PhotoFrame } from '@/components/primitives/PhotoFrame';
+import { tapeFor } from '@/content/tapePlacement';
 
 const motifImages: Record<string, { src: string; alt: string }> = {
   frogskin: {
@@ -109,7 +110,7 @@ function MotifBlock({
 
           <div className={`col-span-12 lg:col-span-6 px-3 sm:px-6 lg:px-0 ${isEven ? 'lg:col-start-7' : 'lg:order-1 lg:col-start-1'}`}>
             <figure>
-              <PhotoFrame tilt={isEven ? 'b' : 'a'} boxClassName="aspect-[3/4]">
+              <PhotoFrame tilt={isEven ? 'b' : 'a'} tape={tapeFor(image.src)} boxClassName="aspect-[3/4]">
                 <Image
                   src={image.src}
                   alt={image.alt}
