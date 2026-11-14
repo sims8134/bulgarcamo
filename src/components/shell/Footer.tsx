@@ -23,16 +23,26 @@ export default function Footer() {
               <br />
               {t('atelier.note')}
             </p>
-            <p>
-              <a
-                href="https://www.instagram.com/bulgarcamo/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="label text-accent hover:text-text inline-block py-1"
-              >
-                Instagram · @bulgarcamo
-              </a>
-            </p>
+            <ul className="space-y-1">
+              <li>
+                <a
+                  href="https://www.instagram.com/bulgarcamo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="label text-accent hover:text-text inline-block py-1"
+                >
+                  Instagram · @bulgarcamo
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:contact@bulgarcamo.com"
+                  className="label text-accent hover:text-text inline-block py-1"
+                >
+                  contact@bulgarcamo.com
+                </a>
+              </li>
+            </ul>
           </div>
 
           {/* Journal */}
@@ -48,7 +58,7 @@ export default function Footer() {
             <ul className="space-y-1">
               <li><FooterLink href="/contact?subject=trade">{t('legal.pro')}</FooterLink></li>
               <li><FooterLink href="/legal">{t('legal.mentions')}</FooterLink></li>
-              <li><FooterLink href="/legal">{t('legal.privacy')}</FooterLink></li>
+              <li><FooterLink href="/privacy">{t('legal.privacy')}</FooterLink></li>
               <li><FooterLink href="/contact">{t('legal.contact')}</FooterLink></li>
             </ul>
           </div>
@@ -68,7 +78,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
             <p className="label text-accent">Cuts from the archive</p>
             <p className="label text-text-muted">
-              © {new Date().getFullYear()} Bulgarcamo · Sofia, България · {t('copyright')}
+              © {new Date().getFullYear()} Bulgarcamo · Sofia · <span lang="bg">София</span>
             </p>
           </div>
         </div>

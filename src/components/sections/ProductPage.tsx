@@ -17,8 +17,6 @@ export default function ProductPage({ product }: Props) {
   const motif = motifs[product.motif];
   const allImages = product.gallery ?? [product.image!];
 
-  const contactHref = `/contact?ref=${product.ref}&piece=${product.id}`;
-
   return (
     <article className="relative">
       <div className="container-page pt-10 lg:pt-16 pb-22">
@@ -109,9 +107,6 @@ export default function ProductPage({ product }: Props) {
                       ? `${product.edition.current} / ${product.edition.total}`
                       : t('product.edition_default')}
                   </InfoRow>
-                  <InfoRow label={t('product.price_label')}>
-                    {product.price != null ? `${product.price} €` : t('product.price_value')}
-                  </InfoRow>
                   {product.dimensions && (
                     <InfoRow label={t('product.dimensions_label')}>{product.dimensions}</InfoRow>
                   )}
@@ -125,10 +120,15 @@ export default function ProductPage({ product }: Props) {
               </div>
 
               <div className="pt-8 border-t border-line">
-                <Link href={contactHref} className="cta">
-                  <span>{t('product.cta')}</span>
+                <a
+                  href="https://ig.me/m/bulgarcamo"
+                  target="_blank"
+                  rel="noopener"
+                  className="cta"
+                >
+                  <span>{t('catalogue.footer_cta')}</span>
                   <span aria-hidden>→</span>
-                </Link>
+                </a>
               </div>
             </div>
           </aside>

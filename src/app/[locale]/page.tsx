@@ -14,17 +14,10 @@ const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Bulgarcamo',
-  legalName: 'SOC TRADE BULGARIA EOOD',
   url: BASE_URL,
   logo: `${BASE_URL}/og-image.jpg`,
   email: 'contact@bulgarcamo.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '64A ul. Maragidik',
-    postalCode: '1505',
-    addressLocality: 'Sofia',
-    addressCountry: 'BG',
-  },
+  sameAs: ['https://www.instagram.com/bulgarcamo/'],
 };
 
 export default async function HomePage({

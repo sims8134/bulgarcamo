@@ -140,15 +140,11 @@
     "availability": "Disponibilité",
     "edition_label": "Édition",
     "edition_default": "Petite série",
-    "price_label": "Prix",
-    "price_value": "Sur demande",
     "lead_time_label": "Délai",
     "lead_time_value": "4 à 6 semaines",
-    "cta": "Acquérir cette pièce",
     "back_to_catalogue": "Retour au catalogue",
     "dimensions_label": "Dimensions",
     "dimensions_note": "Pièce cousue main — dimensions indicatives, fermé (±0,5 cm)"
-    
   },
   "about": {
     "eyebrow": "À propos",
@@ -201,79 +197,132 @@
   },
   "legal": {
     "eyebrow": "Informations légales",
-    "title": "Mentions légales et confidentialité",
-    "updated": "Dernière mise à jour — 2026",
-    "intro": "Éditeur du site, hébergement, données personnelles et droits des utilisateurs.",
+    "title": "Mentions légales",
+    "updated": "Dernière mise à jour : 14 novembre 2026",
+    "intro": "Éditeur, hébergement et propriété des contenus du site.",
     "sections": [
       {
         "eyebrow": "Éditeur",
         "title": "Qui édite ce site",
         "body": [
-          "Le présent site est édité par SOC TRADE BULGARIA EOOD, société enregistrée en Bulgarie sous le numéro ЕИК 208209146, dont le siège social est situé au 64A ul. Maragidik, 1505 Sofia, Bulgarie.",
-          "Bulgarcamo est une marque commerciale de cette société. Directeur de la publication : le gérant de la société.",
-          "Contact : contact@bulgarcamo.com"
+          "Bulgarcamo, projet personnel de Simon Beltran, Sofia, Bulgarie.",
+          "Contact : contact@bulgarcamo.com ou par message Instagram, @bulgarcamo."
         ]
       },
       {
         "eyebrow": "Hébergement",
         "title": "Où le site est hébergé",
         "body": [
-          "Le site est hébergé par Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis — vercel.com.",
-          "Certaines données techniques peuvent transiter hors de l'Union européenne. Ces transferts sont encadrés par les clauses contractuelles types de la Commission européenne."
+          "Le site est hébergé par Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis (vercel.com)."
         ]
       },
       {
-        "eyebrow": "Données collectées",
-        "title": "Quelles données sont collectées",
+        "eyebrow": "Propriété",
+        "title": "Contenus du site",
         "body": [
-          "Nous collectons uniquement les données que vous nous transmettez volontairement : via le formulaire de contact, votre nom, votre adresse e-mail et le contenu de votre message ; via l'inscription au journal, votre adresse e-mail seule.",
-          "Ce site n'utilise aucun outil de mesure d'audience et aucun script de suivi publicitaire. Le service de protection anti-robots Cloudflare Turnstile peut déposer un cookie technique strictement nécessaire à la sécurité du formulaire, exempté de consentement.",
-          "Sous-traitants : Vercel Inc. (hébergement), Cloudflare, Inc. (protection anti-robots), Resend, Inc. (envoi des emails)."
+          "Les textes, les photographies et le logo présents sur ce site appartiennent à Bulgarcamo. Toute reproduction, totale ou partielle, nécessite une autorisation préalable."
         ]
       },
       {
-        "eyebrow": "Finalité",
-        "title": "Pourquoi ces données sont collectées",
+        "eyebrow": "Motifs",
+        "title": "Textiles d’origine",
         "body": [
-          "Vos données servent exclusivement à répondre à votre demande, ou à vous adresser le journal saisonnier si vous y avez souscrit. Elles ne sont jamais revendues ni transmises à des tiers à des fins commerciales.",
-          "La base légale du traitement est votre consentement, exprimé lors de l'envoi du formulaire ou de l'inscription au journal (article 6.1.a du RGPD).",
-          "Vos données sont conservées douze mois à compter de votre prise de contact, puis supprimées. Pour le journal, jusqu'à votre désinscription."
+          "Bulgarcamo n’est affilié ni à l’Armée bulgare ni à la Bundeswehr. Les noms des motifs désignent les textiles d’origine utilisés."
+        ]
+      }
+    ]
+  },
+  "privacy": {
+    "eyebrow": "Informations légales",
+    "title": "Politique de confidentialité",
+    "updated": "Dernière mise à jour : 14 novembre 2026",
+    "intro": "Quelles données ce site traite, pourquoi, combien de temps, et comment exercer vos droits.",
+    "sections": [
+      {
+        "eyebrow": "Responsable",
+        "title": "Responsable du traitement",
+        "body": [
+          "Simon Beltran (projet personnel Bulgarcamo), Sofia, Bulgarie.",
+          "Contact : contact@bulgarcamo.com."
+        ]
+      },
+      {
+        "eyebrow": "Données",
+        "title": "Données traitées",
+        "body": [
+          "Ce site ne propose ni compte, ni paiement, ni outil de mesure d’audience. Il ne conserve lui-même aucune base de données. Il traite uniquement :",
+          "Journaux techniques : à chaque visite, l’hébergeur Vercel enregistre des données techniques (adresse IP, date et heure, page demandée, navigateur).",
+          "Protection anti-robots : le service Cloudflare Turnstile, chargé sur les pages du site, analyse des signaux techniques (adresse IP, empreinte TLS, en-tête User-Agent) pour distinguer un visiteur humain d’un robot avant l’envoi d’un formulaire.",
+          "Formulaire de contact : votre nom, votre adresse e-mail, l’objet et le contenu de votre message, transmis par e-mail via le service Resend et reçus dans la boîte e-mail de Bulgarcamo.",
+          "Journal saisonnier : votre adresse e-mail et votre consentement, transmis de la même façon."
+        ]
+      },
+      {
+        "eyebrow": "Finalités",
+        "title": "Pourquoi et sur quelle base",
+        "body": [
+          "Journaux techniques : faire fonctionner et sécuriser le site. Base légale : intérêt légitime (article 6.1.f du RGPD).",
+          "Protection anti-robots : protéger les formulaires contre les abus. Base légale : intérêt légitime (article 6.1.f du RGPD).",
+          "Formulaire de contact : répondre à votre message. Base légale : intérêt légitime à répondre aux messages reçus (article 6.1.f du RGPD).",
+          "Journal saisonnier : vous envoyer le journal. Base légale : votre consentement (article 6.1.a du RGPD), que vous pouvez retirer à tout moment."
+        ]
+      },
+      {
+        "eyebrow": "Conservation",
+        "title": "Durée de conservation",
+        "body": [
+          "Journaux techniques et signaux anti-robots : durée limitée, fixée par Vercel et Cloudflare dans leurs propres politiques.",
+          "Messages de contact : douze mois après le dernier échange, puis suppression.",
+          "Journal saisonnier : jusqu’à votre désinscription."
+        ]
+      },
+      {
+        "eyebrow": "Prestataires",
+        "title": "Sous-traitants et transferts hors UE",
+        "body": [
+          "Vercel Inc. (hébergement), Cloudflare, Inc. (protection anti-robots) et Plus Five Five, Inc., qui exploite Resend (envoi des e-mails). Ces trois prestataires sont établis aux États-Unis : vos données peuvent donc être transférées hors de l’Union européenne.",
+          "Vercel et Resend indiquent encadrer ces transferts par le cadre de protection des données UE-États-Unis (Data Privacy Framework) et par les clauses contractuelles types de la Commission européenne. Cloudflare les encadre selon sa propre politique de confidentialité."
+        ]
+      },
+      {
+        "eyebrow": "Instagram",
+        "title": "Commandes par Instagram",
+        "body": [
+          "Les commandes se font uniquement par message Instagram. Une fois sur Instagram, la politique de confidentialité de Meta s’applique. Les messages de commande servent uniquement à traiter votre demande."
+        ]
+      },
+      {
+        "eyebrow": "Cookies",
+        "title": "Cookies",
+        "body": [
+          "Ce site n’utilise aucun cookie publicitaire ni de mesure d’audience. Seul Cloudflare Turnstile peut déposer un cookie strictement nécessaire à la sécurité des formulaires. C’est pourquoi aucun bandeau de consentement n’est affiché."
         ]
       },
       {
         "eyebrow": "Vos droits",
         "title": "Quels sont vos droits",
         "body": [
-          "Conformément au RGPD et à la loi bulgare sur la protection des données personnelles, vous disposez des droits suivants :",
-          "Pour les exercer, écrivez à contact@bulgarcamo.com. Une réponse vous sera adressée sous trente jours."
+          "Conformément au RGPD, vous disposez des droits suivants :",
+          "Pour les exercer, écrivez à contact@bulgarcamo.com. Une réponse vous sera adressée dans un délai d’un mois."
         ]
       },
       {
         "eyebrow": "Réclamation",
         "title": "Autorité de contrôle",
         "body": [
-          "En cas de manquement constaté, vous pouvez introduire une réclamation auprès de la Commission pour la protection des données personnelles (CPDP), autorité compétente en Bulgarie — cpdp.bg.",
-          "Si vous résidez dans un autre État membre, vous pouvez également saisir l'autorité de contrôle de votre pays."
-        ]
-      },
-      {
-        "eyebrow": "Propriété intellectuelle",
-        "title": "Contenus du site",
-        "body": [
-          "Les textes, photographies et éléments graphiques présents sur ce site sont la propriété de SOC TRADE BULGARIA EOOD, sauf mention contraire. Toute reproduction sans autorisation préalable est interdite.",
-          "Les motifs de camouflage présentés sont des textiles historiques documentés à titre informatif. Bulgarcamo ne vend ni insignes, ni emblèmes, ni équipement militaire."
+          "Vous pouvez introduire une réclamation auprès de la Commission bulgare de protection des données personnelles (Комисия за защита на личните данни, КЗЛД), cpdp.bg.",
+          "Si vous résidez dans un autre État membre de l’UE, vous pouvez aussi saisir l’autorité de contrôle de votre pays."
         ]
       }
     ],
     "rights": [
-      "Droit d'accès à vos données",
+      "Droit d’accès à vos données",
       "Droit de rectification",
-      "Droit à l'effacement",
-      "Droit d'opposition au traitement",
-      "Droit à la portabilité",
+      "Droit à l’effacement",
+      "Droit d’opposition au traitement",
+      "Droit à la limitation et à la portabilité",
       "Droit de retirer votre consentement"
-    ],
-    "footer_note": "SOC TRADE BULGARIA EOOD · ЕИК 208209146 · 64A ul. Maragidik, 1505 Sofia, Bulgarie"
+    ]
   },
   "footer": {
     "atelier": {

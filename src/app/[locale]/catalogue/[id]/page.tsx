@@ -40,7 +40,7 @@ export async function generateMetadata({
   const edition = tProduct('edition_default');
 
   const title = `${productName} — ${motifName}`;
-  const description = `${productName} — ${motifName}, ${era}. ${provenance} ${product.ref} · ${edition}${product.price != null ? ` · ${product.price} €` : ''} · Sofia.`;
+  const description = `${productName} — ${motifName}, ${era}. ${provenance} ${product.ref} · ${edition} · Sofia.`;
 
   const path = `/${locale}/catalogue/${product.id}`;
   const imageAlt = `${productName} ${motifName} — Bulgarcamo`;
@@ -88,35 +88,10 @@ export default async function ProductRoute({
     notFound();
   }
 
-  const t = await getTranslations({ locale, namespace: 'products' });
-  const tMotifs = await getTranslations({ locale, namespace: 'motifs' });
-
-  const BASE_URL = 'https://www.bulgarcamo.com';
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: `${t(`names.${product.nameKey}`)} — ${tMotifs(`${product.motif}.name`)}`,
-    sku: product.ref,
-    image: (product.gallery ?? [product.image]).map((src) => `${BASE_URL}${src}`),
-    description: tMotifs(`${product.motif}.description`),
-    brand: { '@type': 'Brand', name: 'Bulgarcamo' },
-    ...(product.price != null && {
-      offers: {
-        '@type': 'Offer',
-        price: product.price,
-        priceCurrency: 'EUR',
-        availability: 'https://schema.org/InStock',
-        url: `${BASE_URL}/${locale}/catalogue/${product.id}`,
-      },
-    }),
-  };
-
+  // Pas de JSON-LD Product : sans offre (ni prix, ni avis), Google le classe
+  // en élément invalide pour les extraits produit.
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <ScrollTop />
       <ProductPage product={product} />
     </>

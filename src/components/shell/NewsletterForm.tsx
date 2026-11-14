@@ -115,7 +115,7 @@ export default function NewsletterForm() {
         />
         <span>
           {t('consent')}{' '}
-          <Link href="/legal" className="link-line">
+          <Link href="/privacy" className="link-line">
             {t('consent_link')}
           </Link>
         </span>

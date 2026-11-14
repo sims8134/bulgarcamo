@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { locales, type Locale } from '@/i18n/config';
+import LegalDocument from '@/components/sections/LegalDocument';
 
+// Mentions légales (éditeur, hébergeur, propriété des contenus)
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
@@ -28,15 +30,6 @@ export async function generateMetadata({
   };
 }
 
-type Section = {
-  eyebrow: string;
-  title: string;
-  body: string[];
-};
-
-// La liste des droits s'insère dans la section « Vos droits » (index 4).
-const RIGHTS_SECTION_INDEX = 4;
-
 export default async function LegalPage({
   params,
 }: {
@@ -44,48 +37,5 @@ export default async function LegalPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale as Locale);
-  const t = await getTranslations({ locale, namespace: 'legal' });
-
-  const sections = t.raw('sections') as Section[];
-  const rights = t.raw('rights') as string[];
-
-  return (
-    <div className="container-narrow section-y">
-      <header className="mb-24">
-        <p className="eyebrow">{t('eyebrow')}</p>
-        <h1 className="heading-lg mt-8">{t('title')}</h1>
-        <p className="ref-tag mt-8">{t('updated')}</p>
-      </header>
-
-      {sections.map((section, i) => (
-        <section key={section.eyebrow} className="mb-20">
-          <div className="rule mb-8" />
-
-          <p className="eyebrow">
-            {String(i + 1).padStart(2, '0')} · {section.eyebrow}
-          </p>
-          <h2 className="heading-sm mt-6 mb-6">{section.title}</h2>
-
-          {section.body.map((paragraph, j) => (
-            <p key={j} className="prose-narrow mb-4">
-              {paragraph}
-            </p>
-          ))}
-
-          {i === RIGHTS_SECTION_INDEX && (
-            <ul className="mt-6 grid sm:grid-cols-2">
-              {rights.map((right) => (
-                <li key={right} className="ref-tag py-2">
-                  {right}
-                </li>
-              ))}
-            </ul>
-          )}
-        </section>
-      ))}
-
-      <div className="rule mb-8" />
-      <p className="ref-tag">{t('footer_note')}</p>
-    </div>
-  );
+  return <LegalDocument locale={locale} namespace="legal" />;
 }

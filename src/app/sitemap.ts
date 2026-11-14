@@ -17,7 +17,7 @@ function languageAlternates(path: string) {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/contact', '/legal'];
+  const routes = ['', '/contact', '/legal', '/privacy'];
 
   // Pages statiques, déclinées par langue
   const staticPages: MetadataRoute.Sitemap = locales.flatMap((locale) =>

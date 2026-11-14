@@ -13,6 +13,23 @@ const nextConfig = {
     deviceSizes: [360, 420, 480, 560, 640, 750, 828, 960, 1080, 1200, 1440, 1680, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
   },
+  // Plus de conditions de vente (projet personnel, commande par Instagram) :
+  // les anciennes adresses renvoient en 301 vers l'accueil de la même langue.
+  async redirects() {
+    const old = ['cgv', 'terms', 'terms-of-sale', 'conditions-de-vente'];
+    return [
+      ...old.map((slug) => ({
+        source: `/:locale(en|fr|bg)/${slug}`,
+        destination: '/:locale',
+        statusCode: 301,
+      })),
+      ...old.map((slug) => ({
+        source: `/${slug}`,
+        destination: '/en',
+        statusCode: 301,
+      })),
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
