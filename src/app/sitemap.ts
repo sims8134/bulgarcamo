@@ -17,7 +17,8 @@ function languageAlternates(path: string) {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/contact', '/legal', '/privacy'];
+  // /legal et /privacy restent en noindex, donc hors sitemap.
+  const routes = ['', '/contact'];
 
   // Pages statiques, déclinées par langue
   const staticPages: MetadataRoute.Sitemap = locales.flatMap((locale) =>

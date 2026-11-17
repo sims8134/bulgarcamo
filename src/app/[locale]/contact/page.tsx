@@ -1,6 +1,30 @@
+import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import type { Locale } from '@/i18n/config';
+import { locales, type Locale } from '@/i18n/config';
 import { AccentTitle } from '@/components/primitives/AccentTitle';
+
+// Métadonnées propres : sans elles, la page hérite du canonical de l'accueil.
+// Titre « Contact · Bulgarcamo » via le gabarit du layout.
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'contact' });
+
+  return {
+    title: t('eyebrow'),
+    description: t('intro'),
+    alternates: {
+      canonical: `/${locale}/contact`,
+      languages: {
+        ...Object.fromEntries(locales.map((l) => [l, `/${l}/contact`])),
+        'x-default': '/en/contact',
+      },
+    },
+  };
+}
 
 // Contact : pas de formulaire, seulement l'e-mail et Instagram.
 export default async function ContactPage({
