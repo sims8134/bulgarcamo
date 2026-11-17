@@ -67,7 +67,19 @@ export default function Footer() {
             className="w-full max-w-[560px] h-auto"
           />
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
-            <p className="label text-accent">Cuts from the archive</p>
+            <div className="flex items-center gap-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/brand/bgkm/bgkm-traceuse.svg"
+                alt=""
+                aria-hidden="true"
+                width={960}
+                height={280}
+                loading="lazy"
+                className="h-9 w-auto"
+              />
+              <p className="label text-accent">Cuts from the archive</p>
+            </div>
             <p className="label text-text-muted">
               © {new Date().getFullYear()} Bulgarcamo · Sofia · <span lang="bg">София</span>
             </p>

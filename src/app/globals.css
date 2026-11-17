@@ -395,12 +395,6 @@ body::after {
   .viseur-bl { bottom: -10px; left: -10px; border-bottom-width: 4px; border-left-width: 4px; }
   .viseur-br { bottom: -10px; right: -10px; border-bottom-width: 4px; border-right-width: 4px; }
 
-  /* Logo cassé du hero : l'inclinaison est déjà dans le SVG */
-  .logo-casse {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
 }
 
 @layer utilities {

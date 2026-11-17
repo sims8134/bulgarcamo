@@ -62,12 +62,14 @@ export async function generateMetadata({
       template: '%s · Bulgarcamo',
     },
     description,
+    // Icônes BGKM (le B seul, lisible en 16 px). Seule méthode de déclaration :
+    // fichiers dans public/, pas de fichier icon/favicon dans src/app.
     icons: {
       icon: [
-        { url: '/brand/favicon.svg', type: 'image/svg+xml' },
-        { url: '/brand/favicon.png', type: 'image/png', sizes: '512x512' },
+        { url: '/favicon.svg', type: 'image/svg+xml' },
+        { url: '/favicon.ico', sizes: '16x16 32x32 48x48' },
       ],
-      apple: [{ url: '/brand/apple-touch-icon.png', sizes: '180x180' }],
+      apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
     },
     verification: {
       google: 'BaYT13lGPokUJQ7dEMNZKT8d_J6r0o7usxwAeO0GuO8',

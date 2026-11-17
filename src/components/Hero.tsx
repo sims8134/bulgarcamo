@@ -11,14 +11,15 @@ export default function Hero() {
       <div className="container-page grid grid-cols-12 gap-x-6 gap-y-16 pt-14 lg:pt-22 pb-18">
         {/* Colonne texte */}
         <div className="col-span-12 lg:col-span-6 flex flex-col justify-center gap-8">
-          {/* Logo cassé : inclinaison et ombre décalée déjà dans le SVG */}
+          {/* Logo BGKM « traceuse » : l'animation (une fois, puis halo qui respire)
+              est interne au SVG et respecte prefers-reduced-motion. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/brand/bulgarcamo-wordmark-casse.svg"
+            src="/brand/bgkm/bgkm-traceuse-anime.svg"
             alt="Bulgarcamo"
-            width={728}
-            height={164}
-            className="logo-casse max-w-[620px] -ml-2"
+            width={960}
+            height={280}
+            className="block w-full max-w-[560px] h-auto"
           />
 
           <p className="eyebrow self-start">{t('eyebrow')}</p>
